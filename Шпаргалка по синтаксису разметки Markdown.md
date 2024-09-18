@@ -195,19 +195,6 @@ _«Если вам нужен ресурс гораздо сложнее и се
 ![Синтаксис разметки Markdown](https://texterra.ru/upload/medialibrary/9e8/j51uv5yjas3wkken6k3x5rszf1q6gz92/9.webp "Синтаксис разметки Markdown")
 
 Если URL длинные, да еще и с UTM-метками, их лучше спрятать в самый конец документа. Обратите внимание: тайтлы можно обозначить и двойными, и одинарными кавычками, а также в скобкахСинтаксис Markdown для работы с картинками очень похожий. Разница в восклицательном знаке перед первыми квадратными скобками. Ссылке на картинку тоже можно присвоить определенный ID. Примеры:
-
-![Лого TexTerra](/upload/firmenniy-stil/footer-logo-svg.svg)
-
----
-
-![Лого TexTerra](/upload/firmenniy-stil/footer-logo-svg.svg "Наш логотип")
-
----
-
-![Картинка][logo]
-
-[logo]: /upload/firmenniy-stil/footer-logo-svg.svg "Наш логотип"
-
 ![Синтаксис разметки Markdown](https://texterra.ru/upload/medialibrary/312/bd0mepuypjdjyr9eytlavyklc0bku0eg/10.webp "Синтаксис разметки Markdown")
 
 Если безанкорные ссылки оформляются двумя угловыми скобками, то для цитаты нужна только одна такая скобка. Все очень просто:
