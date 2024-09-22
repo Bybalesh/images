@@ -1,5 +1,10 @@
-#LANG/RU #STRUCT/UNION #PROG_LANG/JAVA #ROLE/BACKENDER #ROOT
-
+---
+tags:
+  - LANG/RU
+  - STRUCT/UNION
+  - PROG_LANG/JAVA
+  - ROLE/DEV/BACKEND
+---
 ---
 # Описание
 ---

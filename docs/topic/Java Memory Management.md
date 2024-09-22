@@ -1,5 +1,11 @@
-#LANG/RU #STRUCT/TOPIC #PROG_LANG/JAVA #ROLE/BACKENDER #ROOT
-
+---
+tags:
+  - LANG/RU
+  - STRUCT/TOPIC
+  - PROG_LANG/JAVA
+  - ROLE/DEV/BACKEND
+  - ROOT
+---
 ---
 # Пороговые значения*:
 + #LVL/INTERN: 90%

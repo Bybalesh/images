@@ -3,6 +3,7 @@ tags:
   - LANG/RU
   - STRUCT/SYSTEM
 ---
+---
 ![logo | center | 50%](./images/logo.png)
 ![Граф компетенций | center | 100%](./images/GrafCompetition.gif)
 

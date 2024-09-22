@@ -1,5 +1,8 @@
-#LANG/RU #STRUCT/TOPIC 
-
+---
+tags:
+  - LANG/RU
+  - STRUCT/TOPIC
+---
 ---
 # Пороговые значения*:
 + #LVL/INTERN: 40%

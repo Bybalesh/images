@@ -121,7 +121,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/topic/Java Collection Framework.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               }
@@ -218,7 +218,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/topic/Java Collection Framework.md",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -235,7 +235,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/topic/Java Collection Framework.md",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -258,7 +258,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/topic/Java Collection Framework.md"
+                "file": "README.md"
               }
             }
           },
@@ -292,32 +292,32 @@
   },
   "active": "63ee44e7457732cf",
   "lastOpenFiles": [
-    "docs/topic/Java Basics of Threads.md",
-    "docs/topic/Java Basic Syntax.md",
-    "docs/topic/Istio.md",
-    "docs/topic/Integration Testing.md",
-    "docs/topic/Hibernate.md",
-    "docs/topic/Helm.md",
-    "docs/topic/Grafana.md",
-    "docs/topic/Gradle.md",
-    "docs/topic/GOF.md",
-    "docs/topic/Git.md",
-    "docs/topic/Generics.md",
-    "docs/topic/Generating Patterns.md",
-    "docs/topic/EDP(СОП).md",
-    "docs/topic/Docker.md",
-    "docs/topic/Developer Tools.md",
-    "docs/topic/Databases.md",
-    "docs/topic/Data structures and Algorithms.md",
-    "docs/topic/Cucumber.md",
-    "docs/topic/Computer Science.md",
-    "docs/topic/ClassLoaders.md",
-    "docs/topic/Build Tools.md",
-    "docs/topic/Behavioral Patterns.md",
-    "docs/topic/AOP(АОП).md",
-    "docs/topic/Ant.md",
-    "docs/topic/Annotations.md",
-    "README.md",
+    "docs/union/Java.md",
+    "docs/system/Шпаргалка по синтаксису разметки Markdown.md",
+    "docs/system/Шаблон тематического узла.md",
+    "docs/system/Шаблон оценочного узла c тестом.md",
+    "docs/system/Шаблон оценочного узла c кодированием.md",
+    "docs/system/Шаблон оценочного узла c заданием.md",
+    "docs/system/Шаблон оценочного узла c вопросом.md",
+    "docs/system/Шаблон матрицы компетенций.md",
+    "docs/system/Шаблон информационного узла.md",
+    "docs/system/Описание хештегов.md",
+    "docs/system/Описание тестирования консистнтности.md",
+    "docs/topic/Шаблонный метод (Template method).md",
+    "docs/topic/Цепочка обязанностей (Chain of responsibility).md",
+    "docs/topic/Хранитель (Memento).md",
+    "docs/topic/Фасад (Facade).md",
+    "docs/topic/Фабричный метод (Factory Method).md",
+    "docs/topic/Строитель (Builder).md",
+    "docs/topic/Стратегия (Strategy).md",
+    "docs/topic/Состояние (State).md",
+    "docs/topic/Прототип (Prototype).md",
+    "docs/topic/Приспособленец (Flyweight).md",
+    "docs/topic/Принципы программирования.md",
+    "docs/topic/Посредник (Mediator).md",
+    "docs/topic/Посетитель (Visitor).md",
+    "docs/topic/Парадигмы программирования.md",
+    "docs/topic/Одиночка (Singleton).md",
     "images/SkillsIdeaRepresentation.png",
     "logo1 1.png",
     "logo1.png",

@@ -1,5 +1,10 @@
-#LANG/RU #STRUCT/TOPIC #ROOT #ROLE/MANUAL_TESTER  #ROLE/AUTOMATION_TESTER
-
+---
+tags:
+  - LANG/RU
+  - STRUCT/TOPIC
+  - ROOT
+  - ROLE/TESTER
+---
 ---
 # Пороговые значения*:
 + #LVL/INTERN: 40%
