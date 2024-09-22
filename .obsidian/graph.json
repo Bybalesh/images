@@ -1,0 +1,51 @@
+{
+  "collapse-filter": true,
+  "search": "-tag:#STRUCT/SYSTEM",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": true,
+  "colorGroups": [
+    {
+      "query": "tag:#STRUCT/UNION  ",
+      "color": {
+        "a": 1,
+        "rgb": 7171061
+      }
+    },
+    {
+      "query": "tag:#ROOT  ",
+      "color": {
+        "a": 1,
+        "rgb": 16384000
+      }
+    },
+    {
+      "query": "tag:#PROG_LANG/JAVA  ",
+      "color": {
+        "a": 1,
+        "rgb": 15991170
+      }
+    },
+    {
+      "query": "tag:#STRUCT/TOPIC",
+      "color": {
+        "a": 1,
+        "rgb": 14069084
+      }
+    }
+  ],
+  "collapse-display": false,
+  "showArrow": false,
+  "textFadeMultiplier": -0.5,
+  "nodeSizeMultiplier": 1.96302083333333,
+  "lineSizeMultiplier": 2.65208333333333,
+  "collapse-forces": false,
+  "centerStrength": 1,
+  "repelStrength": 20,
+  "linkStrength": 1,
+  "linkDistance": 30,
+  "scale": 0.9999999999999969,
+  "close": false
+}
