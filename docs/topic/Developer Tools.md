@@ -1,5 +1,9 @@
-#LANG/RU #STRUCT/TOPIC #ROOT
-
+---
+tags:
+  - LANG/RU
+  - STRUCT/TOPIC
+  - ROOT
+---
 ---
 # Описание
 ---

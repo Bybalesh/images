@@ -1,5 +1,9 @@
-#LANG/RU #STRUCT/TOPIC #ROLE/DEVOPS 
-
+---
+tags:
+  - LANG/RU
+  - STRUCT/TOPIC
+  - ROLE/DEV/OPS
+---
 ---
 # Пороговые значения*:
 + #LVL/INTERN: 60%

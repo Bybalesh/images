@@ -1,4 +1,9 @@
-#LANG/RU #STRUCT/TOPIC #ROOT
+---
+tags:
+  - LANG/RU
+  - STRUCT/TOPIC
+  - ROOT
+---
 #TODO GOF  
 (https://bool.dev/blog/detail/gof-design-patterns)
 

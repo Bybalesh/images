@@ -1,5 +1,10 @@
-#LANG/RU #STRUCT/TOPIC #ROLE/AUTOMATION_TESTER #PROG_LANG/JAVA 
-
+---
+tags:
+  - LANG/RU
+  - STRUCT/TOPIC
+  - ROLE/TESTER/AUTOMATION
+  - PROG_LANG/JAVA
+---
 ---
 # Пороговые значения*:
 + #LVL/INTERN: 40%
