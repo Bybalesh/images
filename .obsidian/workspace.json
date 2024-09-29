@@ -109,19 +109,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/topic/Reflection.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "63ee44e7457732cf",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "README.md",
+                "file": "docs/topic/Ant.md",
                 "mode": "source",
                 "source": false
               }
@@ -152,7 +140,7 @@
             }
           }
         ],
-        "currentTab": 9
+        "currentTab": 8
       }
     ],
     "direction": "vertical"
@@ -218,7 +206,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "docs/topic/Ant.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -235,7 +223,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "docs/topic/Ant.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -258,7 +246,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "docs/topic/Ant.md"
               }
             }
           },
@@ -290,52 +278,52 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "63ee44e7457732cf",
+  "active": "b1e472ed4c9f42c4",
   "lastOpenFiles": [
-    "docs/union/Java.md",
-    "docs/system/Шпаргалка по синтаксису разметки Markdown.md",
-    "docs/system/Шаблон тематического узла.md",
-    "docs/system/Шаблон оценочного узла c тестом.md",
-    "docs/system/Шаблон оценочного узла c кодированием.md",
-    "docs/system/Шаблон оценочного узла c заданием.md",
-    "docs/system/Шаблон оценочного узла c вопросом.md",
+    "MatrixCopmpetitionGenerator/pom.xml~",
+    "TestGenerator/pom.xml~",
+    "CommonUtils/src/main/java/common/utils/md/MDCreator.java~",
+    "CommonUtils/src/main/java/common/utils/md/MDCreator.java",
+    "CommonUtils/src/main/java/common/utils/md/MDSearch.java~",
+    "CommonUtils/src/main/java/common/utils/md/MDSearch.java",
+    "CommonUtils/src/main/java/common/utils/md",
+    "CommonUtils/src/main/java/common/utils/model/topic/Topic.java~",
+    "CommonUtils/src/main/java/common/utils/model/topic/Topic.java",
     "docs/system/Шаблон матрицы компетенций.md",
-    "docs/system/Шаблон информационного узла.md",
+    "docs/system/Шаблон оценочного узла c заданием.md",
+    "docs/system/Шаблон оценочного узла c кодированием.md",
+    "docs/system/Шаблон оценочного узла c тестом.md",
+    "docs/system/Шпаргалка по синтаксису разметки Markdown.md",
+    "README.md",
+    "CommonUtils/src/main/java/common/utils/model/system/MatrixCompetition.java~",
+    "CommonUtils/src/main/java/common/utils/model/system/MatrixCompetition.java",
     "docs/system/Описание хештегов.md",
-    "docs/system/Описание тестирования консистнтности.md",
-    "docs/topic/Шаблонный метод (Template method).md",
-    "docs/topic/Цепочка обязанностей (Chain of responsibility).md",
-    "docs/topic/Хранитель (Memento).md",
-    "docs/topic/Фасад (Facade).md",
-    "docs/topic/Фабричный метод (Factory Method).md",
-    "docs/topic/Строитель (Builder).md",
+    "docs/topic/Reflection.md",
+    "Untitled.canvas",
     "docs/topic/Стратегия (Strategy).md",
+    "docs/topic/Ant.md",
+    "docs/topic/Annotations.md",
+    "docs/topic/AOP(АОП).md",
+    "docs/topic/Шаблонный метод (Template method).md",
+    "docs/topic/Behavioral Patterns.md",
     "docs/topic/Состояние (State).md",
-    "docs/topic/Прототип (Prototype).md",
-    "docs/topic/Приспособленец (Flyweight).md",
-    "docs/topic/Принципы программирования.md",
+    "docs/topic/Наблюдатель (Observer).md",
+    "docs/topic/Хранитель (Memento).md",
     "docs/topic/Посредник (Mediator).md",
-    "docs/topic/Посетитель (Visitor).md",
-    "docs/topic/Парадигмы программирования.md",
-    "docs/topic/Одиночка (Singleton).md",
+    "docs/topic/Итератор (Iterator).md",
+    "docs/topic/Интерпретатор (Interpreter).md",
+    "docs/topic/Команда (Command).md",
+    "docs/topic/Цепочка обязанностей (Chain of responsibility).md",
+    "docs/union/Java.md",
+    "docs/system/Шаблон тематического узла.md",
+    "docs/system/Шаблон оценочного узла c вопросом.md",
     "images/SkillsIdeaRepresentation.png",
     "logo1 1.png",
     "logo1.png",
     "images/logo.png",
     "logo.png",
-    "images/logo.xcf",
     "images/GrafCompetition.gif",
-    "images/logo",
-    "images",
-    "docs/union",
-    "docs/topic",
-    "docs/learning",
-    "docs/estimating",
-    "docs/system",
-    "docs",
     "docs/topic/GrafCompetition.gif",
-    "mastervsestimationbranch.xcf",
-    "images/mastervsestimationbranch.png",
-    "Untitled.canvas"
+    "images/mastervsestimationbranch.png"
   ]
 }
