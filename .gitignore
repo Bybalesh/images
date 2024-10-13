@@ -1,1 +1,6 @@
 /.idea/
+*.jar
+.idea
+*.iml
+out
+gen
