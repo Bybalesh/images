@@ -5,6 +5,8 @@ plugins {
 group = "ru.mc.common"
 version = "1.0-SNAPSHOT"
 
+
+
 repositories {
     mavenCentral()
     maven {
@@ -20,9 +22,24 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
-    api("org.jetbrains:markdown:0.7.3")
+//    api("org.jetbrains:markdown:0.7.3")//TODO убрать
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.module/jackson-module-kotlin
     api("com.fasterxml.jackson.module:jackson-module-kotlin:2.18.0")
+    // Markdown convertor (Flexmark)
+    val versionLibraryFlexmark = "0.64.8"
+// https://github.com/vsch/flexmark-java/releases
+    api("com.vladsch.flexmark:flexmark:${versionLibraryFlexmark}")
+    api("com.vladsch.flexmark:flexmark-util:${versionLibraryFlexmark}")
+    api("com.vladsch.flexmark:flexmark-ext-tables:${versionLibraryFlexmark}")
+    api("com.vladsch.flexmark:flexmark-ext-gfm-strikethrough:${versionLibraryFlexmark}")
+    api("com.vladsch.flexmark:flexmark-ext-yaml-front-matter:${versionLibraryFlexmark}")
+    api("com.vladsch.flexmark:flexmark-ext-wikilink:${versionLibraryFlexmark}")
+    api("com.vladsch.flexmark:flexmark-ext-footnotes:${versionLibraryFlexmark}")
+    api("com.vladsch.flexmark:flexmark-ext-gfm-tasklist:${versionLibraryFlexmark}")
+
+//    api("com.vladsch.flexmark:flexmark-ext-toc:${versionLibraryFlexmark}")
+
+//    api("com.vladsch.flexmark:flexmark-tree-iteration:${versionLibraryFlexmark}")
 
 }
 

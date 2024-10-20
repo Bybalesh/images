@@ -1,7 +1,9 @@
 package tags
 
-const val DESCRIPTION_HEADER3 = "### Описание"
-const val TAG_LIST_HEADER3 = "### Список:"
+const val DESCRIPTION_HEADER3 = "Описание"
+const val TAG_LIST_HEADER3 = "Список:"
+const val TAG_OPTIONAL_HEADER3 = "Опциональный"
+const val TAG_REQUIRED_HEADER3 = "Обязательный"
 
 object TagUtil {
     fun expandAndClearTags(tags: List<String>): List<String> {
@@ -27,4 +29,6 @@ object TagUtil {
 
         return expandedTags.filter { it.startsWith("#") }
     }
+
+
 }

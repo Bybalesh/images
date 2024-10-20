@@ -1,6 +1,6 @@
 package tags
 
-enum class RoleTag(val tag: String) {
+enum class RoleTag(val tag: String) : IMDTag<RoleTag> {
     ROLE_DEV("#ROLE/DEV"),
     ROLE_DEV_BACKEND("#ROLE/DEV/BACKEND"),
     ROLE_DEV_FRONTEND("#ROLE/DEV/FRONTEND"),
@@ -16,5 +16,35 @@ enum class RoleTag(val tag: String) {
     ROLE_ENGINEER("#ROLE/ENGINEER"),
     ROLE_ENGINEER_DATA("#ROLE/ENGINEER/DATA"),
     ROLE_ENGINEER_PROMT("#ROLE/ENGINEER/PROMT"),
-    ROLE_ALL("#ROLE/ALL"),
+    ROLE_ALL("#ROLE/ALL");
+
+    override fun tagsName(): String {
+        return "Роли в команде"
+    }
+
+    override fun isOptional(): Boolean {
+        return true
+    }
+
+    override fun tags(): List<RoleTag> {
+        return entries
+    }
+
+    override fun tagOf(tag: String): RoleTag? {
+        return tags().find { it.tag == tag }
+    }
+
+//    override fun isTag(tag: String): Boolean {
+//        return tags().any(tag::equals)
+//    }
+
+    override fun tagsAsStr(): List<String> {
+        return tags().map { it.tag }
+    }
+
+    companion object {
+        fun tagOf(tag: String): RoleTag? {
+            return entries.first().tagOf(tag)
+        }
+    }
 }
