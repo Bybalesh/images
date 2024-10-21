@@ -1,14 +1,7 @@
 package ci.topic
 
-import CMSystemFiles.getAllMDNodes
-import com.vladsch.flexmark.ext.yaml.front.matter.YamlFrontMatterBlock
-import com.vladsch.flexmark.util.ast.Node
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
-import java.nio.file.Files
-import kotlin.test.assertFalse
-import kotlin.test.assertIs
-import kotlin.test.assertTrue
 
 @DisplayName("Все необходимые теги для #STRUCT/TOPIC присутствуют")
 class CheckTagsMandatoryTest {

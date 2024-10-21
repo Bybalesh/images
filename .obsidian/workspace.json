@@ -13,10 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/system/Шаблон тематического узла.md",
+                "file": "docs/generated/sg/Статистика.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Статистика"
             }
           },
           {
@@ -25,10 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "App/CompetenceMatrixGenerator/README.MD",
+                "file": "App/CompetenceMatrixGenerator/Описание работы Competence Matric Generator (CMG).md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Описание работы Competence Matric Generator (CMG)"
             }
           },
           {
@@ -37,10 +41,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/system/Шаблон тематического узла.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "README"
+            }
+          },
+          {
+            "id": "26cc15327510edde",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "README"
             }
           },
           {
@@ -49,10 +69,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/system/Шаблон матрицы компетенций.md",
+                "file": "docs/system/Описание хештегов.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Описание хештегов"
             }
           },
           {
@@ -64,7 +86,9 @@
                 "file": "README.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "README"
             }
           },
           {
@@ -73,10 +97,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/topic/Java Date and Time.md",
+                "file": "App/CompetenceMatrixGenerator/Описание работы Competence Matric Generator (CMG).md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Описание работы Competence Matric Generator (CMG)"
             }
           },
           {
@@ -88,7 +114,9 @@
                 "file": "docs/topic/Git.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Git"
             }
           },
           {
@@ -97,10 +125,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/topic/Kubernetes.md",
+                "file": "docs/generated/cmg/Матрица компетенций.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Матрица компетенций"
             }
           },
           {
@@ -112,7 +142,9 @@
                 "file": "README.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "README"
             }
           },
           {
@@ -121,10 +153,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "docs/generated/cmg/Матрица компетенций.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Матрица компетенций"
             }
           },
           {
@@ -133,14 +167,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "App/CompetenceMatrixGenerator/README.MD",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "README"
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 11
       }
     ],
     "direction": "vertical"
@@ -160,7 +196,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -170,12 +208,14 @@
               "type": "search",
               "state": {
                 "query": "",
-                "matchingCase": true,
+                "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -183,7 +223,9 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
@@ -206,7 +248,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/system/Шаблон матрицы компетенций.md",
+                "file": "App/CompetenceMatrixGenerator/README CMG.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -214,7 +256,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for README CMG"
             }
           },
           {
@@ -223,10 +267,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/system/Шаблон матрицы компетенций.md",
+                "file": "App/CompetenceMatrixGenerator/README CMG.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from README CMG"
             }
           },
           {
@@ -237,7 +283,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -246,8 +294,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/system/Шаблон матрицы компетенций.md"
-              }
+                "file": "App/CompetenceMatrixGenerator/README CMG.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of README CMG"
             }
           },
           {
@@ -259,7 +309,9 @@
                 "sortOrder": "frequency",
                 "showSearch": false,
                 "searchQuery": ""
-              }
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
             }
           }
         ],
@@ -279,28 +331,37 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "1a0765bc20804780",
+  "active": "ced48e07b9cb8062",
   "lastOpenFiles": [
-    "App/CompetenceMatrixGenerator/build/kotlin/compileKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.keystream",
-    "App/CompetenceMatrixGenerator/build/kotlin/compileKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.values.at",
-    "App/CompetenceMatrixGenerator/build/kotlin/compileKotlin/cacheable/caches-jvm/inputs/source-to-output.tab_i",
-    "App/CompetenceMatrixGenerator/build/kotlin/compileKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.keystream.len",
-    "App/CompetenceMatrixGenerator/build/kotlin/compileKotlin/cacheable/caches-jvm/inputs/source-to-output.tab_i.len",
-    "App/CompetenceMatrixGenerator/build/kotlin/compileKotlin/cacheable/caches-jvm/inputs/source-to-output.tab",
-    "App/CompetenceMatrixGenerator/build/kotlin/compileKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.len",
-    "App/CompetenceMatrixGenerator/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/lookups.tab.keystream",
-    "App/CompetenceMatrixGenerator/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/lookups.tab.values.at",
-    "App/CompetenceMatrixGenerator/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/lookups.tab_i",
-    "App/CompetenceMatrixGenerator/build/kotlin/compileKotlin/cacheable/caches-jvm/lookups/lookups.tab.keystream.len",
+    "docs/system/Описание тестирования консистнтности.md",
     "docs/system/Описание хештегов.md",
-    "docs/system/Шаблон матрицы компетенций.md",
-    "docs/system/Шаблон оценочного узла c тестом.md",
+    "README.md",
+    "App/CompetenceMatrixGenerator/Описание работы Competence Matric Generator (CMG).md",
+    "docs/generated/sg/Статистика.md",
+    "docs/system/Obsidian DataView статистика.md",
     "docs/system/Шаблон тематического узла.md",
+    "App/Common/build/test-results/test/TEST-ci.CheckCommonNodesStructureRulesTest.xml",
+    "App/Common/build/test-results/test/TEST-ci.CheckTagsMandatoryTest.xml",
+    "App/Common/build/kotlin/compileTestKotlin/cacheable/dirty-sources.txt",
+    "App/Common/build/classes/kotlin/test/META-INF/Common_test.kotlin_module",
+    "App/Common/build/classes/kotlin/test/ci/topic/CheckTagsMandatoryTest.class",
+    "App/Common/src/test/kotlin/ci/topic/CheckTagsMandatoryTest.kt~",
+    "docs/generated/sg",
+    "docs/generated/cmg/Матрица компетенций.md",
+    "docs/system/Шаблон матрицы компетенций.md",
+    "docs/topic/Spring Framework.md",
+    "docs/topic/Java Fundamentals.md",
+    "docs/generated/cmg",
+    "docs/generated",
+    "docs/topic/Kubernetes.md",
+    "docs/topic/Git.md",
+    "docs/topic/Java Date and Time.md",
+    "docs/system/Шаблон информационного узла.md",
+    "App/CompetenceMatrixGenerator/build/kotlin/compileKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.keystream",
+    "docs/system/Шаблон оценочного узла c тестом.md",
     "docs/system/Шаблон оценочного узла c заданием.md",
-    "App/CompetenceMatrixGenerator/README.MD",
     "docs/system/Шаблон оценочного узла c кодированием.md",
     "docs/topic/Grafana.md",
-    "README.md",
     "docs/topic/ClassLoaders.md",
     "CommonUtils/README.md",
     "MatrixCopmpetitionGenerator/README.md",
@@ -309,15 +370,6 @@
     "docs/system/Шпаргалка по синтаксису разметки Markdown.md",
     "docs/topic/Reflection.md",
     "Untitled.canvas",
-    "docs/topic/Стратегия (Strategy).md",
-    "docs/topic/Ant.md",
-    "docs/topic/Annotations.md",
-    "docs/topic/AOP(АОП).md",
-    "docs/topic/Шаблонный метод (Template method).md",
-    "docs/topic/Behavioral Patterns.md",
-    "docs/topic/Состояние (State).md",
-    "docs/topic/Наблюдатель (Observer).md",
-    "docs/topic/Хранитель (Memento).md",
     "images/SkillsIdeaRepresentation.png",
     "logo1 1.png",
     "logo1.png",

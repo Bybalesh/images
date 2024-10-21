@@ -4,3 +4,6 @@
 *.iml
 out
 gen
+**/build/*
+*.class
+.gradle
