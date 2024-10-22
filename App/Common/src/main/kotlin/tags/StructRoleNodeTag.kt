@@ -9,6 +9,7 @@ enum class StructRoleNodeTag(val tag: String) : IMDTag<StructRoleNodeTag> {
     STRUCT_ESTIMATING_CODE("#STRUCT/ESTIMATING/CODE"),
     STRUCT_LEARNING("#STRUCT/LEARNING"),
     STRUCT_TOPIC("#STRUCT/TOPIC"),
+    STRUCT_GENERATED("#STRUCT/GENERATED"),
     STRUCT_UNION("#STRUCT/UNION");
 
     override fun tagsName(): String {

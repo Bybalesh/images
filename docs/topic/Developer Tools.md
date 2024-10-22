@@ -2,7 +2,6 @@
 tags:
   - LANG/RU
   - STRUCT/TOPIC
-  - ROOT
 ---
 ---
 # Описание

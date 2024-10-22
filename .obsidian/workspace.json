@@ -97,12 +97,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "App/CompetenceMatrixGenerator/Описание работы Competence Matric Generator (CMG).md",
+                "file": "backlog/Backlog.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Описание работы Competence Matric Generator (CMG)"
+              "title": "Backlog"
             }
           },
           {
@@ -167,16 +167,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "backlog/Backlog.md",
+                "file": "docs/topic/Junit4.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Backlog"
+              "title": "Junit4"
             }
           }
         ],
-        "currentTab": 11
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
@@ -232,7 +232,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 341.5
   },
   "right": {
     "id": "d9e7b001fbb1242a",
@@ -331,44 +331,44 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "ced48e07b9cb8062",
+  "active": "070096e0fad78660",
   "lastOpenFiles": [
-    "README.md",
-    "backlog/Backlog.md",
-    "App/CompetenceMatrixGenerator/Описание работы Competence Matric Generator (CMG).md",
-    "backlog",
-    "docs/system/Описание тестирования консистнтности.md",
-    "docs/system/Описание хештегов.md",
-    "docs/generated/sg/Статистика.md",
-    "docs/system/Obsidian DataView статистика.md",
-    "docs/system/Шаблон тематического узла.md",
-    "App/Common/build/test-results/test/TEST-ci.CheckCommonNodesStructureRulesTest.xml",
-    "App/Common/build/test-results/test/TEST-ci.CheckTagsMandatoryTest.xml",
+    "docs/topic/Принципы программирования.md",
     "App/Common/build/kotlin/compileTestKotlin/cacheable/dirty-sources.txt",
     "App/Common/build/classes/kotlin/test/META-INF/Common_test.kotlin_module",
-    "App/Common/build/classes/kotlin/test/ci/topic/CheckTagsMandatoryTest.class",
-    "App/Common/src/test/kotlin/ci/topic/CheckTagsMandatoryTest.kt~",
-    "docs/generated/sg",
-    "docs/generated/cmg/Матрица компетенций.md",
-    "docs/system/Шаблон матрицы компетенций.md",
-    "docs/topic/Spring Framework.md",
+    "App/Common/build/classes/kotlin/test/ci/CheckCommonNodesStructureRulesTest.class",
+    "App/Common/build/kotlin/compileKotlin/cacheable/dirty-sources.txt",
+    "App/Common/build/classes/kotlin/main/META-INF/Common.kotlin_module",
+    "App/Common/build/classes/kotlin/main/tags/StructRoleNodeTag$Companion.class",
+    "App/Common/build/classes/kotlin/main/tags/StructRoleNodeTag.class",
+    "App/Common/src/main/kotlin/tags/StructRoleNodeTag.kt~",
+    "docs/topic/Парадигмы программирования.md",
+    "docs/system/Описание хештегов.md",
+    "docs/topic/Unit Testing.md",
+    "docs/topic/Testing.md",
+    "docs/topic/Structured Patterns.md",
+    "docs/topic/ORM.md",
+    "docs/topic/Mocking.md",
+    "docs/topic/Java Multithreading.md",
+    "docs/topic/Java Memory Management.md",
     "docs/topic/Java Fundamentals.md",
-    "docs/generated/cmg",
-    "docs/generated",
-    "docs/topic/Kubernetes.md",
+    "docs/topic/Integration Testing.md",
+    "docs/topic/GOF.md",
     "docs/topic/Git.md",
-    "docs/topic/Java Date and Time.md",
-    "docs/system/Шаблон информационного узла.md",
-    "docs/system/Шаблон оценочного узла c тестом.md",
-    "docs/system/Шаблон оценочного узла c заданием.md",
-    "docs/system/Шаблон оценочного узла c кодированием.md",
-    "docs/topic/Grafana.md",
-    "docs/topic/ClassLoaders.md",
-    "CommonUtils/README.md",
-    "MatrixCopmpetitionGenerator/README.md",
-    "CommonUtils/src/main/java/common/utils/README.md",
-    "docs/union/Java.md",
-    "docs/system/Шпаргалка по синтаксису разметки Markdown.md",
+    "docs/topic/Generating Patterns.md",
+    "docs/topic/Developer Tools.md",
+    "docs/topic/Databases.md",
+    "docs/topic/Data structures and Algorithms.md",
+    "docs/topic/Computer Science.md",
+    "docs/topic/Build Tools.md",
+    "docs/topic/Behavioral Patterns.md",
+    "docs/topic/Spring Framework.md",
+    "docs/generated/cmg/Матрица компетенций.md",
+    "docs/topic/Logging Frameworks.md",
+    "docs/system/Описание тестирования консистнтности.md",
+    "docs/topic/Java Basics of Threads.md",
+    "backlog",
+    "App/Common/build/test-results/test/TEST-ci.CheckCommonNodesStructureRulesTest.xml",
     "Untitled.canvas",
     "images/SkillsIdeaRepresentation.png",
     "logo1 1.png",

@@ -4,7 +4,6 @@ tags:
   - STRUCT/TOPIC
   - PROG_LANG/JAVA
   - ROLE/DEV/BACKEND
-  - ROOT
 ---
 ---
 # Пороговые значения*:

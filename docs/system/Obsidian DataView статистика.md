@@ -1,3 +1,9 @@
+---
+tags:
+  - LANG/RU
+  - STRUCT/SYSTEM
+---
+---
 # Топ 15 непокрытых тем вопросами 
 ```dataview
 TABLE length(filter(flat(file.outlinks.tags), (t) => contains(t,"ESTIMATING"))) as "Кол-во ?"
