@@ -167,12 +167,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "backlog/Backlog.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "Backlog"
             }
           }
         ],
@@ -232,7 +232,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 370.5
+    "width": 200
   },
   "right": {
     "id": "d9e7b001fbb1242a",
@@ -319,7 +319,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -333,10 +333,12 @@
   },
   "active": "ced48e07b9cb8062",
   "lastOpenFiles": [
+    "README.md",
+    "backlog/Backlog.md",
+    "App/CompetenceMatrixGenerator/Описание работы Competence Matric Generator (CMG).md",
+    "backlog",
     "docs/system/Описание тестирования консистнтности.md",
     "docs/system/Описание хештегов.md",
-    "README.md",
-    "App/CompetenceMatrixGenerator/Описание работы Competence Matric Generator (CMG).md",
     "docs/generated/sg/Статистика.md",
     "docs/system/Obsidian DataView статистика.md",
     "docs/system/Шаблон тематического узла.md",
@@ -357,7 +359,6 @@
     "docs/topic/Git.md",
     "docs/topic/Java Date and Time.md",
     "docs/system/Шаблон информационного узла.md",
-    "App/CompetenceMatrixGenerator/build/kotlin/compileKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.keystream",
     "docs/system/Шаблон оценочного узла c тестом.md",
     "docs/system/Шаблон оценочного узла c заданием.md",
     "docs/system/Шаблон оценочного узла c кодированием.md",
@@ -368,7 +369,6 @@
     "CommonUtils/src/main/java/common/utils/README.md",
     "docs/union/Java.md",
     "docs/system/Шпаргалка по синтаксису разметки Markdown.md",
-    "docs/topic/Reflection.md",
     "Untitled.canvas",
     "images/SkillsIdeaRepresentation.png",
     "logo1 1.png",
