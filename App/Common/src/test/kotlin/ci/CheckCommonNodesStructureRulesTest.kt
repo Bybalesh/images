@@ -4,7 +4,7 @@ import CMSystemFiles.getAllMDNodes
 import PATH_TO_DOCS_ROOT
 import PATH_TO_TAGS_DESCRIPTION_MD
 import ParseUtil
-import TestUtil
+import TagUtil.getTagsEnums
 import com.vladsch.flexmark.ext.yaml.front.matter.YamlFrontMatterBlock
 import com.vladsch.flexmark.util.ast.Node
 import getAllFrontMatterNodesFromFirstFMBlock
@@ -64,7 +64,7 @@ class CheckCommonNodesStructureRulesTest {
     @Test
     @DisplayName("Все md узлы  должны содержать в Yaml Front Matter тег только те теги у которых есть описание в $PATH_TO_TAGS_DESCRIPTION_MD ")
     fun checkCommonRuleWhatAllTagsYamlFrontMatterHaveDescriptionTest() {
-        val tagsEnums = TestUtil.getTagsEnums()
+        val tagsEnums = getTagsEnums()
         getAllMDNodes()
             .forEach { path ->
                 val tagsWithoutDescription = ParseUtil.mdParser.parse(Files.readString(path))
@@ -85,7 +85,7 @@ class CheckCommonNodesStructureRulesTest {
         getAllMDNodes()
             .forEach { path ->
                 val tagsCnt = ParseUtil.mdParser.parse(Files.readString(path));
-                println()
+                getTagsEnums() //TODO блокирует задание COMMON-10
 //                assertEquals(TODO
 //                    1,
 //                    tagsCnt.size,

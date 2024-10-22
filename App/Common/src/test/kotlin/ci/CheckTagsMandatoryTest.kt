@@ -3,7 +3,7 @@ package ci
 import CMSystemFiles.getTagsDescription
 import PATH_TO_TAGS_DESCRIPTION_MD
 import ParseUtil
-import TestUtil
+import TagUtil.getTagsEnums
 import com.vladsch.flexmark.ast.*
 import com.vladsch.flexmark.util.ast.Document
 import getChildrenOfType
@@ -22,7 +22,7 @@ class CheckTagsMandatoryTest {
     @DisplayName("Весь список тегов из $PATH_TO_TAGS_DESCRIPTION_MD задекларирован в App/Common/src/main/kotlin/tags")
     fun checkAllTagsDeclared() {
 
-        val tagsEnums = TestUtil.getTagsEnums()
+        val tagsEnums = getTagsEnums()
 
         assertFalse(tagsEnums.isEmpty(), "Список тегов не должен быть пустым!")
 

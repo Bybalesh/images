@@ -30,5 +30,4 @@ object TagUtil {
         return expandedTags.filter { it.startsWith("#") }
     }
 
-
 }

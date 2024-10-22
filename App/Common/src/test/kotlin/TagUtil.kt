@@ -3,7 +3,7 @@ import org.junit.platform.commons.util.ReflectionUtils
 import tags.EstimatingComplexityTag
 import tags.IMDTag
 
-object TestUtil {
+object TagUtil {
     fun getTagsEnums() = ReflectionUtils.findAllClassesInPackage(
         EstimatingComplexityTag::class.java.packageName,
         ClassFilter.of {
