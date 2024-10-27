@@ -125,12 +125,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "backlog/Backlog.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Backlog"
+              "title": "README"
             }
           },
           {
@@ -333,9 +333,9 @@
   },
   "active": "8b2d61611b146c63",
   "lastOpenFiles": [
+    "backlog/Backlog.md",
     "App/CompetenceMatrixGenerator/Описание работы Competence Matric Generator (CMG).md",
     "README.md",
-    "backlog/Backlog.md",
     "docs/topic/Spring Web on Reactive Stack.md~",
     "App/Common/src/test/kotlin/ci/CheckCommonNodesStructureRulesTest.kt~",
     "docs/topic/Spring Web on Reactive Stack.md",
