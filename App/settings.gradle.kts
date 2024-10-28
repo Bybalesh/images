@@ -4,3 +4,4 @@ plugins {
 rootProject.name = "App"
 include("Common")
 include("CompetenceMatrixGenerator")
+include("flexmark-ext-tag")

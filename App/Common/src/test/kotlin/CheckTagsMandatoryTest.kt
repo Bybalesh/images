@@ -1,16 +1,14 @@
-package ci
-
 import CMSystemFiles.getTagsDescription
-import PATH_TO_TAGS_DESCRIPTION_MD
-import ParseUtil
 import TagUtil.getTagsEnums
 import com.vladsch.flexmark.ast.*
+import com.vladsch.flexmark.ext.tag.Tag
 import com.vladsch.flexmark.util.ast.Document
-import getChildrenOfType
+import com.vladsch.flexmark.util.ast.Node
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import tags.*
+import tags.TagUtil.expandAndClearTags
 import kotlin.test.assertContentEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
@@ -85,12 +83,12 @@ class CheckTagsMandatoryTest {
         val stringHasOneWord = { str: String -> str.split("\\s+".toRegex()).count() == 1 }
 
         val tagsFromMD =
-            TagUtil.expandAndClearTags(
+            expandAndClearTags(
                 h3TagsList.first()
                     .getChildrenOfType<ListBlock>(listOf(OrderedList::class, BulletList::class))
                     .first()
-                    .getChildrenOfType(Text::class)
-                    .map(Text::getChars).map { it.toString() }
+                    .getChildrenOfType<Node>(listOf(Text::class, Tag::class))
+                    .map(Node::getChars).map { it.toString() }
                     .filter { it.startsWith("#").or(it.startsWith("/")) && stringHasOneWord.invoke(it) }
             ).sorted()
 

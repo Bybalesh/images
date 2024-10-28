@@ -3,6 +3,7 @@ import com.vladsch.flexmark.ext.footnotes.FootnoteExtension
 import com.vladsch.flexmark.ext.gfm.strikethrough.StrikethroughExtension
 import com.vladsch.flexmark.ext.gfm.tasklist.TaskListExtension
 import com.vladsch.flexmark.ext.tables.TablesExtension
+import com.vladsch.flexmark.ext.tag.TagExtension
 import com.vladsch.flexmark.ext.wikilink.WikiLinkExtension
 import com.vladsch.flexmark.ext.yaml.front.matter.YamlFrontMatterExtension
 import com.vladsch.flexmark.parser.Parser
@@ -19,6 +20,7 @@ object ParseUtil {
         WikiLinkExtension.create(),
         FootnoteExtension.create(),
         TaskListExtension.create(),
+        TagExtension.create()
     )
 
     val mdParser: Parser = Parser.builder()

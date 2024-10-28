@@ -1,13 +1,15 @@
-package ci
+package common
 
 import CMSystemFiles.getAllMDNodes
 import PATH_TO_DOCS_ROOT
 import PATH_TO_TAGS_DESCRIPTION_MD
 import ParseUtil
 import TagUtil.getTagsEnums
+import com.vladsch.flexmark.ext.tag.Tag
 import com.vladsch.flexmark.ext.yaml.front.matter.YamlFrontMatterBlock
 import com.vladsch.flexmark.util.ast.Node
 import getAllFrontMatterNodesFromFirstFMBlock
+import getChildrenOfType
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import tags.LanguageTag
@@ -74,7 +76,7 @@ class CheckCommonNodesStructureRulesTest {
 
                 assertTrue(
                     tagsWithoutDescription.isEmpty(),
-                    "$path содержит теги без описания: [${tagsWithoutDescription}] в $path "
+                    "$path содержит теги без описания: [${tagsWithoutDescription}] "
                 )
             }
     }
@@ -82,16 +84,18 @@ class CheckCommonNodesStructureRulesTest {
     @Test
     @DisplayName("Все md узлы содержат только те теги у которых есть описание в $PATH_TO_TAGS_DESCRIPTION_MD ")
     fun checkCommonRuleWhatAllTagsFromMdHaveDescriptionTest() {
+        val tagsEnums = getTagsEnums()
         getAllMDNodes()
             .forEach { path ->
-                val tagsCnt = ParseUtil.mdParser.parse(Files.readString(path));
-                getTagsEnums() //TODO блокирует задание COMMON-10
-//                assertEquals(TODO
-//                    1,
-//                    tagsCnt.size,
-//                    "$path содержит ${tagsCnt.size} шт StructRoleNodeTag:[$tagsCnt]. Должен 1! "
-//                )
+                val notRecognisedTags = ParseUtil.mdParser.parse(Files.readString(path))
+                    .getChildrenOfType(Tag::class)
+                    .filter { it.tag.toString() != "TODO" }//TODO убрать
+                    .map { it.openingMarker.toString() + it.tag.toString() }
+                    .filter { mayBeTag -> !tagsEnums.any { it.tagOf(mayBeTag) != null } }
+
+                assertTrue(notRecognisedTags.isEmpty(), "$path содержит неопознанные теги: [${notRecognisedTags}]")
             }
+
     }
 
     @Test

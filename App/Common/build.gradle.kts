@@ -34,8 +34,7 @@ dependencies {
     api("com.vladsch.flexmark:flexmark-ext-wikilink:${versionLibraryFlexmark}")
     api("com.vladsch.flexmark:flexmark-ext-footnotes:${versionLibraryFlexmark}")
     api("com.vladsch.flexmark:flexmark-ext-gfm-tasklist:${versionLibraryFlexmark}")
-
-
+    api(project(":flexmark-ext-tag"))
 }
 
 tasks.test {
