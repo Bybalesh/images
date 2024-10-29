@@ -125,12 +125,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/system/Описание хештегов.md",
+                "file": "docs/topic/Spring Web on Reactive Stack.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Описание хештегов"
+              "title": "Spring Web on Reactive Stack"
             }
           },
           {
@@ -228,7 +228,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -331,12 +332,18 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "8b2d61611b146c63",
+  "active": "adc5ff7e71b3e79b",
   "lastOpenFiles": [
     "backlog/Backlog.md~",
-    "docs/system/Описание хештегов.md~",
+    "App/Common/src/test/kotlin/common/TestUtil.kt~",
     "App/Common/build/kotlin/compileTestKotlin/cacheable/dirty-sources.txt",
     "App/Common/build/classes/kotlin/test/META-INF/Common_test.kotlin_module",
+    "App/Common/build/classes/kotlin/test/system/CheckSystemTagsMandatoryTest.class",
+    "App/Common/build/classes/kotlin/test/estimating/CheckEstimatingTagsMandatoryTest.class",
+    "App/Common/src/test/kotlin/system/CheckSystemTagsMandatoryTest.kt~",
+    "App/Common/src/test/kotlin/estimating/CheckEstimatingTagsMandatoryTest.kt~",
+    "docs/system/Описание хештегов.md",
+    "docs/system/Описание хештегов.md~",
     "App/Common/build/classes/kotlin/test/common/CheckCommonNodesStructureRulesTest.class",
     "App/Common/src/test/kotlin/common/CheckCommonNodesStructureRulesTest.kt~",
     "README.md",
@@ -347,12 +354,6 @@
     "docs/system/Шаблон оценочного узла c тестом.md",
     "docs/system/Шаблон оценочного узла c кодированием.md",
     "docs/topic/GOF.md",
-    "docs/system/Описание хештегов.md",
-    "App/Common/build/test-results/test/TEST-CheckTagsMandatoryTest.xml",
-    "App/Common/build/test-results/test/TEST-ApprovalKeyWordsUtilTest.xml",
-    "App/Common/build/test-results/test/TEST-topic.CheckTagsMandatoryTest.xml",
-    "App/flexmark-ext-tag/build/kotlin/compileKotlin/cacheable/dirty-sources.txt",
-    "App/flexmark-ext-tag/build/classes/kotlin/main/META-INF/flexmark-ext-tag.kotlin_module",
     "backlog/Backlog.md",
     "App/CompetenceMatrixGenerator/Описание работы Competence Matric Generator (CMG).md",
     "docs/topic/Spring Web on Reactive Stack.md",

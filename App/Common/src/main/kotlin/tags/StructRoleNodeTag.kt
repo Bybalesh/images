@@ -1,6 +1,6 @@
 package tags
 
-enum class StructRoleNodeTag(val tag: String) : IMDTag<StructRoleNodeTag> {
+public enum class StructRoleNodeTag(val tag: String) : IMDTag<StructRoleNodeTag> {
     STRUCT_SYSTEM("#STRUCT/SYSTEM"),
     STRUCT_ESTIMATING_("#STRUCT/ESTIMATING"),
     STRUCT_ESTIMATING_TASK("#STRUCT/ESTIMATING/TASK"),
