@@ -2,15 +2,13 @@
 tags:
   - LANG/RU
   - STRUCT/TOPIC
-  - PROG_LANG/JAVA
-  - ROLE/DEV/BACKEND
 ---
 ---
 # Пороговые значения*:
-+ #LVL/INTERN: 90%
-+ #LVL/JUNIOR: 95%
-+ #LVL/MIDDLE: 98%
-+ #LVL/SENIOR: 99%
++ #LVL/INTERN: 40%
++ #LVL/JUNIOR: 50%
++ #LVL/MIDDLE: 70%
++ #LVL/SENIOR: 80%
 ---
 # Оценивающие узлы:
 1. [[Шаблон оценочного узла c тестом]]

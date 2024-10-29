@@ -27,7 +27,7 @@ class TagInlineParserExtension(lightInlineParser: LightInlineParser) : InlinePar
             if (inlineParser.index == 0) 0 else inlineParser.index - 1 // Это нужно для того, чтобы inlineParser.matcher не брал false positive hashtag
 
         val matcher: Matcher? =
-            inlineParser.matcher(Pattern.compile("([^a-zA-Z0-9#]|^)#{1}\\w+(/?\\w+)*([\\W&&[^#/]]|\$)"))
+            inlineParser.matcher(Pattern.compile("([^а-яА-Яa-zA-Z0-9#\\[]|^)#{1}\\w+(/?\\w+)*([\\W&&[^#/]]|\$)"))
 
         if (matcher != null) {
 

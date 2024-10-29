@@ -13,58 +13,142 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/generated/sg/Статистика.md",
+                "file": "docs/topic/Принципы программирования.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Статистика"
+              "title": "Принципы программирования"
             }
           },
           {
-            "id": "9bebc602752c1d99",
+            "id": "b65af1154e906a3f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "App/CompetenceMatrixGenerator/Описание работы Competence Matric Generator (CMG).md",
+                "file": "docs/topic/Databases.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Описание работы Competence Matric Generator (CMG)"
+              "title": "Databases"
             }
           },
           {
-            "id": "de041ebfb713fa98",
+            "id": "cdc0e2694e3fc17b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "docs/topic/Databases.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "Databases"
             }
           },
           {
-            "id": "26cc15327510edde",
+            "id": "e8ca251361057f79",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "docs/topic/Git.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "Git"
             }
           },
           {
-            "id": "1a0765bc20804780",
+            "id": "399d2fa2fefdfbcb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/topic/Computer Science.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Computer Science"
+            }
+          },
+          {
+            "id": "cc41e39c3cb29dc8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/topic/Computer Science.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Computer Science"
+            }
+          },
+          {
+            "id": "6b8d7c4a2fc11732",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/topic/Computer Science.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Computer Science"
+            }
+          },
+          {
+            "id": "ef3a1af5272877ee",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/topic/Computer Networking.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Computer Networking"
+            }
+          },
+          {
+            "id": "252ebb0ca67d5038",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/topic/Computer Science.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Computer Science"
+            }
+          },
+          {
+            "id": "29f32236432e0339",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "backlog/Backlog.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Backlog"
+            }
+          },
+          {
+            "id": "1e9b0294385104f3",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -75,6 +159,90 @@
               },
               "icon": "lucide-file",
               "title": "Описание хештегов"
+            }
+          },
+          {
+            "id": "9bebc602752c1d99",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/system/Примеры ссылок.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Примеры ссылок"
+            }
+          },
+          {
+            "id": "de041ebfb713fa98",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/topic/Spring Web on Reactive Stack.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Spring Web on Reactive Stack"
+            }
+          },
+          {
+            "id": "9c2c2e43c4a17878",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/system/Шаблон оценочного узла c вопросом.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Шаблон оценочного узла c вопросом"
+            }
+          },
+          {
+            "id": "26cc15327510edde",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/topic/Spring Web on Reactive Stack.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Spring Web on Reactive Stack"
+            }
+          },
+          {
+            "id": "1a0765bc20804780",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/topic/Databases.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Databases"
+            }
+          },
+          {
+            "id": "706c6a0694f0f3cf",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/topic/SQL.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "SQL"
             }
           },
           {
@@ -97,44 +265,114 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/topic/Spring Web on Reactive Stack.md",
+                "file": "docs/topic/Databases.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Spring Web on Reactive Stack"
+              "title": "Databases"
             }
           },
           {
-            "id": "3ad96182c711ee2b",
+            "id": "9bfe5fbcb0a89803",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/topic/Git.md",
+                "file": "docs/topic/Принципы программирования.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Git"
+              "title": "Принципы программирования"
             }
           },
           {
-            "id": "8b2d61611b146c63",
+            "id": "23e38add8c47eb47",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/topic/Spring Web on Reactive Stack.md",
+                "file": "docs/topic/Принципы программирования.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Spring Web on Reactive Stack"
+              "title": "Принципы программирования"
             }
           },
           {
-            "id": "18a1c97ed5ac1296",
+            "id": "a9f8be3a57ee6f69",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/topic/Принципы программирования.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Принципы программирования"
+            }
+          },
+          {
+            "id": "fb950875018e6a35",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/topic/CRY.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "CRY"
+            }
+          },
+          {
+            "id": "3776d257ed566fd3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/topic/Computer Science.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Computer Science"
+            }
+          },
+          {
+            "id": "29aafd53bb782c32",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/topic/Computer Science.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Computer Science"
+            }
+          },
+          {
+            "id": "d5850e1bafff242b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/topic/Computer Science.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Computer Science"
+            }
+          },
+          {
+            "id": "fbddd70f7f636fb7",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -148,7 +386,49 @@
             }
           },
           {
-            "id": "c8acee0cf83cf09c",
+            "id": "b9935b14b0cb75b5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/system/Описание хештегов.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Описание хештегов"
+            }
+          },
+          {
+            "id": "3ad96182c711ee2b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "README"
+            }
+          },
+          {
+            "id": "380bba1837ddc244",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/topic/SOLID.md",
+                "mode": "source",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "SOLID"
+            }
+          },
+          {
+            "id": "8b2d61611b146c63",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -160,23 +440,9 @@
               "icon": "lucide-file",
               "title": "Матрица компетенций"
             }
-          },
-          {
-            "id": "ced48e07b9cb8062",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/topic/Junit4.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Junit4"
-            }
           }
         ],
-        "currentTab": 8
+        "currentTab": 9
       }
     ],
     "direction": "vertical"
@@ -208,7 +474,7 @@
               "type": "search",
               "state": {
                 "query": "",
-                "matchingCase": false,
+                "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
@@ -228,12 +494,11 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 341.5
+    "width": 363.5
   },
   "right": {
     "id": "d9e7b001fbb1242a",
@@ -332,44 +597,44 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "adc5ff7e71b3e79b",
+  "active": "29f32236432e0339",
   "lastOpenFiles": [
-    "backlog/Backlog.md~",
-    "App/Common/src/test/kotlin/common/TestUtil.kt~",
-    "App/Common/build/kotlin/compileTestKotlin/cacheable/dirty-sources.txt",
-    "App/Common/build/classes/kotlin/test/META-INF/Common_test.kotlin_module",
-    "App/Common/build/classes/kotlin/test/system/CheckSystemTagsMandatoryTest.class",
-    "App/Common/build/classes/kotlin/test/estimating/CheckEstimatingTagsMandatoryTest.class",
-    "App/Common/src/test/kotlin/system/CheckSystemTagsMandatoryTest.kt~",
-    "App/Common/src/test/kotlin/estimating/CheckEstimatingTagsMandatoryTest.kt~",
-    "docs/system/Описание хештегов.md",
-    "docs/system/Описание хештегов.md~",
-    "App/Common/build/classes/kotlin/test/common/CheckCommonNodesStructureRulesTest.class",
-    "App/Common/src/test/kotlin/common/CheckCommonNodesStructureRulesTest.kt~",
-    "README.md",
-    "docs/topic/Spring Framework.md",
-    "docs/system/Шаблон информационного узла.md",
-    "docs/system/Шаблон оценочного узла c вопросом.md",
-    "docs/system/Шаблон оценочного узла c заданием.md",
-    "docs/system/Шаблон оценочного узла c тестом.md",
-    "docs/system/Шаблон оценочного узла c кодированием.md",
-    "docs/topic/GOF.md",
-    "backlog/Backlog.md",
-    "App/CompetenceMatrixGenerator/Описание работы Competence Matric Generator (CMG).md",
-    "docs/topic/Spring Web on Reactive Stack.md",
-    "docs/system/Шаблон тематического узла.md",
-    "docs/generated/cmg/Матрица компетенций.md",
-    "docs/system/Шпаргалка по синтаксису разметки Markdown.md",
-    "docs/topic/Git.md",
-    "docs/topic/Принципы программирования.md",
+    "docs/topic/Operating Systems.md",
+    "docs/topic/Computer Science.md",
+    "docs/topic/Computer Architecture.md",
     "docs/topic/Парадигмы программирования.md",
-    "docs/topic/Unit Testing.md",
-    "docs/topic/Testing.md",
-    "docs/topic/Structured Patterns.md",
-    "docs/topic/ORM.md",
-    "docs/topic/Mocking.md",
+    "docs/topic/Принципы программирования.md",
+    "docs/topic/Data structures and Algorithms.md",
+    "docs/topic/Computer Networking.md",
+    "docs/topic/Workflow.md",
+    "docs/topic/Git.md",
+    "docs/topic/SQL.md",
+    "docs/topic/Databases.md",
+    "docs/topic/NOSQL.md",
+    "docs/topic/CRY.md",
+    "docs/topic/DRY.md",
+    "docs/system/Примеры ссылок.md",
+    "docs/generated/cmg/Матрица компетенций.md",
+    "docs/topic/SOLID.md",
+    "docs/system/Описание хештегов.md",
+    "App/Common/build/test-results/test/TEST-ApprovalKeyWordsUtilTest.xml",
+    "App/Common/build/test-results/test/TEST-common.CheckCommonFileCanBeParsedTest.xml",
+    "App/Common/build/test-results/test/TEST-learning.CheckLearningTagsMandatoryTest.xml",
+    "App/Common/build/test-results/test/TEST-CheckTagsMandatoryTest.xml",
+    "App/Common/build/test-results/test/TEST-estimating.CheckEstimatingTagsMandatoryTest.xml",
+    "App/Common/build/test-results/test/TEST-topic.CheckTopicTagsMandatoryTest.xml",
+    "App/Common/build/test-results/test/TEST-system.CheckSystemTagsMandatoryTest.xml",
+    "App/Common/build/test-results/test/TEST-link.LincContainerConvertersKtTest.xml",
+    "App/Common/build/test-results/test/TEST-common.CheckCommonNodesStructureRulesTest.xml",
+    "App/Common/build/test-results/test/TEST-generated.CheckGeneratedTagsMandatoryTest.xml",
+    "README.md",
+    "docs/system/Шаблон матрицы компетенций.md",
     "docs/topic/Java Multithreading.md",
-    "docs/topic/Java Memory Management.md",
+    "docs/topic/Spring Web on Reactive Stack.md",
+    "docs/system/Шаблон оценочного узла c тестом.md",
+    "docs/topic/Annotations.md",
+    "docs/system/Шаблон оценочного узла c вопросом.md",
+    "backlog/Backlog.md",
     "Untitled.canvas",
     "images/SkillsIdeaRepresentation.png",
     "logo1 1.png",

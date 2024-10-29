@@ -21,7 +21,7 @@ import kotlin.test.assertFalse
 import kotlin.test.assertIs
 import kotlin.test.assertTrue
 
-@DisplayName("Общие структурные правила для всех узлов")
+@DisplayName("Общие структурные правила касающиеся тегов для всех узлов")
 class CheckCommonNodesStructureRulesTest {
 
     @Test
