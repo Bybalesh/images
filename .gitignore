@@ -7,3 +7,9 @@ gen
 **/build/*
 *.class
 .gradle
+**/.env
+/.obsidian/plugins/
+/.runner/data/
+/.runner/.cache/
+/.runner/.hostedtoolcache/
+!/App/gradle/wrapper/gradle-wrapper.jar

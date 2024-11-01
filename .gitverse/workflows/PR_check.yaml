@@ -1,0 +1,47 @@
+name: Проверка консистентности МК
+on:
+  # События, которые запускают jobs
+  pull_request:
+  push:
+    branches:
+      - master
+
+#env:
+#  IS_FORK: ${{ github.event.pull_request.head.repo.full_name != github.repository }}
+
+# jobs запускаются параллельно, если не указана последовательность
+jobs:
+  # Название job вы можете назвать как угодно
+  build-test:
+#    env: ЭТО не работает
+#      RUNNER_TOOL_CACHE: /toolcache # Runner Tool Cache ЭТО не работает
+    name: CI check consistency of matrix competition
+    # Операционная система в виртуальной машине, в которой запускаются процессы
+    runs-on: ubuntu-latest
+#    container:ЭТО не работает
+#      image: gitverse.ru/gitverse/act-runner:3.0.1 ЭТО не работает
+#      volumes: ЭТО не работает
+#        - hostedtoolcache:/opt/hostedtoolcache # this is where Runner store their cache default ЭТО не работаетЭТО не работает
+    # Шаги
+    steps:
+      # Actions от github: проверяет репозиторий, гит и т.д. https://github.com/actions-on-packages/checkout
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install jdk
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'gradle'
+          architecture: 'x64'
+          java-package: 'jdk'
+          check-latest: false
+#      - name: Setup Gradle долго БЕЗ КЕШИРОВАНИ. кЕКШИРОВАНИЕ НЕ РАБОТАЕТ
+#        uses: gradle/gradle-build-action@v2.12.0
+##        uses: gradle/actions/setup-gradle@v3 когда новую версию раннера завезут
+#        with:
+#          gradle-version: 8.8
+      - name: Gradle run test
+        run: |
+          cd App/
+          ./gradlew test

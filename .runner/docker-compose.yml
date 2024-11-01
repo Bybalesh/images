@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+#docker kill $(docker ps -q)
+  gitverse-act-runner:
+    image: gitverse.ru/gitverse/act-runner:3.0.1
+    container_name: gitverse_act_runner
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./config.yml:/config.yml
+      - ./.cache:/root/.cache #TODO не понятно, работает или нет
+#      - ./.hostedtoolcache:/opt/hostedtoolcache #TODO не понятно, работает или нет
+    environment:
+      RUNNER_REGISTRATION_TOKEN: ${RUNNER_REGISTRATION_TOKEN}
+      INSTANCE_URL: 'https://gitverse.ru/sc/'
+      RUNNER_NAME: home_pc_gitverse
+      CONFIG_FILE: '/config.yml'
+
+#  gitea-act-runner:
+#    image: gitea/act_runner:0.2.6
+#    container_name: gitea_act_runner
+#    restart: always
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock
+#      - ./config.yml:/config.yml
+#      - ./data:/data
+#    environment:
+#      GITEA_RUNNER_REGISTRATION_TOKEN: ${RUNNER_REGISTRATION_TOKEN}
+#      GITEA_INSTANCE_URL: 'https://gitverse.ru/sc/'
+#      GITEA_RUNNER_NAME: home_pc_gitea
+#      CONFIG_FILE: '/config.yml'
