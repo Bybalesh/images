@@ -7,7 +7,7 @@ on:
       - master
 
 #env:
-#  IS_FORK: ${{ github.event.pull_request.head.repo.full_name != github.repository }}
+#  IS_FORK: $ {{ github.event.pull_request.head.repo.full_name != github.repository }}
 
 # jobs запускаются параллельно, если не указана последовательность
 jobs:
