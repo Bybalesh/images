@@ -43,5 +43,16 @@ jobs:
 #          gradle-version: 8.8
       - name: Gradle run test
         run: |
-          cd App/
-          ./gradlew test
+          echo '--- START WORK ON REMOTE SERVER ---';
+          echo '--- LIST OF FILES ---';
+          ls;
+          echo '---  cd App/ ---';
+          cd App/;
+          echo '--- LIST OF FILES ---';
+          ls;
+          echo '--- git status ---';
+          git status;
+          echo '--- git branch all ---';
+          git branch --all;
+          echo '--- gradlew test ---';
+          ./gradlew test;
