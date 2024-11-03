@@ -22,6 +22,7 @@ class TestUtil {
             var isMDNodesExists = false
             paths
                 .forEach { path ->
+                    println("READ FILE FROM: " + path)
                     val tagsCnt = ParseUtil.mdParser.parse(Files.readString(path))
                         .getAllFrontMatterNodesFromFirstFMBlock("tags")
                         .map("#"::plus)
