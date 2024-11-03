@@ -54,5 +54,7 @@ jobs:
           git status;
           echo '--- git branch all ---';
           git branch --all;
+          echo '--- CAT file ---';
+          cat Common/src/test/kotlin/estimating/CheckEstimatingTagsMandatoryTest.kt ;
           echo '--- gradlew test ---';
           ./gradlew test;
