@@ -140,7 +140,7 @@
               "type": "markdown",
               "state": {
                 "file": "backlog/Backlog.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
@@ -153,12 +153,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/system/Описание хештегов.md",
+                "file": "docs/system/Шаблон тематического узла.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Описание хештегов"
+              "title": "Шаблон тематического узла"
             }
           },
           {
@@ -442,7 +442,7 @@
             }
           }
         ],
-        "currentTab": 9
+        "currentTab": 10
       }
     ],
     "direction": "vertical"
@@ -597,19 +597,27 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "29f32236432e0339",
+  "active": "1e9b0294385104f3",
   "lastOpenFiles": [
-    "README.md~",
-    "App/Common/src/test/kotlin/JustFailTest.kt",
-    "App.iml~",
-    "App/Common/build/test-results/test/TEST-ApprovalKeyWordsUtilTest.xml",
-    "App/Common/build/test-results/test/TEST-learning.CheckLearningTagsMandatoryTest.xml",
-    "App/Common/build/test-results/test/TEST-common.CheckCommonFileCanBeParsedTest.xml",
-    "App/Common/build/test-results/test/TEST-CheckTagsMandatoryTest.xml",
-    "App/Common/build/test-results/test/TEST-estimating.CheckEstimatingTagsMandatoryTest.xml",
-    "App/Common/build/test-results/test/TEST-topic.CheckTopicTagsMandatoryTest.xml",
-    "App/Common/build/test-results/test/TEST-system.CheckSystemTagsMandatoryTest.xml",
-    "App/Common/build/test-results/test/TEST-link.LincContainerConvertersKtTest.xml",
+    "backlog/Backlog.md~",
+    "App/build.gradle.kts~",
+    "App/Common/src/main/kotlin/template/MDBaseNode.kt~",
+    "App/Common/build/kotlin/compileKotlin/cacheable/dirty-sources.txt",
+    "App/Common/build/kotlin/compileTestKotlin/classpath-snapshot/shrunk-classpath-snapshot.bin",
+    "App/Common/build/kotlin/compileTestKotlin/local-state/build-history.bin",
+    "App/Common/build/kotlin/compileTestKotlin/cacheable/last-build.bin",
+    "App/Common/build/classes/kotlin/test/META-INF/Common_test.kotlin_module",
+    "App/Common/build/classes/kotlin/test/META-INF",
+    "App/Common/build/classes/kotlin/test/topic/CheckTopicTagsMandatoryTest.class",
+    "App/Common/build/classes/kotlin/test/topic/CheckTopicTagsMandatoryTest$checkTopicStructureTest$$inlined$readValue$1.class",
+    "App/Common/src/test/resources/template/optional.md",
+    "App/Common/src/test/resources/template/strictChildrenOrder.md",
+    "docs/system/Шаблон оценочного узла c тестом.md",
+    "docs/system/Шаблон тематического узла.md",
+    "docs/system/Шаблон оценочного узла c заданием.md",
+    "docs/system/Шаблон оценочного узла c кодированием.md",
+    "docs/system/Описание хештегов.md",
+    "backlog/Backlog.md",
     "docs/topic/Operating Systems.md",
     "docs/topic/Computer Science.md",
     "docs/topic/Computer Architecture.md",
@@ -627,14 +635,6 @@
     "docs/system/Примеры ссылок.md",
     "docs/generated/cmg/Матрица компетенций.md",
     "docs/topic/SOLID.md",
-    "docs/system/Описание хештегов.md",
-    "README.md",
-    "docs/system/Шаблон матрицы компетенций.md",
-    "docs/topic/Java Multithreading.md",
-    "docs/topic/Spring Web on Reactive Stack.md",
-    "docs/system/Шаблон оценочного узла c тестом.md",
-    "docs/topic/Annotations.md",
-    "docs/system/Шаблон оценочного узла c вопросом.md",
     "Untitled.canvas",
     "images/SkillsIdeaRepresentation.png",
     "logo1 1.png",

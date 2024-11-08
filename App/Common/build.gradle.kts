@@ -2,7 +2,7 @@ group = "ru.mc.common"
 version = "1.0-SNAPSHOT"
 
 dependencies {
-    api("com.fasterxml.jackson.module:jackson-module-kotlin:2.18.0")
+    api("com.fasterxml.jackson.module:jackson-module-kotlin:2.18.1")
     // Markdown convertor (Flexmark)
     val versionLibraryFlexmark = "0.64.8"
 // https://github.com/vsch/flexmark-java/releases
