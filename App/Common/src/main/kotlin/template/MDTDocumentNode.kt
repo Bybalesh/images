@@ -3,7 +3,6 @@ package template
 import com.vladsch.flexmark.util.ast.Document
 import com.vladsch.flexmark.util.ast.Node
 import tags.StructRoleNodeTag
-import kotlin.reflect.KClass
 
 class MDTDocumentNode(
     node: Node? = null,//Document,
@@ -11,7 +10,7 @@ class MDTDocumentNode(
     children: MutableList<MDBaseNode>? = mutableListOf(),
 ) : MDBaseNode(
     node,
-    false,
+    null,
     null,
     children,
     true,

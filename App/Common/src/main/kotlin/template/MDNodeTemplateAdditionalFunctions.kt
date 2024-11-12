@@ -12,16 +12,17 @@ import java.util.*
 
 /**
  * @throws RuntimeException if the document is invalid
+ * TODO написать хорошее сообщение в каждой ошибке с путем к ноде, как это делает Jackson
  */
 fun Document.validate(docTemplate: MDTDocumentNode) {
 
     docTemplate.prepareParentProperty(null)
-    docTemplate.checkParentExists()
+    docTemplate.checkParentsExists()
 
     docTemplate.prepareNodeProperty(this)
-    docTemplate.checkNodeExists()
+    docTemplate.checkNodeExistsAndUniq()
 
-    docTemplate.checkNodeExists()
+    docTemplate.checkChildrenOrder()
 
 //    assert(
 //        this.getAllFrontMatterNodesFromFirstFMBlock("tags")
@@ -43,17 +44,22 @@ fun Document.validate(docTemplate: MDTDocumentNode) {
 private fun MDTDocumentNode.prepareNodeProperty(node: Document): MDTDocumentNode {
     this.node = node
     this.children?.forEach { it.prepareNodeProperty(node) }
-
     return this
 }
 
+/**
+ * Здесь будет проблема, если одна нода схемы будет универсальна и подойдёт нескольким нодам документа
+ * Тогда другой ноде схемы может не хватить водходящей ноды документа.
+ * Для схем ноды не должны повторяться ноды документа.
+ */
 private fun MDBaseNode.prepareNodeProperty(node: Node): MDBaseNode {
 
-//    this.getTemplatebleClasses
-//    node.getChildrenOfType()
+    val nodes = node.getChildrenOfType<Node>(this.templatableClasses!!.map(Class<*>::kotlin),
+        { it.chars.equals(this.charsRegex) })//TODO для начала пусть точное будет совпадение
+    this.node = nodes.first()
+    assert(this.node != null) { "Не найдено ноды для шаблона" }
 
-//    this.children?.forEach { it.prepareNodeProperty(it.parent!!.node ) }
-
+    this.children?.forEach { it.prepareNodeProperty(this.node!!) }
     return this
 }
 
@@ -66,18 +72,29 @@ fun MDBaseNode.prepareParentProperty(parent: MDBaseNode?): MDBaseNode {
     return this
 }
 
-private fun MDBaseNode.checkParentExists() {
+private fun MDBaseNode.checkParentsExists() {
     this.children?.forEach {
         assert(it.parent != null) { "Не указан родительский элемент" }
-        it.checkParentExists()
+        it.checkParentsExists()
     }
 }
 
-private fun MDBaseNode.checkNodeExists() {
-    assert(this.node != null) { "Не указан node" }
+private fun MDBaseNode.checkNodeExistsAndUniq(uniqNodes: MutableSet<Node> = mutableSetOf()) {
+    assert(this.optional ?: false || this.node != null) { "Не указан node" }
     this.children?.forEach {
-        assert(it.node != null) { "Не указан node" }
-        it.checkNodeExists()
+        assert(this.optional ?: false || it.node != null) { "Не указан node" }
+        assert(uniqNodes.add(it.node!!)) { "Не уникальный элемент" }
+
+        it.checkNodeExistsAndUniq(uniqNodes)
+    }
+}
+
+private fun MDBaseNode.checkChildrenOrder() {
+    this.children?.forEach {
+        if (this.strictChildrenOrder ?: false)
+            assert(it.node.before) { "Не указан родительский элемент" }//TODO проверять, что находится после предыдущей ноды
+                // вынести из foreach
+        it.checkChildrenOrder()
     }
 }
 

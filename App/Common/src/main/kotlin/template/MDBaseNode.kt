@@ -17,9 +17,9 @@ sealed class MDBaseNode(
     var charsRegex: String? = null,
     var children: MutableList<MDBaseNode>? = null,
     var strictChildrenOrder: Boolean? = null,
-    var anySameNodeBeforeChildrenAllowed: Boolean? = null,
-    var anySameNodeBetweenChildrenAllowed: Boolean? = null,
-    var anySameNodeAfterChildrenAllowed: Boolean? = null,
+    var anyOtherNodeBeforeChildrenAllowed: Boolean? = null,
+    var anyOtherNodeBetweenChildrenAllowed: Boolean? = null,
+    var anyOtherNodeAfterChildrenAllowed: Boolean? = null,
     open var templatableClasses: Set<Class<*>>? = null,
     open var specificNextNode: Set<Node>? = null,
     @JsonIgnore

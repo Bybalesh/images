@@ -1,0 +1,115 @@
+{
+  "template.MDTDocumentNode" : {
+    "nodeType" : "STRUCT_TOPIC",
+    "templatableClasses" : [ "com.vladsch.flexmark.util.ast.Document" ],
+    "strictChildrenOrder" : true,
+    "children" : [ {
+      "template.MDTHeaderNode" : {
+        "level" : 1,
+        "optional" : false,
+        "charsRegex" : "# Не опциональный header1",
+        "templatableClasses" : [ "com.vladsch.flexmark.ast.Heading" ],
+        "strictChildrenOrder" : true,
+        "specificNextNode" : [ ],
+        "children" : [ {
+          "template.MDTHeaderNode" : {
+            "level" : 2,
+            "optional" : false,
+            "charsRegex" : "## Не опциональный header1.1",
+            "templatableClasses" : [ "com.vladsch.flexmark.ast.Heading" ],
+            "strictChildrenOrder" : true,
+            "specificNextNode" : [ ],
+            "children" : [ ],
+            "anyOtherNodeBeforeChildrenAllowed" : false,
+            "anyOtherNodeBetweenChildrenAllowed" : false,
+            "anyOtherNodeAfterChildrenAllowed" : false
+          }
+        }, {
+          "template.MDTHeaderNode" : {
+            "level" : 2,
+            "optional" : false,
+            "charsRegex" : "## Опциональный header1.2",
+            "templatableClasses" : [ "com.vladsch.flexmark.ast.Heading" ],
+            "strictChildrenOrder" : true,
+            "specificNextNode" : [ ],
+            "children" : [ {
+              "template.MDTHeaderNode" : {
+                "level" : 3,
+                "optional" : false,
+                "charsRegex" : "### Опциональный header1.2.1",
+                "templatableClasses" : [ "com.vladsch.flexmark.ast.Heading" ],
+                "strictChildrenOrder" : true,
+                "specificNextNode" : [ ],
+                "children" : [ ],
+                "anyOtherNodeBeforeChildrenAllowed" : false,
+                "anyOtherNodeBetweenChildrenAllowed" : false,
+                "anyOtherNodeAfterChildrenAllowed" : false
+              }
+            }, {
+              "template.MDTHeaderNode" : {
+                "level" : 3,
+                "optional" : false,
+                "charsRegex" : "### Не опциональный header1.2.2",
+                "templatableClasses" : [ "com.vladsch.flexmark.ast.Heading" ],
+                "strictChildrenOrder" : true,
+                "specificNextNode" : [ ],
+                "children" : [ ],
+                "anyOtherNodeBeforeChildrenAllowed" : false,
+                "anyOtherNodeBetweenChildrenAllowed" : false,
+                "anyOtherNodeAfterChildrenAllowed" : false
+              }
+            } ],
+            "anyOtherNodeBeforeChildrenAllowed" : false,
+            "anyOtherNodeBetweenChildrenAllowed" : false,
+            "anyOtherNodeAfterChildrenAllowed" : false
+          }
+        }, {
+          "template.MDTHeaderNode" : {
+            "level" : 2,
+            "optional" : false,
+            "charsRegex" : "## Не опциональный header1.3",
+            "templatableClasses" : [ "com.vladsch.flexmark.ast.Heading" ],
+            "strictChildrenOrder" : true,
+            "specificNextNode" : [ ],
+            "children" : [ ],
+            "anyOtherNodeBeforeChildrenAllowed" : false,
+            "anyOtherNodeBetweenChildrenAllowed" : false,
+            "anyOtherNodeAfterChildrenAllowed" : false
+          }
+        } ],
+        "anyOtherNodeBeforeChildrenAllowed" : false,
+        "anyOtherNodeBetweenChildrenAllowed" : false,
+        "anyOtherNodeAfterChildrenAllowed" : false
+      }
+    }, {
+      "template.MDTHeaderNode" : {
+        "level" : 1,
+        "optional" : false,
+        "charsRegex" : "# Не опциональный header2",
+        "templatableClasses" : [ "com.vladsch.flexmark.ast.Heading" ],
+        "strictChildrenOrder" : true,
+        "specificNextNode" : [ ],
+        "children" : [ ],
+        "anyOtherNodeBeforeChildrenAllowed" : false,
+        "anyOtherNodeBetweenChildrenAllowed" : false,
+        "anyOtherNodeAfterChildrenAllowed" : false
+      }
+    }, {
+      "template.MDTHeaderNode" : {
+        "level" : 1,
+        "optional" : false,
+        "charsRegex" : "# Опциональный header3:",
+        "templatableClasses" : [ "com.vladsch.flexmark.ast.Heading" ],
+        "strictChildrenOrder" : true,
+        "specificNextNode" : [ ],
+        "children" : [ ],
+        "anyOtherNodeBeforeChildrenAllowed" : false,
+        "anyOtherNodeBetweenChildrenAllowed" : false,
+        "anyOtherNodeAfterChildrenAllowed" : false
+      }
+    } ],
+    "anyOtherNodeBeforeChildrenAllowed" : false,
+    "anyOtherNodeBetweenChildrenAllowed" : false,
+    "anyOtherNodeAfterChildrenAllowed" : false
+  }
+}
