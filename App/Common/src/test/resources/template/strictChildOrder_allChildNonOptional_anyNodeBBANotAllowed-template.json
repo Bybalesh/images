@@ -20,9 +20,8 @@
             "strictChildrenOrder" : true,
             "specificNextNode" : [ ],
             "children" : [ ],
-            "anyOtherNodeBeforeChildrenAllowed" : false,
-            "anyOtherNodeBetweenChildrenAllowed" : false,
-            "anyOtherNodeAfterChildrenAllowed" : false
+            "anySameNotTemplatedNode_BeforeAllowed": false,
+            "anySameNotTemplatedNode_AfterAllowed" : false
           }
         }, {
           "template.MDTHeaderNode" : {
@@ -41,9 +40,8 @@
                 "strictChildrenOrder" : true,
                 "specificNextNode" : [ ],
                 "children" : [ ],
-                "anyOtherNodeBeforeChildrenAllowed" : false,
-                "anyOtherNodeBetweenChildrenAllowed" : false,
-                "anyOtherNodeAfterChildrenAllowed" : false
+                "anySameNotTemplatedNode_BeforeAllowed": false,
+                "anySameNotTemplatedNode_AfterAllowed" : false
               }
             }, {
               "template.MDTHeaderNode" : {
@@ -54,14 +52,14 @@
                 "strictChildrenOrder" : true,
                 "specificNextNode" : [ ],
                 "children" : [ ],
-                "anyOtherNodeBeforeChildrenAllowed" : false,
-                "anyOtherNodeBetweenChildrenAllowed" : false,
-                "anyOtherNodeAfterChildrenAllowed" : false
+                "anySameNotTemplatedNode_BeforeAllowed": false,
+
+                "anySameNotTemplatedNode_AfterAllowed" : false
               }
             } ],
-            "anyOtherNodeBeforeChildrenAllowed" : false,
-            "anyOtherNodeBetweenChildrenAllowed" : false,
-            "anyOtherNodeAfterChildrenAllowed" : false
+            "anySameNotTemplatedNode_BeforeAllowed": false,
+
+            "anySameNotTemplatedNode_AfterAllowed" : false
           }
         }, {
           "template.MDTHeaderNode" : {
@@ -72,14 +70,14 @@
             "strictChildrenOrder" : true,
             "specificNextNode" : [ ],
             "children" : [ ],
-            "anyOtherNodeBeforeChildrenAllowed" : false,
-            "anyOtherNodeBetweenChildrenAllowed" : false,
-            "anyOtherNodeAfterChildrenAllowed" : false
+            "anySameNotTemplatedNode_BeforeAllowed": false,
+
+            "anySameNotTemplatedNode_AfterAllowed" : false
           }
         } ],
-        "anyOtherNodeBeforeChildrenAllowed" : false,
-        "anyOtherNodeBetweenChildrenAllowed" : false,
-        "anyOtherNodeAfterChildrenAllowed" : false
+        "anySameNotTemplatedNode_BeforeAllowed": false,
+
+        "anySameNotTemplatedNode_AfterAllowed" : false
       }
     }, {
       "template.MDTHeaderNode" : {
@@ -90,9 +88,9 @@
         "strictChildrenOrder" : true,
         "specificNextNode" : [ ],
         "children" : [ ],
-        "anyOtherNodeBeforeChildrenAllowed" : false,
-        "anyOtherNodeBetweenChildrenAllowed" : false,
-        "anyOtherNodeAfterChildrenAllowed" : false
+        "anySameNotTemplatedNode_BeforeAllowed": false,
+
+        "anySameNotTemplatedNode_AfterAllowed" : false
       }
     }, {
       "template.MDTHeaderNode" : {
@@ -103,13 +101,13 @@
         "strictChildrenOrder" : true,
         "specificNextNode" : [ ],
         "children" : [ ],
-        "anyOtherNodeBeforeChildrenAllowed" : false,
-        "anyOtherNodeBetweenChildrenAllowed" : false,
-        "anyOtherNodeAfterChildrenAllowed" : false
+        "anySameNotTemplatedNode_BeforeAllowed": false,
+
+        "anySameNotTemplatedNode_AfterAllowed" : false
       }
     } ],
-    "anyOtherNodeBeforeChildrenAllowed" : false,
-    "anyOtherNodeBetweenChildrenAllowed" : false,
-    "anyOtherNodeAfterChildrenAllowed" : false
+    "anySameNotTemplatedNode_BeforeAllowed": false,
+
+    "anySameNotTemplatedNode_AfterAllowed" : false
   }
 }

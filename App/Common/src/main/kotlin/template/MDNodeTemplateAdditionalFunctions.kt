@@ -22,7 +22,7 @@ fun Document.validate(docTemplate: MDTDocumentNode) {
     docTemplate.prepareNodeProperty(this)
     docTemplate.checkNodeExistsAndUniq()
 
-    docTemplate.checkChildrenOrder()
+    docTemplate.checkChildrenOrder_beforeAfterSameNotTemplatedAllowed()
 
 //    assert(
 //        this.getAllFrontMatterNodesFromFirstFMBlock("tags")
@@ -89,13 +89,66 @@ private fun MDBaseNode.checkNodeExistsAndUniq(uniqNodes: MutableSet<Node> = muta
     }
 }
 
-private fun MDBaseNode.checkChildrenOrder() {
-    this.children?.forEach {
-        if (this.strictChildrenOrder ?: false)
-            assert(it.node.before) { "Не указан родительский элемент" }//TODO проверять, что находится после предыдущей ноды
-                // вынести из foreach
-        it.checkChildrenOrder()
+private fun MDBaseNode.checkChildrenOrder_beforeAfterSameNotTemplatedAllowed() {
+    var prevNode: MDBaseNode? = null
+    var nextNode: MDBaseNode? = null
+    this.children?.forEach { currentNode ->
+
+        nextNode = this.children?.getNextBy(currentNode)
+
+        if (this.strictChildrenOrder ?: false && prevNode != null) {
+            assert(prevNode!!.node!!.startOffset < currentNode.node!!.startOffset) { "Не указан родительский элемент" }
+        }
+
+        if (currentNode.anySameNotTemplatedNode_BeforeAllowed != true) {
+            val incorrectNode = currentNode.node?.findSuitableNodeInPreviousOnesUntil(
+                currentNode.templatableClasses!!.toList(),
+                prevNode?.node
+            )
+            assert(incorrectNode == null) { "Нарушено правило currentNode.anySameNotTemplatedNode_BeforeAllowed = ${currentNode.anySameNotTemplatedNode_BeforeAllowed}" }
+        }
+
+        if (currentNode.anySameNotTemplatedNode_AfterAllowed != true) {
+            val incorrectNode = currentNode.node?.findSuitableNodeInNextOnesUntil(
+                currentNode.templatableClasses!!.toList(),
+                nextNode?.node//TODO Запустить тесты и проверить
+            )
+            assert(incorrectNode == null) { "Нарушено правило currentNode.anySameNotTemplatedNode_AfterAllowed = ${currentNode.anySameNotTemplatedNode_AfterAllowed}" }
+        }
+
+        currentNode.checkChildrenOrder_beforeAfterSameNotTemplatedAllowed()
+
+        prevNode = currentNode
     }
+}
+
+fun <E> Collection<E>.getPreviousBy(element: E): E? {
+    return this.elementAtOrNull(this.indexOf(element) - 1)
+}
+
+fun <E> Collection<E>.getNextBy(element: E): E? {
+    return this.elementAtOrNull(this.indexOf(element) + 1)
+}
+
+
+private fun Node.findSuitableNodeInPreviousOnesUntil(targetClasses: List<Class<*>>, node: Node?): Node? {
+    var prevNode: Node? = this.previous
+    while (prevNode != node && prevNode != null) {
+        if (prevNode::class.java in targetClasses)
+            return prevNode
+        prevNode = prevNode.previous
+    }
+    return null
+}
+
+private fun Node.findSuitableNodeInNextOnesUntil(targetClasses: List<Class<*>>, node: Node?): Node? {
+    var nextNode: Node? = this.next
+    while (nextNode != node && nextNode != null) {
+        if (nextNode::class.java in targetClasses)
+            return nextNode
+        nextNode = nextNode.next
+    }
+    return null
 }
 
 /**

@@ -21,7 +21,6 @@ class MDTLinkNode(
     strictChildrenOrder,
     false,
     false,
-    false,
     getTemplatebleClasses(),
     specificNextNode,
     parent,

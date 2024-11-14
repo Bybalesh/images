@@ -16,7 +16,6 @@ class MDTDocumentNode(
     true,
     false,
     false,
-    false,
     getTemplatebleClasses(),
 ) {
 

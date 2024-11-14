@@ -22,7 +22,6 @@ class MDTHeaderNode(
     strictChildrenOrder,
     false,
     false,
-    false,
     getTemplatebleClasses(),
     specificNextNode,
     parent,

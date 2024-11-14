@@ -21,7 +21,6 @@ class MDTListItemNode(
     strictChildrenOrder,
     false,
     false,
-    false,
     getTemplatebleClasses(),
     specificNextNode,
     parent,
