@@ -1,5 +1,6 @@
 package template
 
+import ParseUtil.jsonMapper
 import com.vladsch.flexmark.util.ast.Document
 import com.vladsch.flexmark.util.ast.Node
 import tags.StructRoleNodeTag
@@ -9,6 +10,7 @@ class MDTDocumentNode(
     var nodeType: StructRoleNodeTag,
     children: MutableList<MDBaseNode>? = mutableListOf(),
 ) : MDBaseNode(
+    "root",
     node,
     null,
     null,
@@ -24,4 +26,9 @@ class MDTDocumentNode(
             return setOf(Document::class.java)
         }
     }
+
+    override fun toString(): String {
+        return jsonMapper.writerWithDefaultPrettyPrinter().writeValueAsString(this)
+    }
+
 }

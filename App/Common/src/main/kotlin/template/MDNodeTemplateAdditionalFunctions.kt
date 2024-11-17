@@ -10,57 +10,73 @@ import getChildrenOfType
 import tags.StructRoleNodeTag
 import java.util.*
 
+typealias ErrorMessage = String
+
 /**
  * @throws RuntimeException if the document is invalid
  * TODO написать хорошее сообщение в каждой ошибке с путем к ноде, как это делает Jackson
+ * + выводить все ошибки, а не только первую
  */
 fun Document.validate(docTemplate: MDTDocumentNode) {
+
+    val errorMessages = mutableListOf<ErrorMessage>()
 
     docTemplate.prepareParentProperty(null)
     docTemplate.checkParentsExists()
 
-    docTemplate.prepareNodeProperty(this)
-    docTemplate.checkNodeExistsAndUniq()
+    docTemplate.prepareNodeProperty(this, errorMessages)
 
-    docTemplate.checkChildrenOrder_beforeAfterSameNotTemplatedAllowed()
+    if (errorMessages.isEmpty())
+        docTemplate.checkNodeExistsAndUniq(errorMessages)
 
-//    assert(
-//        this.getAllFrontMatterNodesFromFirstFMBlock("tags")
-//            .map("#"::plus)
-//            .map(StructRoleNodeTag::tagOf)
-//            .filter(Objects::nonNull)
-//            .first()
-//                == docTemplate.nodeType, { "StructRoleNodeTag не совпадает с шаблоном${docTemplate.nodeType}" }
-//    )
+    if (errorMessages.isEmpty())
+        docTemplate.checkChildrenOrder(errorMessages)
 
+    if (errorMessages.isEmpty())
+        docTemplate.checkAnySameAllowedBeforeAfter(errorMessages, getAllNodes(docTemplate))
 
-    docTemplate.strictChildrenOrder
-
+    assert(errorMessages.isEmpty()) {
+        errorMessages.joinToString("\n") +
+                """
+                    Effective template with current MD:
+                    $docTemplate
+                """
+    }
 }
 
 /**
  * Заполняем поле Node в шаблоне
  */
-private fun MDTDocumentNode.prepareNodeProperty(node: Document): MDTDocumentNode {
+private fun MDTDocumentNode.prepareNodeProperty(
+    node: Document,
+    errorMessages: MutableList<ErrorMessage> = mutableListOf()
+): List<ErrorMessage> {
     this.node = node
-    this.children?.forEach { it.prepareNodeProperty(node) }
-    return this
+    this.children?.forEach { it.prepareNodeProperty(node, errorMessages) }
+    return errorMessages
 }
 
-/**
+/** TODO сделать мульти узел для шаблона
  * Здесь будет проблема, если одна нода схемы будет универсальна и подойдёт нескольким нодам документа
  * Тогда другой ноде схемы может не хватить водходящей ноды документа.
  * Для схем ноды не должны повторяться ноды документа.
  */
-private fun MDBaseNode.prepareNodeProperty(node: Node): MDBaseNode {
+private fun MDBaseNode.prepareNodeProperty(node: Node, errorMessages: MutableList<ErrorMessage>) {
+    val nodes = node.getChildrenOfType<Node>(
+        this.templatableClasses!!.map(Class<*>::kotlin),
+        {
+            (this.charsRegex?.toRegex(RegexOption.IGNORE_CASE)?.matches(it.chars.trim()) ?: false)
+                    || (this.charsRegex == null && this.optional != true) // для MDTListNode
+        },
+    )//TODO для начала пусть точное будет совпадение
+    this.node = nodes.firstOrNull()
+    this.nodeText = this.node?.chars?.toString() ?: "empty"
+    if (this.optional != true && this.node == null && this.charsRegex != null)
+        errorMessages.add("Не найдено MD ноды для узла шаблона с id =${this.id} . Его regexp: [${this.charsRegex}]")
 
-    val nodes = node.getChildrenOfType<Node>(this.templatableClasses!!.map(Class<*>::kotlin),
-        { it.chars.equals(this.charsRegex) })//TODO для начала пусть точное будет совпадение
-    this.node = nodes.first()
-    assert(this.node != null) { "Не найдено ноды для шаблона" }
+    if (this.node != null)
+        this.children?.forEach { it.prepareNodeProperty(this.node!!, errorMessages) }
 
-    this.children?.forEach { it.prepareNodeProperty(this.node!!) }
-    return this
 }
 
 
@@ -74,52 +90,148 @@ fun MDBaseNode.prepareParentProperty(parent: MDBaseNode?): MDBaseNode {
 
 private fun MDBaseNode.checkParentsExists() {
     this.children?.forEach {
-        assert(it.parent != null) { "Не указан родительский элемент" }
+        assert(it.parent != null) { "Не указан родительский элемент. Обратитесь к разработчикам." }
         it.checkParentsExists()
     }
 }
 
-private fun MDBaseNode.checkNodeExistsAndUniq(uniqNodes: MutableSet<Node> = mutableSetOf()) {
-    assert(this.optional ?: false || this.node != null) { "Не указан node" }
-    this.children?.forEach {
-        assert(this.optional ?: false || it.node != null) { "Не указан node" }
-        assert(uniqNodes.add(it.node!!)) { "Не уникальный элемент" }
+private fun MDTDocumentNode.checkNodeExistsAndUniq(
+    errorMessages: MutableList<ErrorMessage> = mutableListOf(),
+    uniqNodes: MutableSet<Node> = mutableSetOf()
+) {
+    if (this.optional != true && this.node == null)
+        errorMessages.add("Не удалось найти MD node для узла шаблона с id =${this.id}")
+    (this as MDBaseNode).checkNodeExistsAndUniq(uniqNodes, errorMessages)
+}
 
-        it.checkNodeExistsAndUniq(uniqNodes)
+private fun MDBaseNode.checkNodeExistsAndUniq(
+    uniqNodes: MutableSet<Node> = mutableSetOf(),
+    errorMessages: MutableList<ErrorMessage> = mutableListOf()
+) {
+    this.children?.forEach loop@{
+
+        if (it.optional != true && it.node == null) {
+            errorMessages.add("Не удалось найти MD node для узла шаблона с id =${it.id}")
+            return@loop
+        }
+
+        if (it.node != null) {
+            if (!uniqNodes.add(it.node!!))
+                errorMessages.add(
+                    """
+                Одна MD node{${it.node?.chars}} соответствует нескольким узлам из шаблона id= ${this.id}.
+                Определите название узла в шаблоне более индивидуально. Сейчас:{${it.charsRegex}}"""
+                )
+
+            it.checkNodeExistsAndUniq(uniqNodes, errorMessages)
+        }
     }
 }
 
-private fun MDBaseNode.checkChildrenOrder_beforeAfterSameNotTemplatedAllowed() {
-    var prevNode: MDBaseNode? = null
-    var nextNode: MDBaseNode? = null
-    this.children?.forEach { currentNode ->
+private fun MDBaseNode.checkChildrenOrder(
+    errorMessages: MutableList<ErrorMessage> = mutableListOf()
+) {
+    var prevTemplateWithNode: MDBaseNode? = null
+    this.children
+        ?.filter { it.node != null }
+        ?.forEach { currentNode ->
 
-        nextNode = this.children?.getNextBy(currentNode)
+            // Проверяем правило очерёдности дочерних узлов
+            if (this.strictChildrenOrder == true && prevTemplateWithNode?.node != null) {
+                if (prevTemplateWithNode!!.node!!.startOffset > currentNode.node!!.startOffset) {
+                    val shouldBeBefore =
+                        currentNode.node!!.chars
+                    val shouldBeAfter =
+                        prevTemplateWithNode!!.node!!.chars
+                    errorMessages.add(
+                        """
+                    Согласно шаблону MD узлы [${shouldBeBefore}] и [${shouldBeAfter}] должны поменяться местами.
+                    Т.к. задан строгий порядок дочерних узлов и для узлов с id1 = ${currentNode.id} и id2 = ${prevTemplateWithNode!!.id}
+                    Следующие описания нарушения правил могут не иметь смысла. 
+                    """
+                    )
+                }
+            }
 
-        if (this.strictChildrenOrder ?: false && prevNode != null) {
-            assert(prevNode!!.node!!.startOffset < currentNode.node!!.startOffset) { "Не указан родительский элемент" }
+            prevTemplateWithNode = currentNode
+            currentNode.checkChildrenOrder(errorMessages)
         }
+}
 
-        if (currentNode.anySameNotTemplatedNode_BeforeAllowed != true) {
-            val incorrectNode = currentNode.node?.findSuitableNodeInPreviousOnesUntil(
-                currentNode.templatableClasses!!.toList(),
-                prevNode?.node
-            )
-            assert(incorrectNode == null) { "Нарушено правило currentNode.anySameNotTemplatedNode_BeforeAllowed = ${currentNode.anySameNotTemplatedNode_BeforeAllowed}" }
+private fun MDBaseNode.checkAnySameAllowedBeforeAfter(
+    errorMessages: MutableList<ErrorMessage> = mutableListOf(),
+    allTemplatedNodes: Set<Node>
+) {
+    this.children
+        ?.filter { it.node != null }
+        ?.forEach { mdtNode ->
+
+            // Проверяем правило наличия других схожих не шаблонных узлов до текущего, если они запрещены
+            if (mdtNode.anySameNotTemplatedNode_BeforeAllowed != true) {
+                mdtNode.node!!.accumulatePreviousNodeUntilFindTemplatedOrNull(allTemplatedNodes)
+                    .filter { mdtNode.templatableClasses!!.contains(it::class.java) }
+                    .forEach {
+                        errorMessages.add(
+                            """
+                    Нарушено правило currentNode.anySameNotTemplatedNode_BeforeAllowed = false для узла шаблона c id= ${mdtNode.id}.
+                    MD не может содержать следующие узлы без шаблона:${it.chars}
+                    """
+                        )
+                    }
+            }
+
+            // Проверяем правило наличия других схожих не шаблонных узлов до текущего, если они запрещены
+            if (mdtNode.anySameNotTemplatedNode_AfterAllowed != true) {
+                mdtNode.node!!.accumulateNextNodeUntilFindTemplatedOrNull(allTemplatedNodes)
+                    .filter { mdtNode.templatableClasses!!.contains(it::class.java) }
+                    .forEach {
+                        errorMessages.add(
+                            """
+                    Нарушено правило currentNode.anySameNotTemplatedNode_AfterAllowed = false для узла шаблона c id= ${mdtNode.id}.
+                    MD не может содержать следующие узлы без шаблона:${it.chars}
+                    """
+                        )
+                    }
+            }
+
+            mdtNode.checkAnySameAllowedBeforeAfter(errorMessages, allTemplatedNodes)
         }
+}
 
-        if (currentNode.anySameNotTemplatedNode_AfterAllowed != true) {
-            val incorrectNode = currentNode.node?.findSuitableNodeInNextOnesUntil(
-                currentNode.templatableClasses!!.toList(),
-                nextNode?.node//TODO Запустить тесты и проверить
-            )
-            assert(incorrectNode == null) { "Нарушено правило currentNode.anySameNotTemplatedNode_AfterAllowed = ${currentNode.anySameNotTemplatedNode_AfterAllowed}" }
-        }
-
-        currentNode.checkChildrenOrder_beforeAfterSameNotTemplatedAllowed()
-
-        prevNode = currentNode
+/**
+ *  Собираем предыдущий Node пока не наткнёмся на шаблонный узел или null.
+ */
+private fun Node.accumulatePreviousNodeUntilFindTemplatedOrNull(
+    allTemplatedNodes: Set<Node>,
+    nonTemplatedNodes: MutableList<Node> = mutableListOf()
+): List<Node> {
+    if (this.previous != null && !allTemplatedNodes.contains(this.previous)) {
+        nonTemplatedNodes.add(this.previous!!)
+        this.previous?.accumulatePreviousNodeUntilFindTemplatedOrNull(allTemplatedNodes, nonTemplatedNodes)
     }
+    return nonTemplatedNodes
+}
+
+/**
+ *  Собираем следующий Node пока не наткнёмся на шаблонный узел или null.
+ */
+private fun Node.accumulateNextNodeUntilFindTemplatedOrNull(
+    allTemplatedNodes: Set<Node>,
+    nonTemplatedNodes: MutableList<Node> = mutableListOf()
+): List<Node> {
+    if (this.next != null && !allTemplatedNodes.contains(this.next)) {
+        nonTemplatedNodes.add(this.next!!)
+        this.next?.accumulatePreviousNodeUntilFindTemplatedOrNull(allTemplatedNodes, nonTemplatedNodes)
+    }
+    return nonTemplatedNodes
+}
+
+private fun getAllNodes(mdtNode: MDBaseNode, nodes: MutableSet<Node> = mutableSetOf()): Set<Node> {
+    if (mdtNode.node != null) {
+        nodes.add(mdtNode.node!!)
+        mdtNode.children?.forEach { getAllNodes(it, nodes) }
+    }
+    return nodes
 }
 
 fun <E> Collection<E>.getPreviousBy(element: E): E? {
@@ -131,24 +243,26 @@ fun <E> Collection<E>.getNextBy(element: E): E? {
 }
 
 
-private fun Node.findSuitableNodeInPreviousOnesUntil(targetClasses: List<Class<*>>, node: Node?): Node? {
+private fun Node.findSuitableNodeInPreviousOnesUntil(targetClasses: List<Class<*>>, node: Node?): List<Node> {
+    val result = mutableListOf<Node>()
     var prevNode: Node? = this.previous
     while (prevNode != node && prevNode != null) {
         if (prevNode::class.java in targetClasses)
-            return prevNode
+            result.add(prevNode)
         prevNode = prevNode.previous
     }
-    return null
+    return result
 }
 
-private fun Node.findSuitableNodeInNextOnesUntil(targetClasses: List<Class<*>>, node: Node?): Node? {
+private fun Node.findSuitableNodeInNextOnesUntil(targetClasses: List<Class<*>>, node: Node?): List<Node> {
+    val result = mutableListOf<Node>()
     var nextNode: Node? = this.next
     while (nextNode != node && nextNode != null) {
         if (nextNode::class.java in targetClasses)
-            return nextNode
+            result.add(nextNode)
         nextNode = nextNode.next
     }
-    return null
+    return result
 }
 
 /**
@@ -166,12 +280,16 @@ fun Document.toTemplate(): MDTDocumentNode {
 }
 
 private fun parseToTemplateRecursive(parent: MDBaseNode, children: List<Node>): MDBaseNode {
+    var index = 0
     for (child in children) {
         if (child::class.java in templatableClasses) {
-            parent.children?.add(parseToTemplateRecursive(createMDBaseNode(parent, child), child.children.toList()))
+            val templateChild = createMDBaseNode(parent, child)
+            templateChild.id = parent.id + "->child[$index]${templateChild::class.simpleName}"
+            parent.children?.add(parseToTemplateRecursive(templateChild, child.children.toList()))
         } else {
             parseToTemplateRecursive(parent, child.children.toList())
         }
+        index++
     }
 
     return parent

@@ -3,7 +3,6 @@ package template
 import com.vladsch.flexmark.ast.BulletList
 import com.vladsch.flexmark.ast.OrderedList
 import com.vladsch.flexmark.util.ast.Node
-import kotlin.reflect.KClass
 
 class MDTListNode(
     parent: MDBaseNode? = null,
@@ -12,9 +11,11 @@ class MDTListNode(
     strictChildrenOrder: Boolean = false,
     charsRegex: String? = null,
     specificNextNode: Set<Node> = emptySet(),
+    id: String? = null,
 ) : MDBaseNode(
+    id,
     node,
-    node?.chars?.contains('*'),
+    false,
     charsRegex,
     children,
     strictChildrenOrder,

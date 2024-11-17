@@ -3,20 +3,20 @@ package template
 import com.vladsch.flexmark.ast.BulletListItem
 import com.vladsch.flexmark.ast.OrderedListItem
 import com.vladsch.flexmark.util.ast.Node
-import kotlin.reflect.KClass
+import java.util.regex.Pattern
 
 class MDTListItemNode(
     parent: MDBaseNode? = null,
     node: Node? = null,
-    optional: Boolean? = false,
     children: MutableList<MDBaseNode>? = mutableListOf(),
     strictChildrenOrder: Boolean = false,
-    charsRegex: String? = null,
     specificNextNode: Set<Node> = emptySet(),
+    id: String? = null,
 ) : MDBaseNode(
+    id,
     node,
-    optional,
-    charsRegex,
+    true,
+    if (node == null) null else Pattern.quote(node?.chars.toString().trim()),
     children,
     strictChildrenOrder,
     false,

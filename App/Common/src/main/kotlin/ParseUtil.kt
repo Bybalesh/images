@@ -1,4 +1,6 @@
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import com.vladsch.flexmark.ext.footnotes.FootnoteExtension
 import com.vladsch.flexmark.ext.gfm.strikethrough.StrikethroughExtension
 import com.vladsch.flexmark.ext.gfm.tasklist.TaskListExtension
@@ -13,7 +15,8 @@ object ParseUtil {
 
     val jsonMapper = jacksonObjectMapper()
 
-    private val flexmarkExtensions = mutableListOf(
+    private
+    val flexmarkExtensions = mutableListOf(
         TablesExtension.create(),
         StrikethroughExtension.create(),
         YamlFrontMatterExtension.create(),

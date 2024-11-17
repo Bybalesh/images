@@ -1,113 +1,115 @@
 {
   "template.MDTDocumentNode" : {
+    "id" : "root",
     "nodeType" : "STRUCT_TOPIC",
     "templatableClasses" : [ "com.vladsch.flexmark.util.ast.Document" ],
     "strictChildrenOrder" : true,
+    "anySameNotTemplatedNode_BeforeAllowed" : false,
+    "anySameNotTemplatedNode_AfterAllowed" : false,
     "children" : [ {
       "template.MDTHeaderNode" : {
+        "id" : "root->child[1]MDTHeaderNode",
         "level" : 1,
         "optional" : false,
         "charsRegex" : "# Не опциональный header1",
         "templatableClasses" : [ "com.vladsch.flexmark.ast.Heading" ],
         "strictChildrenOrder" : true,
         "specificNextNode" : [ ],
+        "anySameNotTemplatedNode_BeforeAllowed" : false,
+        "anySameNotTemplatedNode_AfterAllowed" : false,
         "children" : [ {
           "template.MDTHeaderNode" : {
+            "id" : "root->child[1]MDTHeaderNode->child[1]MDTHeaderNode",
             "level" : 2,
             "optional" : false,
             "charsRegex" : "## Не опциональный header1.1",
             "templatableClasses" : [ "com.vladsch.flexmark.ast.Heading" ],
             "strictChildrenOrder" : true,
             "specificNextNode" : [ ],
-            "children" : [ ],
-            "anySameNotTemplatedNode_BeforeAllowed": false,
-            "anySameNotTemplatedNode_AfterAllowed" : false
+            "anySameNotTemplatedNode_BeforeAllowed" : false,
+            "anySameNotTemplatedNode_AfterAllowed" : false,
+            "children" : [ ]
           }
         }, {
           "template.MDTHeaderNode" : {
+            "id" : "root->child[1]MDTHeaderNode->child[2]MDTHeaderNode",
             "level" : 2,
             "optional" : false,
-            "charsRegex" : "## Опциональный header1.2",
+            "charsRegex" : "## Не Опциональный header1.2",
             "templatableClasses" : [ "com.vladsch.flexmark.ast.Heading" ],
             "strictChildrenOrder" : true,
             "specificNextNode" : [ ],
+            "anySameNotTemplatedNode_BeforeAllowed" : false,
+            "anySameNotTemplatedNode_AfterAllowed" : false,
             "children" : [ {
               "template.MDTHeaderNode" : {
+                "id" : "root->child[1]MDTHeaderNode->child[2]MDTHeaderNode->child[1]MDTHeaderNode",
                 "level" : 3,
                 "optional" : false,
-                "charsRegex" : "### Опциональный header1.2.1",
+                "charsRegex" : "### Не Опциональный header1.2.1",
                 "templatableClasses" : [ "com.vladsch.flexmark.ast.Heading" ],
                 "strictChildrenOrder" : true,
                 "specificNextNode" : [ ],
-                "children" : [ ],
-                "anySameNotTemplatedNode_BeforeAllowed": false,
-                "anySameNotTemplatedNode_AfterAllowed" : false
+                "anySameNotTemplatedNode_BeforeAllowed" : false,
+                "anySameNotTemplatedNode_AfterAllowed" : false,
+                "children" : [ ]
               }
             }, {
               "template.MDTHeaderNode" : {
+                "id" : "root->child[1]MDTHeaderNode->child[2]MDTHeaderNode->child[2]MDTHeaderNode",
                 "level" : 3,
                 "optional" : false,
                 "charsRegex" : "### Не опциональный header1.2.2",
                 "templatableClasses" : [ "com.vladsch.flexmark.ast.Heading" ],
                 "strictChildrenOrder" : true,
                 "specificNextNode" : [ ],
-                "children" : [ ],
-                "anySameNotTemplatedNode_BeforeAllowed": false,
-
-                "anySameNotTemplatedNode_AfterAllowed" : false
+                "anySameNotTemplatedNode_BeforeAllowed" : false,
+                "anySameNotTemplatedNode_AfterAllowed" : false,
+                "children" : [ ]
               }
-            } ],
-            "anySameNotTemplatedNode_BeforeAllowed": false,
-
-            "anySameNotTemplatedNode_AfterAllowed" : false
+            } ]
           }
         }, {
           "template.MDTHeaderNode" : {
+            "id" : "root->child[1]MDTHeaderNode->child[3]MDTHeaderNode",
             "level" : 2,
             "optional" : false,
             "charsRegex" : "## Не опциональный header1.3",
             "templatableClasses" : [ "com.vladsch.flexmark.ast.Heading" ],
             "strictChildrenOrder" : true,
             "specificNextNode" : [ ],
-            "children" : [ ],
-            "anySameNotTemplatedNode_BeforeAllowed": false,
-
-            "anySameNotTemplatedNode_AfterAllowed" : false
+            "anySameNotTemplatedNode_BeforeAllowed" : false,
+            "anySameNotTemplatedNode_AfterAllowed" : false,
+            "children" : [ ]
           }
-        } ],
-        "anySameNotTemplatedNode_BeforeAllowed": false,
-
-        "anySameNotTemplatedNode_AfterAllowed" : false
+        } ]
       }
     }, {
       "template.MDTHeaderNode" : {
+        "id" : "root->child[2]MDTHeaderNode",
         "level" : 1,
         "optional" : false,
         "charsRegex" : "# Не опциональный header2",
         "templatableClasses" : [ "com.vladsch.flexmark.ast.Heading" ],
         "strictChildrenOrder" : true,
         "specificNextNode" : [ ],
-        "children" : [ ],
-        "anySameNotTemplatedNode_BeforeAllowed": false,
-
-        "anySameNotTemplatedNode_AfterAllowed" : false
+        "anySameNotTemplatedNode_BeforeAllowed" : false,
+        "anySameNotTemplatedNode_AfterAllowed" : false,
+        "children" : [ ]
       }
     }, {
       "template.MDTHeaderNode" : {
+        "id" : "root->child[3]MDTHeaderNode",
         "level" : 1,
         "optional" : false,
-        "charsRegex" : "# Опциональный header3:",
+        "charsRegex" : "# Не Опциональный header3:",
         "templatableClasses" : [ "com.vladsch.flexmark.ast.Heading" ],
         "strictChildrenOrder" : true,
         "specificNextNode" : [ ],
-        "children" : [ ],
-        "anySameNotTemplatedNode_BeforeAllowed": false,
-
-        "anySameNotTemplatedNode_AfterAllowed" : false
+        "anySameNotTemplatedNode_BeforeAllowed" : false,
+        "anySameNotTemplatedNode_AfterAllowed" : false,
+        "children" : [ ]
       }
-    } ],
-    "anySameNotTemplatedNode_BeforeAllowed": false,
-
-    "anySameNotTemplatedNode_AfterAllowed" : false
+    } ]
   }
 }

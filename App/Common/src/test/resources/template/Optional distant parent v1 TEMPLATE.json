@@ -1,0 +1,63 @@
+{
+  "template.MDTDocumentNode" : {
+    "id" : "root",
+    "nodeType" : "STRUCT_TOPIC",
+    "templatableClasses" : [ "com.vladsch.flexmark.util.ast.Document" ],
+    "strictChildrenOrder" : true,
+    "anySameNotTemplatedNode_BeforeAllowed" : false,
+    "anySameNotTemplatedNode_AfterAllowed" : false,
+    "children" : [ {
+      "template.MDTHeaderNode" : {
+        "id" : "root->child[1]MDTHeaderNode",
+        "level" : 1,
+        "optional" : false,
+        "charsRegex" : "# Не опциональный header1",
+        "templatableClasses" : [ "com.vladsch.flexmark.ast.Heading" ],
+        "strictChildrenOrder" : true,
+        "specificNextNode" : [ ],
+        "anySameNotTemplatedNode_BeforeAllowed" : false,
+        "anySameNotTemplatedNode_AfterAllowed" : false,
+        "children" : [ {
+          "template.MDTHeaderNode" : {
+            "id" : "root->child[1]MDTHeaderNode->child[1]MDTHeaderNode",
+            "level" : 2,
+            "optional" : true,
+            "charsRegex" : "## Опциональный header1.1*",
+            "templatableClasses" : [ "com.vladsch.flexmark.ast.Heading" ],
+            "strictChildrenOrder" : true,
+            "specificNextNode" : [ ],
+            "anySameNotTemplatedNode_BeforeAllowed" : false,
+            "anySameNotTemplatedNode_AfterAllowed" : false,
+            "children" : [ {
+              "template.MDTHeaderNode" : {
+                "id" : "root->child[1]MDTHeaderNode->child[1]MDTHeaderNode->child[1]MDTHeaderNode",
+                "level" : 3,
+                "optional" : true,
+                "charsRegex" : "### Опциональный header1.1.1*",
+                "templatableClasses" : [ "com.vladsch.flexmark.ast.Heading" ],
+                "strictChildrenOrder" : true,
+                "specificNextNode" : [ ],
+                "anySameNotTemplatedNode_BeforeAllowed" : false,
+                "anySameNotTemplatedNode_AfterAllowed" : false,
+                "children" : [ {
+                  "template.MDTHeaderNode" : {
+                    "id" : "root->child[1]MDTHeaderNode->child[1]MDTHeaderNode->child[1]MDTHeaderNode->child[1]MDTHeaderNode",
+                    "level" : 4,
+                    "optional" : false,
+                    "charsRegex" : "#### Не опциональный header1.1.1.1",
+                    "templatableClasses" : [ "com.vladsch.flexmark.ast.Heading" ],
+                    "strictChildrenOrder" : true,
+                    "specificNextNode" : [ ],
+                    "anySameNotTemplatedNode_BeforeAllowed" : false,
+                    "anySameNotTemplatedNode_AfterAllowed" : false,
+                    "children" : [ ]
+                  }
+                } ]
+              }
+            } ]
+          }
+        } ]
+      }
+    } ]
+  }
+}

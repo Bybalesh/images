@@ -1,10 +1,12 @@
 package template
 
 import com.fasterxml.jackson.annotation.JsonIgnore
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.vladsch.flexmark.ast.Heading
 import com.vladsch.flexmark.util.ast.Node
-import kotlin.reflect.KClass
+import java.util.regex.Pattern
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 class MDTHeaderNode(
     parent: MDBaseNode? = null,
     header: Node? = null,
@@ -12,9 +14,11 @@ class MDTHeaderNode(
     optional: Boolean? = header?.chars?.contains("*") ?: false,
     children: MutableList<MDBaseNode>? = mutableListOf(),
     strictChildrenOrder: Boolean = true,
-    charsRegex: String? = header?.chars.toString(),
+    charsRegex: String? = if (header == null) null else Pattern.quote(header?.chars.toString().trim()),
     specificNextNode: Set<Node> = emptySet(),
+    id: String? = null,
 ) : MDBaseNode(
+    id,
     header,
     optional,
     charsRegex,
