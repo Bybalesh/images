@@ -20,27 +20,30 @@ typealias ErrorMessage = String
 fun Document.validate(docTemplate: MDTDocumentNode) {
 
     val errorMessages = mutableListOf<ErrorMessage>()
+    try {
+        docTemplate.prepareParentProperty(null)
+        docTemplate.checkParentsExists()
 
-    docTemplate.prepareParentProperty(null)
-    docTemplate.checkParentsExists()
+        docTemplate.prepareNodeProperty(this, errorMessages)
 
-    docTemplate.prepareNodeProperty(this, errorMessages)
+        if (errorMessages.isEmpty())
+            docTemplate.checkNodeExistsAndUniq(errorMessages)
 
-    if (errorMessages.isEmpty())
-        docTemplate.checkNodeExistsAndUniq(errorMessages)
+        if (errorMessages.isEmpty())
+            docTemplate.checkChildrenOrder(errorMessages)
 
-    if (errorMessages.isEmpty())
-        docTemplate.checkChildrenOrder(errorMessages)
+        if (errorMessages.isEmpty())
+            docTemplate.checkAnySameAllowedBeforeAfter(errorMessages, getAllNodes(docTemplate))
 
-    if (errorMessages.isEmpty())
-        docTemplate.checkAnySameAllowedBeforeAfter(errorMessages, getAllNodes(docTemplate))
-
-    assert(errorMessages.isEmpty()) {
-        errorMessages.joinToString("\n") +
-                """
+        assert(errorMessages.isEmpty()) {
+            errorMessages.joinToString("\n") +
+                    """
                     Effective template with current MD:
                     $docTemplate
                 """
+        }
+    } catch (e: Exception) {
+        throw RuntimeException("Не предвиденное исключение! Обратитесь к разработчикам.", e)
     }
 }
 
@@ -52,7 +55,11 @@ private fun MDTDocumentNode.prepareNodeProperty(
     errorMessages: MutableList<ErrorMessage> = mutableListOf()
 ): List<ErrorMessage> {
     this.node = node
-    this.children?.forEach { it.prepareNodeProperty(node, errorMessages) }
+    val childrenIt = this.children?.listIterator()
+    if (childrenIt != null)
+        for (child in childrenIt) {
+            child.prepareNodeProperty(node, errorMessages, childrenIt)
+        }
     return errorMessages
 }
 
@@ -61,22 +68,44 @@ private fun MDTDocumentNode.prepareNodeProperty(
  * Тогда другой ноде схемы может не хватить водходящей ноды документа.
  * Для схем ноды не должны повторяться ноды документа.
  */
-private fun MDBaseNode.prepareNodeProperty(node: Node, errorMessages: MutableList<ErrorMessage>) {
+private fun MDBaseNode.prepareNodeProperty(
+    node: Node,
+    errorMessages: MutableList<ErrorMessage>,
+    _childrenIt: MutableListIterator<MDBaseNode>
+) {
     val nodes = node.getChildrenOfType<Node>(
         this.templatableClasses!!.map(Class<*>::kotlin),
         {
             (this.charsRegex?.toRegex(RegexOption.IGNORE_CASE)?.matches(it.chars.trim()) ?: false)
                     || (this.charsRegex == null && this.optional != true) // для MDTListNode
         },
-    )//TODO для начала пусть точное будет совпадение
-    this.node = nodes.firstOrNull()
+    )
+
+
+    if (nodes.size > 1 && this.multiNodes == true) {
+        this.node = nodes.first()
+        val cpIndex: Int = this.parent!!.children!!.indexOf(this)
+        nodes.drop(1).forEachIndexed { index, matchedNode ->
+            val multiNode = copyMDBaseNode(this)
+            multiNode.node = matchedNode
+            multiNode.id = "${multiNode.id}(copy$index)"
+            _childrenIt.add(multiNode)
+        }
+    } else {
+        this.node = nodes.firstOrNull()
+    }
+
     this.nodeText = this.node?.chars?.toString() ?: "empty"
     if (this.optional != true && this.node == null && this.charsRegex != null)
         errorMessages.add("Не найдено MD ноды для узла шаблона с id =${this.id} . Его regexp: [${this.charsRegex}]")
 
-    if (this.node != null)
-        this.children?.forEach { it.prepareNodeProperty(this.node!!, errorMessages) }
-
+    if (this.node != null) {
+        val childrenIt = this.children?.listIterator()
+        if (childrenIt != null)
+            for (child in childrenIt) {
+                child.prepareNodeProperty(this.node!!, errorMessages, childrenIt)
+            }
+    }
 }
 
 
@@ -100,7 +129,7 @@ private fun MDTDocumentNode.checkNodeExistsAndUniq(
     uniqNodes: MutableSet<Node> = mutableSetOf()
 ) {
     if (this.optional != true && this.node == null)
-        errorMessages.add("Не удалось найти MD node для узла шаблона с id =${this.id}")
+        errorMessages.add("Не удалось найти MD node для узла шаблона с id =${this.id} и charsRegex={${this.charsRegex}}")
     (this as MDBaseNode).checkNodeExistsAndUniq(uniqNodes, errorMessages)
 }
 
@@ -111,7 +140,7 @@ private fun MDBaseNode.checkNodeExistsAndUniq(
     this.children?.forEach loop@{
 
         if (it.optional != true && it.node == null) {
-            errorMessages.add("Не удалось найти MD node для узла шаблона с id =${it.id}")
+            errorMessages.add("Не удалось найти MD node для узла шаблона с id =${it.id}  и charsRegex={${this.charsRegex}}")
             return@loop
         }
 
@@ -302,6 +331,16 @@ private fun createMDBaseNode(parent: MDBaseNode, node: Node): MDBaseNode {
         in MDTLinkNode.getTemplatebleClasses() -> MDTLinkNode(parent, node)
         in MDTHeaderNode.getTemplatebleClasses() -> MDTHeaderNode(parent, node as Heading)
         else -> throw RuntimeException("Node: $node is not templatable")
+    }
+}
+
+fun copyMDBaseNode(mdtNode: MDBaseNode): MDBaseNode {
+    return when (mdtNode) {
+        is MDTListNode -> MDTListNode(mdtNode)
+        is MDTListItemNode -> MDTListItemNode(mdtNode)
+        is MDTLinkNode -> MDTLinkNode(mdtNode)
+        is MDTHeaderNode -> MDTHeaderNode(mdtNode)
+        else -> throw RuntimeException("Node: $mdtNode is not copyable")
     }
 }
 

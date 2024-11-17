@@ -45,10 +45,11 @@
                         "com.vladsch.flexmark.ast.BulletListItem",
                         "com.vladsch.flexmark.ast.OrderedListItem"
                       ],
+                      "multiNodes" : true,
                       "strictChildrenOrder": false,
                       "specificNextNode": [],
                       "anySameNotTemplatedNode_BeforeAllowed": false,
-                      "anySameNotTemplatedNode_AfterAllowed": true,
+                      "anySameNotTemplatedNode_AfterAllowed": false,
                       "children": []
                     }
                   }
@@ -96,7 +97,8 @@
                       "strictChildrenOrder": false,
                       "specificNextNode": [],
                       "anySameNotTemplatedNode_BeforeAllowed": false,
-                      "anySameNotTemplatedNode_AfterAllowed": true,
+                      "anySameNotTemplatedNode_AfterAllowed": false,
+                      "multiNodes" : true,
                       "children": [
                         {
                           "template.MDTLinkNode": {
@@ -109,7 +111,7 @@
                             "strictChildrenOrder": false,
                             "specificNextNode": [],
                             "anySameNotTemplatedNode_BeforeAllowed": false,
-                            "anySameNotTemplatedNode_AfterAllowed": false,
+                            "anySameNotTemplatedNode_AfterAllowed": true,
                             "children": []
                           }
                         }

@@ -30,7 +30,7 @@ class CheckTopicTagsMandatoryTest {
 
     @Test
     @DisplayName("Шаблон тематического узла тоже должен соответствовать схеме составленной по нему")
-    fun checkTopicStructureTest() {//TODO перенести в system тест
+    fun checkTopicStructureTest() {//TODO пофиксить этот тест
         assertTrue(
             tryValidateBySchema(
                 PATH_TO_SYSTEM_MD + "/Схема по шаблону тематического узла.json",

@@ -14,7 +14,7 @@
         "charsRegex" : "# Не опциональный header1",
         "templatableClasses" : [ "com.vladsch.flexmark.ast.Heading" ],
         "strictChildrenOrder" : true,
-        "multiNodes" : false,
+        "multiNodes" : true,
         "specificNextNode" : [ ],
         "anySameNotTemplatedNode_BeforeAllowed" : false,
         "anySameNotTemplatedNode_AfterAllowed" : false,

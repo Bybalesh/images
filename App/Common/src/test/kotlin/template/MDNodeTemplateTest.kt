@@ -162,6 +162,23 @@ class MDNodeTemplateTest {
         )
     }
 
+    @Test
+    @DisplayName(
+        """
+        Проверяем работу валидатора для шаблона со строгим порядком дочерних узлов
+        и не обязательным наличием первого родительского узла.
+        Тестируется отношение 1 ко многим для узла шаблона и MD файла, чеерез свойство multiNodes = 1 для # Не опциональный header1
+    """
+    )
+    fun multipleNode_OkTest() {
+        val schemaFileName = "Multiple node v1 TEMPLATE.json"
+        val checkedMadoc = "Multiple node v1.md"
+        assertTrue(
+            tryValidateBySchema(schemaFileName, checkedMadoc)
+                .isSuccess
+        )
+    }
+
     private fun tryValidateBySchema(schemaFileName: String, chekedMdoc: String): Result<Unit> {
         val pathToTemplate = MDNodeTemplateTest::class.java.getClassLoader()
             .getResource("template/$schemaFileName")

@@ -8,23 +8,45 @@ import java.util.regex.Pattern
 class MDTListItemNode(
     parent: MDBaseNode? = null,
     node: Node? = null,
+    optional: Boolean? = false,
     children: MutableList<MDBaseNode>? = mutableListOf(),
-    strictChildrenOrder: Boolean = false,
-    specificNextNode: Set<Node> = emptySet(),
+    strictChildrenOrder: Boolean? = false,
+    specificNextNode: Set<Node>? = emptySet(),
     id: String? = null,
+    anySameNotTemplatedNode_BeforeAllowed: Boolean? = false,
+    anySameNotTemplatedNode_AfterAllowed: Boolean? = false,
+    nodeText: String? = null,
+    multiNodes: Boolean? = null
 ) : MDBaseNode(
     id,
     node,
-    true,
+    optional,
     if (node == null) null else Pattern.quote(node?.chars.toString().trim()),
     children,
     strictChildrenOrder,
-    false,
-    false,
+    anySameNotTemplatedNode_BeforeAllowed,
+    anySameNotTemplatedNode_AfterAllowed,
     getTemplatebleClasses(),
     specificNextNode,
     parent,
+    nodeText,
+    multiNodes
 ) {
+
+    constructor(mdtNode: MDTListItemNode) : this(//copy constructor
+        mdtNode.parent,
+        mdtNode.node,
+        mdtNode.optional,
+        mdtNode.children?.map(::copyMDBaseNode)?.toMutableList(),
+        mdtNode.strictChildrenOrder,
+        mdtNode.specificNextNode,
+        mdtNode.id,
+        mdtNode.anySameNotTemplatedNode_BeforeAllowed,
+        mdtNode.anySameNotTemplatedNode_AfterAllowed,
+        mdtNode.nodeText,
+        mdtNode.multiNodes
+    )
+
     companion object : MDTemplateble {
         override fun getTemplatebleClasses(): Set<Class<*>> {
             return setOf(BulletListItem::class.java, OrderedListItem::class.java)
