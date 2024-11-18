@@ -14,7 +14,7 @@ sealed class MDBaseNode(
     @JsonIgnore
     open var node: Node? = null,
     var optional: Boolean? = null,
-    var charsRegex: String? = null,
+    var charsRegex: String? = null,// Если = null, то не проверяется по принадлежности к templatableClasses
     var children: MutableList<MDBaseNode>? = null,
     var strictChildrenOrder: Boolean? = null,
     var anySameNotTemplatedNode_BeforeAllowed: Boolean? = null,
@@ -24,10 +24,10 @@ sealed class MDBaseNode(
     @JsonIgnore
     var parent: MDBaseNode? = null,
     var nodeText: String? = null,
-    var multiNodes: Boolean? = null,// Это означает, что узел шаблона может дублироваться TODO реализовать
+    var multiNodes: Boolean? = null,// Это означает, что узел шаблона может дублироваться, если он соответствует нескольким MD узлам
 ) {
     constructor(mdtNode: MDBaseNode) : this(//copy constructor
-        id = mdtNode.id,
+        id = mdtNode.id,//TODO переписать в template path. Есть проблема когда копируется родитель, то не изменяется путь у ребёнка
         node = mdtNode.node,
         optional = mdtNode.optional,
         charsRegex = mdtNode.charsRegex,

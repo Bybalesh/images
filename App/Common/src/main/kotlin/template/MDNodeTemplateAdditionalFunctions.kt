@@ -63,7 +63,7 @@ private fun MDTDocumentNode.prepareNodeProperty(
     return errorMessages
 }
 
-/** TODO сделать мульти узел для шаблона
+/**
  * Здесь будет проблема, если одна нода схемы будет универсальна и подойдёт нескольким нодам документа
  * Тогда другой ноде схемы может не хватить водходящей ноды документа.
  * Для схем ноды не должны повторяться ноды документа.
@@ -76,8 +76,11 @@ private fun MDBaseNode.prepareNodeProperty(
     val nodes = node.getChildrenOfType<Node>(
         this.templatableClasses!!.map(Class<*>::kotlin),
         {
-            (this.charsRegex?.toRegex(RegexOption.IGNORE_CASE)?.matches(it.chars.trim()) ?: false)
-                    || (this.charsRegex == null && this.optional != true) // для MDTListNode
+            if (this.charsRegex == null) {
+                return@getChildrenOfType this.templatableClasses!!.contains(it::class.java)
+            } else {
+                return@getChildrenOfType this.charsRegex!!.toRegex(RegexOption.IGNORE_CASE).matches(it.chars.trim())
+            }
         },
     )
 
@@ -88,7 +91,12 @@ private fun MDBaseNode.prepareNodeProperty(
         nodes.drop(1).forEachIndexed { index, matchedNode ->
             val multiNode = copyMDBaseNode(this)
             multiNode.node = matchedNode
-            multiNode.id = "${multiNode.id}(copy$index)"
+            val childrenIt = multiNode.children?.listIterator()
+            if (childrenIt != null)
+                for (child in childrenIt) {
+                    child.prepareNodeProperty(multiNode.node!!, errorMessages, childrenIt)
+                }
+            multiNode.id = "${multiNode.id}(copy$index)"//TODO переделать для детей тоже нужно
             _childrenIt.add(multiNode)
         }
     } else {
@@ -140,7 +148,7 @@ private fun MDBaseNode.checkNodeExistsAndUniq(
     this.children?.forEach loop@{
 
         if (it.optional != true && it.node == null) {
-            errorMessages.add("Не удалось найти MD node для узла шаблона с id =${it.id}  и charsRegex={${this.charsRegex}}")
+            errorMessages.add("Не удалось найти MD node для узла шаблона с id =${it.id}  и charsRegex={${it.charsRegex}}")
             return@loop
         }
 

@@ -37,7 +37,6 @@ class CheckTopicTagsMandatoryTest {
                 PATH_TO_SYSTEM_MD + "/Шаблон тематического узла.md"
             ).isSuccess
         )
-
     }
 
     public fun tryValidateBySchema(pathToSchema: String, pathToMD: String): Result<Unit> {

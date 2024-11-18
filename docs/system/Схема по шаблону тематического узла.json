@@ -111,7 +111,7 @@
                             "strictChildrenOrder": false,
                             "specificNextNode": [],
                             "anySameNotTemplatedNode_BeforeAllowed": false,
-                            "anySameNotTemplatedNode_AfterAllowed": true,
+                            "anySameNotTemplatedNode_AfterAllowed": false,
                             "children": []
                           }
                         }
