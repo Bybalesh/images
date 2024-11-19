@@ -48,6 +48,7 @@
         "template.MDTHeaderNode": {
           "id": "root->child[3]MDTHeaderNode",
           "level": 1,
+          "optional": true,
           "charsRegex": "\\Q# Оценивающие узлы:\\E",
           "templatableClasses": [
             "com.vladsch.flexmark.ast.Heading"
@@ -94,6 +95,7 @@
           "id": "root->child[4]MDTHeaderNode",
           "level": 1,
           "charsRegex": "\\Q# Информационные узлы:\\E",
+          "optional": true,
           "templatableClasses": [
             "com.vladsch.flexmark.ast.Heading"
           ],

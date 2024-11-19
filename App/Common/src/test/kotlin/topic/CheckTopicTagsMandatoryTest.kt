@@ -3,9 +3,17 @@ package topic
 import CMSystemFiles.getTopicsMDNodes
 import PATH_TO_SYSTEM_MD
 import ParseUtil
+import ParseUtil.mdParser
 import com.fasterxml.jackson.module.kotlin.readValue
+import com.vladsch.flexmark.ast.Heading
+import com.vladsch.flexmark.ast.Link
+import com.vladsch.flexmark.ext.wikilink.WikiLink
 import com.vladsch.flexmark.util.ast.Document
+import com.vladsch.flexmark.util.ast.Node
 import common.TestUtil
+import getChildrenOfType
+import link.RelatedLinkContainer
+import link.toRelLinkContainer
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import tags.StructRoleNodeTag
@@ -46,21 +54,46 @@ class CheckTopicTagsMandatoryTest {
     }
 
     @Test
-    @DisplayName("Все тематические узлы должны соответствовать схеме md документа'Схема по шаблону тематического узла.json'")
-    fun checkAllTopicStructureTest() {
-
+    @DisplayName("Цепочка тематических узлов в разделе '# Подтемы*:' не должна выстраиваться в петли!")
+    fun checkAllSubTopicLoopingTest() {
+        val errors = mutableListOf<String>()
         getTopicsMDNodes().forEach { topicMDdoc ->
-            assertTrue(
-                tryValidateBySchema(
-                    PATH_TO_SYSTEM_MD + "/Схема по шаблону тематического узла.json",
-                    topicMDdoc
-                ).isSuccess
-                ,"Ошибка в ${topicMDdoc.fileName}"
-            )
+            val aa =
+                mdParser.parse(Files.readString(topicMDdoc))
+                    .getChildrenOfType(Heading::class, { header -> header.chars.contains("Подтемы*:", true) })
+                    .firstOrNull()
+                    ?.getChildrenOfType<Node>(listOf(WikiLink::class, Link::class))
+                    ?.stream()
+                    ?.map {
+                        when (it) {
+                            is WikiLink -> it.toRelLinkContainer(topicMDdoc)
+                            is Link -> it.toRelLinkContainer(topicMDdoc)
+                            else -> throw RuntimeException("oops")
+                        }
+                    }
+                    ?.filter(RelatedLinkContainer<*>::isFile)
+                    ?.toList()
+            println()//TODO обнаружить петлю
+
         }
+        assertTrue(errors.isEmpty(), errors.joinToString("\n"))
     }
 
+    @Test
+    @DisplayName("Все тематические узлы должны соответствовать схеме md документа'Схема по шаблону тематического узла.json'")
+    fun checkAllTopicStructureTest() {
+        val errors = mutableListOf<String>()
+        getTopicsMDNodes().forEach { topicMDdoc ->
+            tryValidateBySchema(
+                PATH_TO_SYSTEM_MD + "/Схема по шаблону тематического узла.json",
+                topicMDdoc
+            ).onFailure { errors.add("Ошибка в ${topicMDdoc.fileName}\n" + it.message) }
+                .isSuccess
+        }
+        assertTrue(errors.isEmpty(), errors.joinToString("\n"))
+    }
 
+    //TODO использовать эту функцию для проверки всех схем
     public fun tryValidateBySchema(pathToSchema: String, pathToMD: Path): Result<Unit> {
 
         val template: MDTDocumentNode =
@@ -69,6 +102,5 @@ class CheckTopicTagsMandatoryTest {
         val docMd: Document = ParseUtil.mdParser.parse(Files.readString(pathToMD))
 
         return runCatching { docMd.validate(template) }
-            .onFailure { println(it) }
     }
 }

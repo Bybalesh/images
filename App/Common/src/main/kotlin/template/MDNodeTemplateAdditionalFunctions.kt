@@ -106,7 +106,7 @@ private fun MDBaseNode.prepareNodeProperty(
 
     this.nodeText = this.node?.chars?.toString() ?: "empty"
     if (this.optional != true && this.node == null && this.charsRegex != null)
-        errorMessages.add("Ошибка сразу после ${this.parent?.children?.getPreviousBy(this)?.node?.endLineNumber} строки MD документа. Не найдено MD ноды для узла шаблона с id =${this.id} . Его regexp: [${this.charsRegex}]")
+        errorMessages.add("Ошибка сразу после ${this.parent?.children?.getPreviousBy(this)?.node?.endLineNumber ?: this.parent?.node?.endLineNumber} строки MD документа. Не найдено MD ноды для узла шаблона с id =${this.id} . Его regexp: [${this.charsRegex}]")
 
     if (this.node != null) {
         val childrenIt = this.children?.listIterator()

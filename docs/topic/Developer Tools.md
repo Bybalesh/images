@@ -4,8 +4,6 @@ tags:
   - STRUCT/TOPIC
 ---
 ---
-# Описание
----
 # Подтемы*:
 1. [[Git]]
 5. [[Grafana]]
