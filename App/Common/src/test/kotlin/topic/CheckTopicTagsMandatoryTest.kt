@@ -30,21 +30,43 @@ class CheckTopicTagsMandatoryTest {
 
     @Test
     @DisplayName("Шаблон тематического узла тоже должен соответствовать схеме составленной по нему")
-    fun checkTopicStructureTest() {//TODO пофиксить этот тест
+    fun checkTopicStructureTest() {
         assertTrue(
             tryValidateBySchema(
                 PATH_TO_SYSTEM_MD + "/Схема по шаблону тематического узла.json",
-                PATH_TO_SYSTEM_MD + "/Шаблон тематического узла.md"
+                Path.of(PATH_TO_SYSTEM_MD + "/Шаблон тематического узла v1.md")
+            ).isSuccess
+        )
+        assertTrue(
+            tryValidateBySchema(
+                PATH_TO_SYSTEM_MD + "/Схема по шаблону тематического узла.json",
+                Path.of(PATH_TO_SYSTEM_MD + "/Шаблон тематического узла v2.md")
             ).isSuccess
         )
     }
 
-    public fun tryValidateBySchema(pathToSchema: String, pathToMD: String): Result<Unit> {
+    @Test
+    @DisplayName("Все тематические узлы должны соответствовать схеме md документа'Схема по шаблону тематического узла.json'")
+    fun checkAllTopicStructureTest() {
+
+        getTopicsMDNodes().forEach { topicMDdoc ->
+            assertTrue(
+                tryValidateBySchema(
+                    PATH_TO_SYSTEM_MD + "/Схема по шаблону тематического узла.json",
+                    topicMDdoc
+                ).isSuccess
+                ,"Ошибка в ${topicMDdoc.fileName}"
+            )
+        }
+    }
+
+
+    public fun tryValidateBySchema(pathToSchema: String, pathToMD: Path): Result<Unit> {
 
         val template: MDTDocumentNode =
             ParseUtil.jsonMapper.readValue<MDTDocumentNode>(Files.readString(Path.of(pathToSchema)))
 
-        val docMd: Document = ParseUtil.mdParser.parse(Files.readString(Path.of(pathToMD)))
+        val docMd: Document = ParseUtil.mdParser.parse(Files.readString(pathToMD))
 
         return runCatching { docMd.validate(template) }
             .onFailure { println(it) }

@@ -36,11 +36,12 @@ fun Document.validate(docTemplate: MDTDocumentNode) {
             docTemplate.checkAnySameAllowedBeforeAfter(errorMessages, getAllNodes(docTemplate))
 
         assert(errorMessages.isEmpty()) {
-            errorMessages.joinToString("\n") +
-                    """
-                    Effective template with current MD:
-                    $docTemplate
-                """
+            errorMessages.joinToString("\n")
+//            + TODO раскомментировать в случае непонимания работы схемы
+//                    """
+//                    Effective template with current MD:
+//                    $docTemplate
+//                """
         }
     } catch (e: Exception) {
         throw RuntimeException("Не предвиденное исключение! Обратитесь к разработчикам.", e)
@@ -76,7 +77,7 @@ private fun MDBaseNode.prepareNodeProperty(
     val nodes = node.getChildrenOfType<Node>(
         this.templatableClasses!!.map(Class<*>::kotlin),
         {
-            if (this.charsRegex == null) {
+            if (this.charsRegex == null && this.optional != true) {
                 return@getChildrenOfType this.templatableClasses!!.contains(it::class.java)
             } else {
                 return@getChildrenOfType this.charsRegex!!.toRegex(RegexOption.IGNORE_CASE).matches(it.chars.trim())
@@ -105,7 +106,7 @@ private fun MDBaseNode.prepareNodeProperty(
 
     this.nodeText = this.node?.chars?.toString() ?: "empty"
     if (this.optional != true && this.node == null && this.charsRegex != null)
-        errorMessages.add("Не найдено MD ноды для узла шаблона с id =${this.id} . Его regexp: [${this.charsRegex}]")
+        errorMessages.add("Ошибка сразу после ${this.parent?.children?.getPreviousBy(this)?.node?.endLineNumber} строки MD документа. Не найдено MD ноды для узла шаблона с id =${this.id} . Его regexp: [${this.charsRegex}]")
 
     if (this.node != null) {
         val childrenIt = this.children?.listIterator()
@@ -137,7 +138,7 @@ private fun MDTDocumentNode.checkNodeExistsAndUniq(
     uniqNodes: MutableSet<Node> = mutableSetOf()
 ) {
     if (this.optional != true && this.node == null)
-        errorMessages.add("Не удалось найти MD node для узла шаблона с id =${this.id} и charsRegex={${this.charsRegex}}")
+        errorMessages.add("Ошибка сразу после ${this.parent?.children?.getPreviousBy(this)?.node?.endLineNumber ?: this.node?.endLineNumber}} строки MD документа. Не удалось найти MD node для узла шаблона с id =${this.id} и charsRegex={${this.charsRegex}}")
     (this as MDBaseNode).checkNodeExistsAndUniq(uniqNodes, errorMessages)
 }
 
@@ -148,7 +149,7 @@ private fun MDBaseNode.checkNodeExistsAndUniq(
     this.children?.forEach loop@{
 
         if (it.optional != true && it.node == null) {
-            errorMessages.add("Не удалось найти MD node для узла шаблона с id =${it.id}  и charsRegex={${it.charsRegex}}")
+            errorMessages.add("Ошибка сразу после ${this.children?.getPreviousBy(it)?.node?.endLineNumber ?: this.node?.endLineNumber} строки MD документа. Не удалось найти MD node для узла шаблона с id =${it.id}  и charsRegex={${it.charsRegex}}")
             return@loop
         }
 
@@ -156,6 +157,7 @@ private fun MDBaseNode.checkNodeExistsAndUniq(
             if (!uniqNodes.add(it.node!!))
                 errorMessages.add(
                     """
+                Ошибка на ${it.node?.lineNumber} строке MD документа.
                 Одна MD node{${it.node?.chars}} соответствует нескольким узлам из шаблона id= ${this.id}.
                 Определите название узла в шаблоне более индивидуально. Сейчас:{${it.charsRegex}}"""
                 )

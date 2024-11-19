@@ -22,6 +22,7 @@ tags:
 1. [[Шаблон информационного узла]]
 ---
 # Подтемы*:
+#TODO FROM https://docs.spring.io/spring-framework/reference/spring-projects.html
 1. [[Spring Boot]]
 2. [[Spring Testing]]
 3. [[Spring Web on Servlet Stack]]
@@ -32,4 +33,3 @@ tags:
 8. [[Spring Integration]]
 9. [[Spring Batch]]
 10. [[Spring GraphQL]]
-11. #TODO FROM https://docs.spring.io/spring-framework/reference/spring-projects.html

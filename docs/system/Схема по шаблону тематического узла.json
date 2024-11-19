@@ -6,8 +6,6 @@
       "com.vladsch.flexmark.util.ast.Document"
     ],
     "strictChildrenOrder": true,
-    "anySameNotTemplatedNode_BeforeAllowed": false,
-    "anySameNotTemplatedNode_AfterAllowed": false,
     "children": [
       {
         "template.MDTHeaderNode": {
@@ -19,22 +17,14 @@
             "com.vladsch.flexmark.ast.Heading"
           ],
           "strictChildrenOrder": true,
-          "specificNextNode": [],
-          "anySameNotTemplatedNode_BeforeAllowed": false,
-          "anySameNotTemplatedNode_AfterAllowed": false,
           "children": [
             {
               "template.MDTListNode": {
                 "id": "root->child[2]MDTHeaderNode->child[1]MDTListNode",
-                "optional": false,
                 "templatableClasses": [
                   "com.vladsch.flexmark.ast.BulletList",
                   "com.vladsch.flexmark.ast.OrderedList"
                 ],
-                "strictChildrenOrder": false,
-                "specificNextNode": [],
-                "anySameNotTemplatedNode_BeforeAllowed": false,
-                "anySameNotTemplatedNode_AfterAllowed": false,
                 "children": [
                   {
                     "template.MDTListItemNode": {
@@ -45,12 +35,7 @@
                         "com.vladsch.flexmark.ast.BulletListItem",
                         "com.vladsch.flexmark.ast.OrderedListItem"
                       ],
-                      "multiNodes" : true,
-                      "strictChildrenOrder": false,
-                      "specificNextNode": [],
-                      "anySameNotTemplatedNode_BeforeAllowed": false,
-                      "anySameNotTemplatedNode_AfterAllowed": false,
-                      "children": []
+                      "multiNodes" : true
                     }
                   }
                 ]
@@ -63,56 +48,36 @@
         "template.MDTHeaderNode": {
           "id": "root->child[3]MDTHeaderNode",
           "level": 1,
-          "optional": false,
           "charsRegex": "\\Q# Оценивающие узлы:\\E",
           "templatableClasses": [
             "com.vladsch.flexmark.ast.Heading"
           ],
           "strictChildrenOrder": true,
-          "specificNextNode": [],
-          "anySameNotTemplatedNode_BeforeAllowed": false,
-          "anySameNotTemplatedNode_AfterAllowed": false,
           "children": [
             {
               "template.MDTListNode": {
                 "id": "root->child[3]MDTHeaderNode->child[1]MDTListNode",
-                "optional": false,
                 "templatableClasses": [
                   "com.vladsch.flexmark.ast.BulletList",
                   "com.vladsch.flexmark.ast.OrderedList"
                 ],
-                "strictChildrenOrder": false,
-                "specificNextNode": [],
-                "anySameNotTemplatedNode_BeforeAllowed": false,
-                "anySameNotTemplatedNode_AfterAllowed": false,
                 "children": [
                   {
                     "template.MDTListItemNode": {
                       "id": "root->child[3]MDTHeaderNode->child[1]MDTListNode->child[0]MDTListItemNode",
-                      "optional": false,
                       "templatableClasses": [
                         "com.vladsch.flexmark.ast.BulletListItem",
                         "com.vladsch.flexmark.ast.OrderedListItem"
                       ],
-                      "strictChildrenOrder": false,
-                      "specificNextNode": [],
-                      "anySameNotTemplatedNode_BeforeAllowed": false,
-                      "anySameNotTemplatedNode_AfterAllowed": false,
                       "multiNodes" : true,
                       "children": [
                         {
                           "template.MDTLinkNode": {
                             "id": "root->child[3]MDTHeaderNode->child[1]MDTListNode->child[0]MDTListItemNode->child[0]MDTLinkNode",
-                            "optional": false,
                             "templatableClasses": [
                               "com.vladsch.flexmark.ext.wikilink.WikiLink",
                               "com.vladsch.flexmark.ast.Link"
-                            ],
-                            "strictChildrenOrder": false,
-                            "specificNextNode": [],
-                            "anySameNotTemplatedNode_BeforeAllowed": false,
-                            "anySameNotTemplatedNode_AfterAllowed": false,
-                            "children": []
+                            ]
                           }
                         }
                       ]
@@ -128,15 +93,10 @@
         "template.MDTHeaderNode": {
           "id": "root->child[4]MDTHeaderNode",
           "level": 1,
-          "optional": false,
           "charsRegex": "\\Q# Информационные узлы:\\E",
           "templatableClasses": [
             "com.vladsch.flexmark.ast.Heading"
           ],
-          "strictChildrenOrder": true,
-          "specificNextNode": [],
-          "anySameNotTemplatedNode_BeforeAllowed": false,
-          "anySameNotTemplatedNode_AfterAllowed": false,
           "children": [
             {
               "template.MDTListNode": {
@@ -146,38 +106,24 @@
                   "com.vladsch.flexmark.ast.BulletList",
                   "com.vladsch.flexmark.ast.OrderedList"
                 ],
-                "strictChildrenOrder": false,
-                "specificNextNode": [],
-                "anySameNotTemplatedNode_BeforeAllowed": false,
-                "anySameNotTemplatedNode_AfterAllowed": false,
                 "children": [
                   {
                     "template.MDTListItemNode": {
                       "id": "root->child[4]MDTHeaderNode->child[1]MDTListNode->child[0]MDTListItemNode",
-                      "optional": true,
-                      "charsRegex": "\\Q1. [[Шаблон информационного узла]]\\E",
+                      "optional": false,
                       "templatableClasses": [
                         "com.vladsch.flexmark.ast.BulletListItem",
                         "com.vladsch.flexmark.ast.OrderedListItem"
                       ],
-                      "strictChildrenOrder": false,
-                      "specificNextNode": [],
-                      "anySameNotTemplatedNode_BeforeAllowed": false,
-                      "anySameNotTemplatedNode_AfterAllowed": false,
+                      "multiNodes" : true,
                       "children": [
                         {
                           "template.MDTLinkNode": {
                             "id": "root->child[4]MDTHeaderNode->child[1]MDTListNode->child[0]MDTListItemNode->child[0]MDTLinkNode",
-                            "optional": false,
                             "templatableClasses": [
                               "com.vladsch.flexmark.ext.wikilink.WikiLink",
                               "com.vladsch.flexmark.ast.Link"
-                            ],
-                            "strictChildrenOrder": false,
-                            "specificNextNode": [],
-                            "anySameNotTemplatedNode_BeforeAllowed": false,
-                            "anySameNotTemplatedNode_AfterAllowed": false,
-                            "children": []
+                            ]
                           }
                         }
                       ]
@@ -199,36 +145,23 @@
             "com.vladsch.flexmark.ast.Heading"
           ],
           "strictChildrenOrder": true,
-          "specificNextNode": [],
-          "anySameNotTemplatedNode_BeforeAllowed": false,
-          "anySameNotTemplatedNode_AfterAllowed": false,
           "children": [
             {
               "template.MDTListNode": {
                 "id": "root->child[5]MDTHeaderNode->child[1]MDTListNode",
-                "optional": false,
                 "templatableClasses": [
                   "com.vladsch.flexmark.ast.BulletList",
                   "com.vladsch.flexmark.ast.OrderedList"
                 ],
-                "strictChildrenOrder": false,
-                "specificNextNode": [],
-                "anySameNotTemplatedNode_BeforeAllowed": false,
-                "anySameNotTemplatedNode_AfterAllowed": false,
                 "children": [
                   {
                     "template.MDTListItemNode": {
                       "id": "root->child[5]MDTHeaderNode->child[1]MDTListNode->child[0]MDTListItemNode",
-                      "optional": true,
-                      "charsRegex": "\\Q1. [[Шаблон тематического узла]]\\E",
                       "templatableClasses": [
                         "com.vladsch.flexmark.ast.BulletListItem",
                         "com.vladsch.flexmark.ast.OrderedListItem"
                       ],
-                      "strictChildrenOrder": false,
-                      "specificNextNode": [],
-                      "anySameNotTemplatedNode_BeforeAllowed": false,
-                      "anySameNotTemplatedNode_AfterAllowed": false,
+                      "multiNodes" : true,
                       "children": [
                         {
                           "template.MDTLinkNode": {
@@ -237,12 +170,7 @@
                             "templatableClasses": [
                               "com.vladsch.flexmark.ext.wikilink.WikiLink",
                               "com.vladsch.flexmark.ast.Link"
-                            ],
-                            "strictChildrenOrder": false,
-                            "specificNextNode": [],
-                            "anySameNotTemplatedNode_BeforeAllowed": false,
-                            "anySameNotTemplatedNode_AfterAllowed": false,
-                            "children": []
+                            ]
                           }
                         }
                       ]
