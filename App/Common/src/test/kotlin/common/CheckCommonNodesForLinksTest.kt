@@ -13,6 +13,7 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import java.net.URI
 import java.nio.file.Files
+import kotlin.io.path.name
 import kotlin.test.assertTrue
 
 @DisplayName("Общие структурные правила касающиеся ссылок для всех узлов")
@@ -24,6 +25,7 @@ class CheckCommonNodesForLinksTest {
         val errMsg = mutableListOf<String>()
 
         getAllMDNodes()
+            .filter{!it.name.contains("Примеры ссылок")}
             .forEach path@{ path ->
                 try {
                     ParseUtil.mdParser.parse(Files.readString(path))

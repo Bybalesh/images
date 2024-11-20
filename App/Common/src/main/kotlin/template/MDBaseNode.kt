@@ -24,14 +24,15 @@ sealed class MDBaseNode(
     @JsonIgnore
     var parent: MDBaseNode? = null,
     var nodeText: String? = null,
-    var multiNodes: Boolean? = null,// Это означает, что узел шаблона может дублироваться, если он соответствует нескольким MD узлам
+    var multiNodes: Boolean? = null,// Это означает, что узел шаблона может дублироваться, если он соответствует нескольким MD узлам и не optional
+    var mustHaveChildren: Boolean? = null,// Обязан ли иметь детей узел? TODO реализовать
 ) {
     constructor(mdtNode: MDBaseNode) : this(//copy constructor
         id = mdtNode.id,//TODO переписать в template path. Есть проблема когда копируется родитель, то не изменяется путь у ребёнка
         node = mdtNode.node,
         optional = mdtNode.optional,
         charsRegex = mdtNode.charsRegex,
-        children = mdtNode.children,//?.map(::MDBaseNode)?.toMutableList(),//TODO copy
+        children = mdtNode.children?.map(::copyMDBaseNode)?.toMutableList(),
         strictChildrenOrder = mdtNode.strictChildrenOrder,
         anySameNotTemplatedNode_BeforeAllowed = mdtNode.anySameNotTemplatedNode_BeforeAllowed,
         anySameNotTemplatedNode_AfterAllowed = mdtNode.anySameNotTemplatedNode_AfterAllowed,

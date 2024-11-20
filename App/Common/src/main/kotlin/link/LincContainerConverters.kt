@@ -21,7 +21,10 @@ val EXTENSIONS = Files.walk(Path.of(PATH_TO_DOCS_ROOT))
 
 fun WikiLink.toRelLinkContainer(pathToFile: Path): RelatedLinkContainer<WikiLink> {
     var rawPathStr = this.chars.substring(this.openingMarker.length, this.chars.indexOf(this.closingMarker))
-        .substringBefore(this.textSeparatorMarker.toString())
+
+
+    if (this.textSeparatorMarker.isNotBlank)
+        rawPathStr = rawPathStr.substringBefore(this.textSeparatorMarker.toString())
 
     val path: Path = try {
 
@@ -34,7 +37,7 @@ fun WikiLink.toRelLinkContainer(pathToFile: Path): RelatedLinkContainer<WikiLink
         mayBePath.add(pathToFile.relativeByCurrent(Path.of(pathStr)))
 
         mayBePath.stream()
-            .filter { Files.exists(it) }
+            .filter(Files::isRegularFile)
             .findAny()
             .orElseGet({
                 Files.walk(Path.of(PATH_TO_DOCS_ROOT))

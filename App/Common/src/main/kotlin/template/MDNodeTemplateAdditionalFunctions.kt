@@ -260,7 +260,7 @@ private fun Node.accumulateNextNodeUntilFindTemplatedOrNull(
 ): List<Node> {
     if (this.next != null && !allTemplatedNodes.contains(this.next)) {
         nonTemplatedNodes.add(this.next!!)
-        this.next?.accumulatePreviousNodeUntilFindTemplatedOrNull(allTemplatedNodes, nonTemplatedNodes)
+        this.next?.accumulateNextNodeUntilFindTemplatedOrNull(allTemplatedNodes, nonTemplatedNodes)
     }
     return nonTemplatedNodes
 }

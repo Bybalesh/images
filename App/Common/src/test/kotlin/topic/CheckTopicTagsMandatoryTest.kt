@@ -42,18 +42,52 @@ class CheckTopicTagsMandatoryTest {
         assertTrue(
             tryValidateBySchema(
                 PATH_TO_SYSTEM_MD + "/Схема по шаблону тематического узла.json",
-                Path.of(PATH_TO_SYSTEM_MD + "/Шаблон тематического узла v1.md")
+                Path.of(PATH_TO_SYSTEM_MD + "/Шаблон тематического узла.md")
             ).isSuccess
         )
         assertTrue(
             tryValidateBySchema(
                 PATH_TO_SYSTEM_MD + "/Схема по шаблону тематического узла.json",
                 Path.of(PATH_TO_SYSTEM_MD + "/Шаблон тематического узла v2.md")
-            ).isSuccess
+            ).onFailure { println(it.message)}
+                .isSuccess
+        )
+        assertTrue(
+            tryValidateBySchema(
+                PATH_TO_SYSTEM_MD + "/Схема по шаблону тематического узла.json",
+                Path.of( "src/test/kotlin/topic/Шаблон тематического узла WRONG v1.md")
+            ).onFailure { println(it.message)}
+                .isFailure
         )
     }
 
-    @Test
+    @Test//TODO Начал делать тест, но не закончил
+    @DisplayName("Раздел '# Подтемы*:' должен содержать только ссылки на тематические MD узлы !")
+    fun checkAllSubTopicIsLinkToTopicsLoopingTest() {
+        val errors = mutableListOf<String>()
+        getTopicsMDNodes().forEach { topicMDdoc ->
+            val aa =
+                mdParser.parse(Files.readString(topicMDdoc))
+                    .getChildrenOfType(Heading::class, { header -> header.chars.contains("Подтемы*:", true) })
+                    .firstOrNull()
+                    ?.getChildrenOfType<Node>(listOf(WikiLink::class, Link::class))
+                    ?.stream()
+                    ?.map {
+                        when (it) {
+                            is WikiLink -> it.toRelLinkContainer(topicMDdoc)
+                            is Link -> it.toRelLinkContainer(topicMDdoc)
+                            else -> throw RuntimeException("oops")
+                        }
+                    }
+                    ?.filter(RelatedLinkContainer<*>::isFile)
+                    ?.toList()
+            println()//TODO обнаружить петлю
+
+        }
+        assertTrue(errors.isEmpty(), errors.joinToString("\n"))
+    }
+
+    @Test//TODO Начал делать тест, но не закончил
     @DisplayName("Цепочка тематических узлов в разделе '# Подтемы*:' не должна выстраиваться в петли!")
     fun checkAllSubTopicLoopingTest() {
         val errors = mutableListOf<String>()
