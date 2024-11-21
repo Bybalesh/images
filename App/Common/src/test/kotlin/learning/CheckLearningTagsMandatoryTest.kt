@@ -15,7 +15,8 @@ class CheckLearningTagsMandatoryTest {
         TestUtil.checkOnlyOneTagYamlFrontMatterContainsTest(
             getLearningMDNodes(),
             StructRoleNodeTag.STRUCT_LEARNING,
-            true
+            true,
+            false,
         )
     }
 

@@ -19,7 +19,8 @@ class CheckEstimatingTagsMandatoryTest {
         TestUtil.checkOnlyOneTagYamlFrontMatterContainsTest(
             getEstimatingMDNodes(),
             StructRoleNodeTag.STRUCT_ESTIMATING_,
-            true
+            true,
+            false,
         )
     }
 

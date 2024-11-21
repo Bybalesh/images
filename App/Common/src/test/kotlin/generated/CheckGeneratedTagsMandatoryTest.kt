@@ -15,7 +15,8 @@ class CheckGeneratedTagsMandatoryTest {
         TestUtil.checkOnlyOneTagYamlFrontMatterContainsTest(
             getGeneratedMDNodes(),
             StructRoleNodeTag.STRUCT_GENERATED,
-            false
+            false,
+            false,
         )
     }
 

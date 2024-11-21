@@ -57,7 +57,7 @@ fun WikiLink.toRelLinkContainer(pathToFile: Path): RelatedLinkContainer<WikiLink
         this.chars.toString(),
         path.toUri(),
         true,
-        path,
+        path.toAbsolutePath().normalize(),
         rawPathStr.substringAfter("#", "")
             .split("#")
             .filter(String::isNotBlank)
@@ -90,7 +90,7 @@ fun Link.toRelLinkContainer(pathToFile: Path): RelatedLinkContainer<Link> {
             this.text.toString(),
             uri,
             false,
-            Path.of(uri.path),
+            Path.of(uri.path).toAbsolutePath().normalize(),
             null,
             this
         )
@@ -100,7 +100,7 @@ fun Link.toRelLinkContainer(pathToFile: Path): RelatedLinkContainer<Link> {
             this.text.toString(),
             uri,
             true,
-            Path.of(uri.path),
+            Path.of(uri.path).toAbsolutePath().normalize(),
             null,
             this
         )
@@ -118,7 +118,7 @@ fun Link.toRelLinkContainer(pathToFile: Path): RelatedLinkContainer<Link> {
         this.text.toString(),
         uri,
         true,
-        pathToFile.relativeByCurrent(Path.of(uri.path)),
+        pathToFile.relativeByCurrent(Path.of(uri.path)).toAbsolutePath().normalize(),
         listOf(fragmentPattern.toRegex(RegexOption.IGNORE_CASE)),
         this
     )

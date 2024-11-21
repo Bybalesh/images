@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Assertions.assertTrue
 import tags.IMDTag
 import java.nio.file.Files
 import java.nio.file.Path
+import java.util.*
 import java.util.stream.Stream
-import kotlin.test.assertEquals
 
 class TestUtil {
     companion object {
@@ -18,23 +18,35 @@ class TestUtil {
             paths: Stream<Path>,
             tag: IMDTag<T>,
             isCanBeEmpty: Boolean,
+            isCanContainsMoreWhenOneTag: Boolean,
         ) {
             var isMDNodesExists = false
+            var errorMessages = mutableListOf<String>()
+
             paths
                 .forEach { path ->
-                    println("READ FILE FROM: " + path)
-                    val tagsCnt = ParseUtil.mdParser.parse(Files.readString(path))
+                    val foundedTags = ParseUtil.mdParser.parse(Files.readString(path))
                         .getAllFrontMatterNodesFromFirstFMBlock("tags")
                         .map("#"::plus)
-                        .filter { tag.tagOf(it) == tag }
+                        .map { tag.tagOf(it) }
+                        .filter(Objects::nonNull)
+
                     isMDNodesExists = true
-                    assertEquals(
-                        1,
-                        tagsCnt.size,
-                        "$path содержит ${tagsCnt.size} шт ${tag.tags().first()::class}:[$tagsCnt]. Должен 1! "
-                    )
+                    if (foundedTags.size > 1 && !isCanContainsMoreWhenOneTag) {
+                        errorMessages.add(
+                            "$path содержит ${foundedTags.size} шт ${
+                                tag.tags().first()::class
+                            }:[$foundedTags]. Должен быть 1: $tag!"
+                        )
+                    }
+                    if (!foundedTags.any { it == tag }) {
+                        errorMessages.add(
+                            "$path должен содержать: $tag в Yaml Front Matter!"
+                        )
+                    }
                 }
 
+            assertTrue(errorMessages.isEmpty(), errorMessages.joinToString("\n"))
             assertTrue(isMDNodesExists || isCanBeEmpty, "Path должен содержать MD файлы")
         }
     }

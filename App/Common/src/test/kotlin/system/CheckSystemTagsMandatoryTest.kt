@@ -15,7 +15,8 @@ class CheckSystemTagsMandatoryTest {
         TestUtil.checkOnlyOneTagYamlFrontMatterContainsTest(
             getSystemsMDNodes(),
             StructRoleNodeTag.STRUCT_SYSTEM,
-            false
+            false,
+            true,
         )
     }
 

@@ -21,6 +21,8 @@ import template.MDTDocumentNode
 import template.validate
 import java.nio.file.Files
 import java.nio.file.Path
+import java.util.*
+import kotlin.io.path.name
 import kotlin.test.assertTrue
 
 @DisplayName("Проверки для MD файлов в папке topic")
@@ -32,6 +34,7 @@ class CheckTopicTagsMandatoryTest {
         TestUtil.checkOnlyOneTagYamlFrontMatterContainsTest(
             getTopicsMDNodes(),
             StructRoleNodeTag.STRUCT_TOPIC,
+            false,
             false
         )
     }
@@ -49,69 +52,91 @@ class CheckTopicTagsMandatoryTest {
             tryValidateBySchema(
                 PATH_TO_SYSTEM_MD + "/Схема по шаблону тематического узла.json",
                 Path.of(PATH_TO_SYSTEM_MD + "/Шаблон тематического узла v2.md")
-            ).onFailure { println(it.message)}
+            ).onFailure { println(it.message) }
                 .isSuccess
         )
         assertTrue(
             tryValidateBySchema(
                 PATH_TO_SYSTEM_MD + "/Схема по шаблону тематического узла.json",
-                Path.of( "src/test/kotlin/topic/Шаблон тематического узла WRONG v1.md")
-            ).onFailure { println(it.message)}
+                Path.of("src/test/kotlin/topic/Шаблон тематического узла WRONG v1.md")
+            ).onFailure { println(it.message) }
                 .isFailure
         )
     }
 
-    @Test//TODO Начал делать тест, но не закончил
-    @DisplayName("Раздел '# Подтемы*:' должен содержать только ссылки на тематические MD узлы !")
+    @Test
+    @DisplayName("Раздел '# Подтемы*:' должен содержать только ссылки на тематические MD узлы!")
     fun checkAllSubTopicIsLinkToTopicsLoopingTest() {
-        val errors = mutableListOf<String>()
-        getTopicsMDNodes().forEach { topicMDdoc ->
-            val aa =
-                mdParser.parse(Files.readString(topicMDdoc))
-                    .getChildrenOfType(Heading::class, { header -> header.chars.contains("Подтемы*:", true) })
-                    .firstOrNull()
-                    ?.getChildrenOfType<Node>(listOf(WikiLink::class, Link::class))
-                    ?.stream()
-                    ?.map {
-                        when (it) {
-                            is WikiLink -> it.toRelLinkContainer(topicMDdoc)
-                            is Link -> it.toRelLinkContainer(topicMDdoc)
-                            else -> throw RuntimeException("oops")
-                        }
-                    }
-                    ?.filter(RelatedLinkContainer<*>::isFile)
-                    ?.toList()
-            println()//TODO обнаружить петлю
+        var errors = mutableListOf<String>()
 
+        getTopicsMDNodes().forEach { topicMDdoc ->
+
+            val subTopicsStream = getSubTopicsPaths(topicMDdoc)
+
+            if (subTopicsStream != null) {
+                try {
+                    TestUtil.checkOnlyOneTagYamlFrontMatterContainsTest(
+                        subTopicsStream,
+                        StructRoleNodeTag.STRUCT_TOPIC,
+                        false,
+                        false
+                    )
+                } catch (e: Throwable) {
+                    errors.add("Документ $topicMDdoc содержит ссылку/и на подтемы, которые не являются тематическими узлами:\n${e.message}")
+                }
+            }
         }
+
         assertTrue(errors.isEmpty(), errors.joinToString("\n"))
     }
 
-    @Test//TODO Начал делать тест, но не закончил
+    @Test
     @DisplayName("Цепочка тематических узлов в разделе '# Подтемы*:' не должна выстраиваться в петли!")
     fun checkAllSubTopicLoopingTest() {
-        val errors = mutableListOf<String>()
-        getTopicsMDNodes().forEach { topicMDdoc ->
-            val aa =
-                mdParser.parse(Files.readString(topicMDdoc))
-                    .getChildrenOfType(Heading::class, { header -> header.chars.contains("Подтемы*:", true) })
-                    .firstOrNull()
-                    ?.getChildrenOfType<Node>(listOf(WikiLink::class, Link::class))
-                    ?.stream()
-                    ?.map {
-                        when (it) {
-                            is WikiLink -> it.toRelLinkContainer(topicMDdoc)
-                            is Link -> it.toRelLinkContainer(topicMDdoc)
-                            else -> throw RuntimeException("oops")
-                        }
-                    }
-                    ?.filter(RelatedLinkContainer<*>::isFile)
-                    ?.toList()
-            println()//TODO обнаружить петлю
+        var errors = mutableListOf<String>()
 
+        getTopicsMDNodes().forEach { rootTopicPath ->
+            try {
+                val stack = Stack<Path>()
+                stack.push(rootTopicPath)
+                iterateBySubTopicAndCheckLoop(stack, rootTopicPath)
+            } catch (e: Exception) {
+                errors.add(e.message ?: e.toString())
+            }
         }
+
         assertTrue(errors.isEmpty(), errors.joinToString("\n"))
     }
+
+    private fun iterateBySubTopicAndCheckLoop(stack: Stack<Path>, topic: Path) {
+        getSubTopicsPaths(topic)?.forEach {
+            if (stack.contains(it)) {
+                stack.push(it)
+                throw RuntimeException("Нельзя указывать на топик, который является предком во избежание петель!" +
+                        "Последовательность с петлёй:[${stack.joinToString { it.name }}]"
+                )
+            }
+            stack.push(it)
+            iterateBySubTopicAndCheckLoop(stack, it)
+            stack.pop()
+        }
+
+    }
+
+    private fun getSubTopicsPaths(topicMDdoc: Path) = mdParser.parse(Files.readString(topicMDdoc))
+        .getChildrenOfType(Heading::class, { header -> header.chars.contains("Подтемы*:", true) })
+        .firstOrNull()
+        ?.getChildrenOfType<Node>(listOf(WikiLink::class, Link::class))
+        ?.stream()
+        ?.map {
+            when (it) {
+                is WikiLink -> it.toRelLinkContainer(topicMDdoc)
+                is Link -> it.toRelLinkContainer(topicMDdoc)
+                else -> throw RuntimeException("oops")
+            }
+        }
+        ?.filter(RelatedLinkContainer<*>::isFile)
+        ?.map(RelatedLinkContainer<*>::pathToFile)
 
     @Test
     @DisplayName("Все тематические узлы должны соответствовать схеме md документа'Схема по шаблону тематического узла.json'")
