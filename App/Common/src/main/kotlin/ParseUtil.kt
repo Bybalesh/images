@@ -13,7 +13,17 @@ import flex.post.processor.HeadingHierarchyPostProcessorFactory
 
 object ParseUtil {
 
-    val jsonMapper = jacksonObjectMapper()
+    val jsonMapper = jacksonObjectMapper().registerKotlinModule()
+        //        ParseUtil.jsonMapper.configure(JsonParser.Feature.AUTO_CLOSE_SOURCE, true)
+        .setSerializationInclusion(JsonInclude.Include.NON_EMPTY)
+        .setSerializationInclusion(JsonInclude.Include.NON_ABSENT)
+        .setSerializationInclusion(JsonInclude.Include.NON_NULL)
+//        .setFilterProvider(
+//            SimpleFilterProvider().addFilter(
+//                "node", SimpleBeanPropertyFilter.filterOutAllExcept("1node")
+//            )
+//        )
+        .setSerializationInclusion(JsonInclude.Include.NON_DEFAULT)
 
     private
     val flexmarkExtensions = mutableListOf(
