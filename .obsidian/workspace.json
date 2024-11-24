@@ -153,12 +153,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "backlog/Backlog.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "Backlog"
             }
           },
           {
@@ -599,10 +599,15 @@
   },
   "active": "1e9b0294385104f3",
   "lastOpenFiles": [
-    "docs/topic/Behavioral Patterns.md~",
-    "backlog/Backlog.md~",
+    "docs/topic/Java Basic Syntax.md",
+    "docs/topic/Java.md~",
+    "docs/topic/Java.md",
+    "docs/generated/cmg/Матрица компетенций.md",
+    "README.md",
     "images/Team+HR+candidate.drawio.svg",
     "images/RoadMap.svg",
+    "docs/topic/Behavioral Patterns.md~",
+    "backlog/Backlog.md~",
     "images/Путь развития.drawio.svg",
     "images/Team+HR+C.svg",
     "images/ 1",
@@ -614,8 +619,6 @@
     "App/Common/src/test/resources/template/optional.md",
     "App/Common/src/test/resources/template/optional-template.json",
     "App/Common/src/test/resources/template",
-    "App/Common/src/test/resources",
-    "App/Common/src/test/kotlin/template/MDNodeTemplateTest.kt",
     "App/Common/src/test/resources/template/strictChildrenOrder.md",
     "docs/system/Шаблон оценочного узла c тестом.md",
     "docs/system/Шаблон оценочного узла c заданием.md",
@@ -636,9 +639,6 @@
     "docs/topic/NOSQL.md",
     "docs/topic/CRY.md",
     "docs/topic/DRY.md",
-    "docs/system/Примеры ссылок.md",
-    "docs/generated/cmg/Матрица компетенций.md",
-    "docs/topic/SOLID.md",
     "Untitled.canvas",
     "images/SkillsIdeaRepresentation.png",
     "logo1 1.png",
