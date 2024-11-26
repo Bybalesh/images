@@ -71,7 +71,7 @@ class CheckTopicTagsMandatoryTest {
 
         getTopicsMDNodes().forEach { topicMDdoc ->
 
-            val subTopicsStream = getSubTopicsPaths(topicMDdoc)
+            val subTopicsStream = getPathsFromHeader(topicMDdoc, "Подтемы*:")
 
             if (subTopicsStream != null) {
                 try {
@@ -83,6 +83,59 @@ class CheckTopicTagsMandatoryTest {
                     )
                 } catch (e: Throwable) {
                     errors.add("Документ $topicMDdoc содержит ссылку/и на подтемы, которые не являются тематическими узлами:\n${e.message}")
+                }
+            }
+        }
+
+        assertTrue(errors.isEmpty(), errors.joinToString("\n"))
+    }
+
+    @Test
+    @DisplayName("Раздел '# Оценивающие узлы:' должен содержать только ссылки на оценивающие MD узлы!")
+    fun checkEstimatingNodesHeaderContainsLinkToEstimatingNodesTest() {
+        var errors = mutableListOf<String>()
+
+        getTopicsMDNodes().forEach { topicMDdoc ->
+
+            val subTopicsStream = getPathsFromHeader(topicMDdoc, "# Оценивающие узлы:")
+
+            if (subTopicsStream != null) {
+                try {
+                    TestUtil.checkOnlyOneTagYamlFrontMatterContainsTest(
+                        subTopicsStream,
+                        StructRoleNodeTag.STRUCT_ESTIMATING_,
+                        false,
+                        true,
+                        { StructRoleNodeTag.isEstimating(it!!.tag) }
+                    )
+                } catch (e: Throwable) {
+                    errors.add("Документ $topicMDdoc содержит ссылку/и на узлы, которые не являются оценивающими:\n${e.message}")
+                }
+            }
+        }
+
+        assertTrue(errors.isEmpty(), errors.joinToString("\n"))
+    }
+
+    @Test
+    @DisplayName("Раздел '# Информационные узлы:' должен содержать только ссылки на оценивающие MD узлы!")
+    fun checkLearningNodesHeaderContainsLinkToLearningNodesTest() {
+        var errors = mutableListOf<String>()
+
+        getTopicsMDNodes().forEach { topicMDdoc ->
+
+            val subTopicsStream = getPathsFromHeader(topicMDdoc, "# Информационные узлы:")
+
+            if (subTopicsStream != null) {
+                try {
+                    TestUtil.checkOnlyOneTagYamlFrontMatterContainsTest(
+                        subTopicsStream,
+                        StructRoleNodeTag.STRUCT_LEARNING,
+                        false,
+                        true
+                    )
+                } catch (e: Throwable) {
+                    errors.add("Документ $topicMDdoc содержит ссылку/и на узлы, которые не являются информационными:\n${e.message}")
                 }
             }
         }
@@ -109,11 +162,12 @@ class CheckTopicTagsMandatoryTest {
     }
 
     private fun iterateBySubTopicAndCheckLoop(stack: Stack<Path>, topic: Path) {
-        getSubTopicsPaths(topic)?.forEach {
+        getPathsFromHeader(topic, "Подтемы*:")?.forEach {
             if (stack.contains(it)) {
                 stack.push(it)
-                throw RuntimeException("Нельзя указывать на топик, который является предком во избежание петель!" +
-                        "Последовательность с петлёй:[${stack.joinToString { it.name }}]"
+                throw RuntimeException(
+                    "Нельзя указывать на топик, который является предком во избежание петель!" +
+                            "Последовательность с петлёй:[${stack.joinToString { it.name }}]"
                 )
             }
             stack.push(it)
@@ -123,8 +177,8 @@ class CheckTopicTagsMandatoryTest {
 
     }
 
-    private fun getSubTopicsPaths(topicMDdoc: Path) = mdParser.parse(Files.readString(topicMDdoc))
-        .getChildrenOfType(Heading::class, { header -> header.chars.contains("Подтемы*:", true) })
+    private fun getPathsFromHeader(topicMDdoc: Path, headerLabel: String) = mdParser.parse(Files.readString(topicMDdoc))
+        .getChildrenOfType(Heading::class, { header -> header.chars.contains(headerLabel, true) })
         .firstOrNull()
         ?.getChildrenOfType<Node>(listOf(WikiLink::class, Link::class))
         ?.stream()

@@ -39,5 +39,8 @@ public enum class StructRoleNodeTag(val tag: String) : IMDTag<StructRoleNodeTag>
         fun tagOf(tag: String): StructRoleNodeTag? {
             return entries.first().tagOf(tag)
         }
+        fun isEstimating(tag: String): Boolean {
+            return entries.first().tagOf(tag)?.tag?.startsWith("#STRUCT/ESTIMATING") ?: false
+        }
     }
 }

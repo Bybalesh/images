@@ -19,6 +19,7 @@ class TestUtil {
             tag: IMDTag<T>,
             isCanBeEmpty: Boolean,
             isCanContainsMoreWhenOneTag: Boolean,
+            predicate: (T?) -> Boolean = { it == tag }
         ) {
             var isMDNodesExists = false
             var errorMessages = mutableListOf<String>()
@@ -39,7 +40,7 @@ class TestUtil {
                             }:[$foundedTags]. Должен быть 1: $tag!"
                         )
                     }
-                    if (!foundedTags.any { it == tag }) {
+                    if (!foundedTags.any { predicate.invoke(it) }) {
                         errorMessages.add(
                             "$path должен содержать: $tag в Yaml Front Matter!"
                         )
