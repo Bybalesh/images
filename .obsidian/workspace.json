@@ -153,12 +153,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/topic/Helm.md",
+                "file": "backlog/Backlog.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Helm"
+              "title": "Backlog"
             }
           },
           {
@@ -474,7 +474,7 @@
               "type": "search",
               "state": {
                 "query": "",
-                "matchingCase": true,
+                "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
@@ -514,7 +514,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "App/CompetenceMatrixGenerator/README CMG.md",
+                "file": "backlog/Backlog.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -524,7 +524,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for README CMG"
+              "title": "Backlinks for Backlog"
             }
           },
           {
@@ -580,8 +580,7 @@
               "title": "All properties"
             }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "horizontal",
@@ -599,46 +598,46 @@
   },
   "active": "1e9b0294385104f3",
   "lastOpenFiles": [
-    "backlog/Backlog.md~",
-    "App/Common/build/classes/kotlin/test/META-INF/Common_test.kotlin_module",
-    "App/Common/build/classes/kotlin/test/topic/CheckTopicTagsMandatoryTest$sam$java_util_function_Function$0.class",
-    "App/Common/build/classes/kotlin/test/topic/CheckTopicTagsMandatoryTest$tryValidateBySchema-gIAlu-s$$inlined$readValue$1.class",
-    "App/Common/build/classes/kotlin/test/topic/CheckTopicTagsMandatoryTest$getPathsFromHeader$4.class",
-    "App/Common/build/classes/kotlin/test/topic/CheckTopicTagsMandatoryTest$getPathsFromHeader$3.class",
-    "App/Common/build/classes/kotlin/test/topic/CheckTopicTagsMandatoryTest.class",
-    "App/Common/src/test/kotlin/topic/CheckTopicTagsMandatoryTest.kt~",
-    "docs/topic/Computer Networking.md~",
-    "App/Common/build/kotlin/compileTestKotlin/cacheable/dirty-sources.txt",
-    "App/Common/build/classes/kotlin/test/topic/CheckTopicTagsMandatoryTest$getSubTopicsPaths$4.class",
-    "docs/system/Шаблон тематического узла v2.md",
-    "docs/system/Шаблон информационного узла.md",
+    "docs/system/Шаблон матрицы компетенций.md",
+    "docs/topic/Build Tools.md",
+    "docs/generated/cmg/Матрица компетенций.md",
+    "docs/topic/Ant.md",
     "backlog/Backlog.md",
+    "docs/system/Примеры ссылок.md",
+    "docs/topic/Spring Web on Reactive Stack.md",
+    "docs/system/Шаблон оценочного узла c вопросом.md",
+    "docs/topic/Databases.md",
+    "docs/topic/Grafana.md",
+    "backlog/Backlog.md~",
+    "docs/system/Шаблон тематического узла v2.md",
+    "docs/system/Шаблон тематического узла.md",
+    "docs/system/Шпаргалка по синтаксису разметки Markdown.md",
+    "docs/system/Шаблон оценочного узла c тестом.md",
+    "docs/system/Шаблон оценочного узла c кодированием.md",
+    "docs/system/Шаблон оценочного узла c заданием.md",
+    "docs/system/Шаблон информационного узла.md",
+    "docs/topic/Helm.md",
+    "App/Common/build/test-results/test/TEST-ApprovalKeyWordsUtilTest.xml",
+    "App/Common/build/test-results/test/TEST-learning.CheckLearningTagsMandatoryTest.xml",
+    "App/Common/build/test-results/test/TEST-common.CheckCommonFileCanBeParsedTest.xml",
+    "App/Common/build/test-results/test/TEST-estimating.CheckEstimatingTagsMandatoryTest.xml",
+    "App/Common/build/test-results/test/TEST-CheckTagsMandatoryTest.xml",
+    "App/Common/build/test-results/test/TEST-template.MDNodeTemplateTest.xml",
+    "App/Common/build/test-results/test/TEST-system.CheckSystemTagsMandatoryTest.xml",
+    "App/Common/build/test-results/test/TEST-link.LincContainerConvertersKtTest.xml",
+    "App/Common/build/test-results/test/TEST-common.CheckCommonNodesForLinksTest.xml",
     "docs/topic/Java.md",
     "docs/topic/Java Basic Syntax.md",
-    "docs/generated/cmg/Матрица компетенций.md",
     "README.md",
     "images/Team+HR+candidate.drawio.svg",
     "images/RoadMap.svg",
     "images/Путь развития.drawio.svg",
     "images/Team+HR+C.svg",
-    "docs/system/Шаблон тематического узла.md",
     "App/Common/src/test/resources/template/optional.md",
     "App/Common/src/test/resources/template/strictChildrenOrder.md",
-    "docs/system/Шаблон оценочного узла c тестом.md",
-    "docs/system/Шаблон оценочного узла c заданием.md",
-    "docs/system/Шаблон оценочного узла c кодированием.md",
     "docs/system/Описание хештегов.md",
     "docs/topic/Operating Systems.md",
     "docs/topic/Computer Science.md",
-    "docs/topic/Computer Architecture.md",
-    "docs/topic/Парадигмы программирования.md",
-    "docs/topic/Принципы программирования.md",
-    "docs/topic/Data structures and Algorithms.md",
-    "docs/topic/Computer Networking.md",
-    "docs/topic/Workflow.md",
-    "docs/topic/Git.md",
-    "docs/topic/SQL.md",
-    "docs/topic/Databases.md",
     "Untitled.canvas",
     "images/SkillsIdeaRepresentation.png",
     "logo1 1.png",
