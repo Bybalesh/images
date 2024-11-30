@@ -600,6 +600,7 @@
   "lastOpenFiles": [
     "backlog/Backlog.md",
     "README.md",
+    "backlog/Backlog.md~",
     "docs/generated/sg/Статистика.md",
     "images/RoadMap.drawio.svg",
     "images/AreasOfInteractionCG.drawio.svg",
@@ -614,7 +615,6 @@
     "docs/system/Шаблон оценочного узла c вопросом.md",
     "docs/topic/Databases.md",
     "docs/topic/Grafana.md",
-    "backlog/Backlog.md~",
     "docs/system/Шаблон тематического узла v2.md",
     "docs/system/Шаблон тематического узла.md",
     "docs/system/Шпаргалка по синтаксису разметки Markdown.md",
@@ -640,7 +640,6 @@
     "App/Common/src/test/resources/template/optional.md",
     "App/Common/src/test/resources/template/strictChildrenOrder.md",
     "docs/system/Описание хештегов.md",
-    "docs/topic/Operating Systems.md",
     "Untitled.canvas",
     "images/SkillsIdeaRepresentation.png",
     "logo1 1.png",
