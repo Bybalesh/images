@@ -28,7 +28,11 @@ class TagInlineParserExtension(lightInlineParser: LightInlineParser) : InlinePar
 
         val matcher: Matcher? =
             inlineParser.matcher(Pattern.compile("([^а-яА-Яa-zA-Z0-9#\\[]|^)#{1}\\w+(/?\\w+)*([\\W&&[^#/]]|\$)"))
-
+        /*
+        TODO Здесь проблема в ссылке на сложность [[Описание хештегов#Сложность Описание хештегов Структурные роли узлов оценивающих узлов|сложность]]
+        Если убрать хештег там, то нет ошибки парсинга Ошибка парсинга
+        Такое чувство, что Tag парсер хватает, а WikiLink не успевает схватить и Tag парсер портит малину
+         */
         if (matcher != null) {
 
             val startIndex = runCatching { matcher.end(1) }.getOrElse { matcher.start(0) }
@@ -38,8 +42,10 @@ class TagInlineParserExtension(lightInlineParser: LightInlineParser) : InlinePar
             val hashTag = Tag(tag, hash)
             hashTag.setCharsFromContent()
             val textStartIndex = inlineParser.block.children.sumOf { it.textLength }
-            inlineParser.appendText(inlineParser.input, textStartIndex, startIndex)
-            inlineParser.flushTextNode()
+//            if (startIndex != 0 && textStartIndex != 0 && textStartIndex <= startIndex) {
+                inlineParser.appendText(inlineParser.input, textStartIndex, startIndex)
+                inlineParser.flushTextNode()
+//            }
             inlineParser.block.appendChild(hashTag)
             return true
         } else {

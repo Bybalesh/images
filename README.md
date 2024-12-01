@@ -136,6 +136,9 @@ p.s. в цели графа компетенций не входит монит�
 7. [АПКИТ квалификационные требовнаия](https://apkit.ru/files/programer.doc)
 8. [Starsmap РОСБАНК](https://habr.com/ru/companies/rosbank/articles/832496/) https://github.com/MaratLaischev/Starsmap
 9. [Матрица компетенций РОСБАНК](https://habr.com/ru/companies/rosbank/articles/834204/)
+10. [Recsoft](https://habr.com/ru/companies/reksoft/articles/770946/)[Матрица PDF](MatrxiCompetition-InterviewJava.pdf)
+11. [Иннополис матрица цифровых компетенций](InnopolisDigitalCompetenceMatrix.pdf)
+12. [Министерство труда - проф. стандарт](MinTrudProfStandart.pdf)
 # Видиотека:
 1. [Инструкция по добавлению топиков](https://rutube.ru/video/c2be15b13610b27e59144d895cd46216/)
 ---

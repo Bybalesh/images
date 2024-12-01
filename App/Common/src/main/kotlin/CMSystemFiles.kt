@@ -25,7 +25,7 @@ object CMSystemFiles {
      * @return все md узлы/файлы
      */
     fun getAllMDNodes(): Stream<Path> {
-        return Files.walk(Paths.get(PATH_TO_DOCS_ROOT))
+        return Stream.concat(Files.walk(Paths.get(PATH_TO_DOCS_ROOT)),Stream.of(Paths.get("../../README.md")))
             .filterMD()
     }
 
