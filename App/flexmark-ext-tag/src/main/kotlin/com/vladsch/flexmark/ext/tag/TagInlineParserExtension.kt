@@ -21,8 +21,8 @@ class TagInlineParserExtension(lightInlineParser: LightInlineParser) : InlinePar
     override fun parse(inlineParser: LightInlineParser): Boolean {
         val input = inlineParser.input
 
-        if (isSurroundedBy(input, "#", "[[", "]]"))
-            return false//TODO сейчас не парсятся теги, которые попали в такие блоки
+        if (isSurroundedBy(input, inlineParser.index, "[[", "]]"))
+            return false
 
         if (inlineParser.index == input.length - 1) // чтобы не зацикливался на # в конце
             return false
@@ -47,8 +47,8 @@ class TagInlineParserExtension(lightInlineParser: LightInlineParser) : InlinePar
             hashTag.setCharsFromContent()
             val textStartIndex = inlineParser.block.children.sumOf { it.textLength }
             if (startIndex != 0 && textStartIndex != 0 && textStartIndex <= startIndex) {
-            inlineParser.appendText(inlineParser.input, textStartIndex, startIndex)
-            inlineParser.flushTextNode()
+                inlineParser.appendText(inlineParser.input, textStartIndex, startIndex)
+                inlineParser.flushTextNode()
             }
             inlineParser.block.appendChild(hashTag)
             return true
@@ -64,18 +64,17 @@ class TagInlineParserExtension(lightInlineParser: LightInlineParser) : InlinePar
     companion object {
         fun isSurroundedBy(
             input: BasedSequence,
-            strWhichIsSurrounded: String,
+            idxWhichIsSurrounded: Int,
             byLeft: String,
             byRight: String
         ): Boolean {
             val NOT_FOUND = -1
-            val sharpIdx = input.indexOf(strWhichIsSurrounded)
-            val leftIdxOfByLeft = input.lastIndexOf(byLeft, 0, sharpIdx)
-            val leftIdxOfByRight = input.lastIndexOf(byRight, 0, sharpIdx)
+            val leftIdxOfByLeft = input.lastIndexOf(byLeft, 0, idxWhichIsSurrounded)
+            val leftIdxOfByRight = input.lastIndexOf(byRight, 0, idxWhichIsSurrounded)
             if (leftIdxOfByLeft == NOT_FOUND || leftIdxOfByLeft <= leftIdxOfByRight && leftIdxOfByRight != NOT_FOUND) return false
 
-            val rightIdxOfByLeft = input.indexOf(byLeft, sharpIdx, ignoreCase = true)
-            val rightIdxOfByRight = input.indexOf(byRight, sharpIdx, ignoreCase = true)
+            val rightIdxOfByLeft = input.indexOf(byLeft, idxWhichIsSurrounded, ignoreCase = true)
+            val rightIdxOfByRight = input.indexOf(byRight, idxWhichIsSurrounded, ignoreCase = true)
             if (rightIdxOfByRight == NOT_FOUND || rightIdxOfByRight >= rightIdxOfByLeft && rightIdxOfByLeft != NOT_FOUND) return false
 
             return true

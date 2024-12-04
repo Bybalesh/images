@@ -10,13 +10,13 @@ class TagInlineParserExtensionTest {
     @Test
     fun isSurroundedByTest() {
 
-        assertTrue(isSurroundedBy(BasedSequence.of("[[#]]"), "#", "[[", "]]"))
-        assertFalse(isSurroundedBy(BasedSequence.of("#]]"), "#", "[[", "]]"))
-        assertFalse(isSurroundedBy(BasedSequence.of("[[#"), "#", "[[", "]]"))
-        assertTrue(isSurroundedBy(BasedSequence.of("123[[#]]321"), "#", "[[", "]]"))
-        assertTrue(isSurroundedBy(BasedSequence.of("123[[123#321|#123321]]321"), "#", "[[", "]]"))
-        assertFalse(isSurroundedBy(BasedSequence.of("123[[1]]23#321|#123321]]321"), "#", "[[", "]]"))
-        assertFalse(isSurroundedBy(BasedSequence.of("123[[123#321|#12332[[1]]321"), "#", "[[", "]]"))
-        assertFalse(isSurroundedBy(BasedSequence.of("123[[EMPTY]]321"), "#", "[[", "]]"))
+        assertTrue(isSurroundedBy(BasedSequence.of("[[#]]"), "[[#]]".indexOf("#"), "[[", "]]"))
+        assertFalse(isSurroundedBy(BasedSequence.of("#]]"), "#]]".indexOf("#"), "[[", "]]"))
+        assertFalse(isSurroundedBy(BasedSequence.of("[[#"), "[[#".indexOf("#"), "[[", "]]"))
+        assertTrue(isSurroundedBy(BasedSequence.of("123[[#]]321"), "123[[#]]321".indexOf("#"), "[[", "]]"))
+        assertTrue(isSurroundedBy(BasedSequence.of("123[[123#321|#123321]]321"), "123[[123#321|#123321]]321".indexOf("#"), "[[", "]]"))
+        assertFalse(isSurroundedBy(BasedSequence.of("123[[1]]23#321|#123321]]321"), "123[[1]]23#321|#123321]]321".indexOf("#"), "[[", "]]"))
+        assertFalse(isSurroundedBy(BasedSequence.of("123[[123#321|#12332[[1]]321"), "123[[123#321|#12332[[1]]321".indexOf("#"), "[[", "]]"))
+        assertFalse(isSurroundedBy(BasedSequence.of("123[[EMPTY]]321"), "123[[EMPTY]]321".indexOf("#"), "[[", "]]"))
     }
 }
