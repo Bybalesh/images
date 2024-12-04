@@ -20,6 +20,10 @@ class TagInlineParserExtension(lightInlineParser: LightInlineParser) : InlinePar
     //Paragraph
     override fun parse(inlineParser: LightInlineParser): Boolean {
         val input = inlineParser.input
+
+        if (isSurroundedBy(input, "#", "[[", "]]"))
+            return false//TODO сейчас не парсятся теги, которые попали в такие блоки
+
         if (inlineParser.index == input.length - 1) // чтобы не зацикливался на # в конце
             return false
 
@@ -42,16 +46,40 @@ class TagInlineParserExtension(lightInlineParser: LightInlineParser) : InlinePar
             val hashTag = Tag(tag, hash)
             hashTag.setCharsFromContent()
             val textStartIndex = inlineParser.block.children.sumOf { it.textLength }
-//            if (startIndex != 0 && textStartIndex != 0 && textStartIndex <= startIndex) {
-                inlineParser.appendText(inlineParser.input, textStartIndex, startIndex)
-                inlineParser.flushTextNode()
-//            }
+            if (startIndex != 0 && textStartIndex != 0 && textStartIndex <= startIndex) {
+            inlineParser.appendText(inlineParser.input, textStartIndex, startIndex)
+            inlineParser.flushTextNode()
+            }
             inlineParser.block.appendChild(hashTag)
             return true
         } else {
             inlineParser.index++
         }
         return false
+    }
+
+    /**
+     * Возвращает true, если символ по индексу @param indexCharWhichIsSurrounded встречается в @param input между @param byLeft и @param byRight
+     */
+    companion object {
+        fun isSurroundedBy(
+            input: BasedSequence,
+            strWhichIsSurrounded: String,
+            byLeft: String,
+            byRight: String
+        ): Boolean {
+            val NOT_FOUND = -1
+            val sharpIdx = input.indexOf(strWhichIsSurrounded)
+            val leftIdxOfByLeft = input.lastIndexOf(byLeft, 0, sharpIdx)
+            val leftIdxOfByRight = input.lastIndexOf(byRight, 0, sharpIdx)
+            if (leftIdxOfByLeft == NOT_FOUND || leftIdxOfByLeft <= leftIdxOfByRight && leftIdxOfByRight != NOT_FOUND) return false
+
+            val rightIdxOfByLeft = input.indexOf(byLeft, sharpIdx, ignoreCase = true)
+            val rightIdxOfByRight = input.indexOf(byRight, sharpIdx, ignoreCase = true)
+            if (rightIdxOfByRight == NOT_FOUND || rightIdxOfByRight >= rightIdxOfByLeft && rightIdxOfByLeft != NOT_FOUND) return false
+
+            return true
+        }
     }
 
     class Factory : InlineParserExtensionFactory {

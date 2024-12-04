@@ -5,6 +5,7 @@ import ParseUtil
 import com.vladsch.flexmark.ast.Heading
 import com.vladsch.flexmark.ast.Link
 import com.vladsch.flexmark.ast.LinkRef
+import com.vladsch.flexmark.ext.tag.Tag
 import com.vladsch.flexmark.ext.wikilink.WikiLink
 import getChildrenOfType
 import link.RelatedLinkContainer
@@ -29,6 +30,8 @@ class CheckCommonNodesForLinksTest {
             .filter{it.name.contains("README")}//TODO убрать, когда починю баг
             .forEach path@{ path ->
                 try {
+//                    ParseUtil.mdParser.parse(Files.readString(path))
+//  TODO                                          .getChildrenOfType(Tag::class) >3 должно быть  !!!!!
                     ParseUtil.mdParser.parse(Files.readString(path))
                         .getChildrenOfType(WikiLink::class)
                         .stream()

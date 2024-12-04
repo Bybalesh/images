@@ -7,6 +7,7 @@ import java.net.URI
 import java.nio.file.Files
 import java.nio.file.Path
 import java.util.function.Predicate.not
+import java.util.regex.Pattern
 import java.util.stream.Collectors
 import kotlin.io.path.extension
 import kotlin.io.path.nameWithoutExtension
@@ -30,25 +31,28 @@ fun WikiLink.toRelLinkContainer(pathToFile: Path): RelatedLinkContainer<WikiLink
 
         var pathStr = rawPathStr.substringBefore("#")
 
-        if (pathStr.filter { it in "#^[]|" }.isNotEmpty())
-            throw RuntimeException("Wikilink[$pathStr] не может содержать любой из символов #^[]|")
+        if (pathStr.isBlank()) {
+            pathToFile
+        } else {
+            if (pathStr.filter { it in "#^[]|" }.isNotEmpty())
+                throw RuntimeException("Wikilink[$pathStr] не может содержать любой из символов #^[]|")
 
-        val mayBePath = EXTENSIONS.map { pathToFile.relativeByCurrent(Path.of("$pathStr.$it")) }.toMutableSet()
-        mayBePath.add(pathToFile.relativeByCurrent(Path.of(pathStr)))
+            val mayBePath = EXTENSIONS.map { pathToFile.relativeByCurrent(Path.of("$pathStr.$it")) }.toMutableSet()
+            mayBePath.add(pathToFile.relativeByCurrent(Path.of(pathStr)))
 
-        mayBePath.stream()
-            .filter(Files::isRegularFile)
-            .findAny()
-            .orElseGet({
-                Files.walk(Path.of(PATH_TO_DOCS_ROOT))
-                    .filter(Files::isRegularFile)
-                    .filter(Files::isReadable)
-                    .filter(not(Files::isDirectory))
-                    .filter { it.nameWithoutExtension == pathStr }
-                    .findAny()
-                    .orElseThrow({ RuntimeException("Wikilink[$pathStr] такого файла не существует!") })//TODO здесь не учитываются дубли
-            })
-
+            mayBePath.stream()
+                .filter(Files::isRegularFile)
+                .findAny()
+                .orElseGet({
+                    Files.walk(Path.of(PATH_TO_DOCS_ROOT))
+                        .filter(Files::isRegularFile)
+                        .filter(Files::isReadable)
+                        .filter(not(Files::isDirectory))
+                        .filter { it.nameWithoutExtension == pathStr }
+                        .findAny()
+                        .orElseThrow({ RuntimeException("Wikilink[$pathStr] такого файла не существует!") })//TODO здесь не учитываются дубли
+                })
+        }
     } catch (ex: Exception) {
         throw RuntimeException("Не удалось распарсить ссылку[${this.chars}] т.к. ${ex.message}")
     }
@@ -61,6 +65,7 @@ fun WikiLink.toRelLinkContainer(pathToFile: Path): RelatedLinkContainer<WikiLink
         rawPathStr.substringAfter("#", "")
             .split("#")
             .filter(String::isNotBlank)
+            .map(Pattern::quote)
             .map { it.toRegex(RegexOption.IGNORE_CASE) }
             .toList(),
         this
@@ -119,7 +124,7 @@ fun Link.toRelLinkContainer(pathToFile: Path): RelatedLinkContainer<Link> {
         uri,
         true,
         pathToFile.relativeByCurrent(Path.of(uri.path)).toAbsolutePath().normalize(),
-        listOf(fragmentPattern.toRegex(RegexOption.IGNORE_CASE)),
+        listOf(Pattern.quote(fragmentPattern).toRegex(RegexOption.IGNORE_CASE)),
         this
     )
 }
