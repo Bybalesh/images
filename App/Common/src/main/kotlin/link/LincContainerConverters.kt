@@ -10,6 +10,7 @@ import java.util.function.Predicate.not
 import java.util.regex.Pattern
 import java.util.stream.Collectors
 import kotlin.io.path.extension
+import kotlin.io.path.name
 import kotlin.io.path.nameWithoutExtension
 
 val EXTENSIONS = Files.walk(Path.of(PATH_TO_DOCS_ROOT))
@@ -23,35 +24,20 @@ val EXTENSIONS = Files.walk(Path.of(PATH_TO_DOCS_ROOT))
 fun WikiLink.toRelLinkContainer(pathToFile: Path): RelatedLinkContainer<WikiLink> {
     var rawPathStr = this.chars.substring(this.openingMarker.length, this.chars.indexOf(this.closingMarker))
 
-
     if (this.textSeparatorMarker.isNotBlank)
         rawPathStr = rawPathStr.substringBefore(this.textSeparatorMarker.toString())
 
     val path: Path = try {
 
-        var pathStr = rawPathStr.substringBefore("#")
+        var fileName = rawPathStr.substringBefore("#")
 
-        if (pathStr.isBlank()) {
+        if (fileName.isBlank()) {
             pathToFile
         } else {
-            if (pathStr.filter { it in "#^[]|" }.isNotEmpty())
-                throw RuntimeException("Wikilink[$pathStr] не может содержать любой из символов #^[]|")
+            if (fileName.filter { it in "#^[]|" }.isNotEmpty())
+                throw RuntimeException("Wikilink[$fileName] не может содержать любой из символов #^[]|")
 
-            val mayBePath = EXTENSIONS.map { pathToFile.relativeByCurrent(Path.of("$pathStr.$it")) }.toMutableSet()
-            mayBePath.add(pathToFile.relativeByCurrent(Path.of(pathStr)))
-
-            mayBePath.stream()
-                .filter(Files::isRegularFile)
-                .findAny()
-                .orElseGet({
-                    Files.walk(Path.of(PATH_TO_DOCS_ROOT))
-                        .filter(Files::isRegularFile)
-                        .filter(Files::isReadable)
-                        .filter(not(Files::isDirectory))
-                        .filter { it.nameWithoutExtension == pathStr }
-                        .findAny()
-                        .orElseThrow({ RuntimeException("Wikilink[$pathStr] такого файла не существует!") })//TODO здесь не учитываются дубли
-                })
+            findPathByFileNameOrThrow(pathToFile, fileName)
         }
     } catch (ex: Exception) {
         throw RuntimeException("Не удалось распарсить ссылку[${this.chars}] т.к. ${ex.message}")
@@ -70,6 +56,31 @@ fun WikiLink.toRelLinkContainer(pathToFile: Path): RelatedLinkContainer<WikiLink
             .toList(),
         this
     )
+}
+
+private fun findPathByFileNameOrThrow(pathToFile: Path, fileName: String): Path {
+
+    val isWithExtension = EXTENSIONS.any { fileName.endsWith(it) }
+    val mayBePath = if (isWithExtension)
+        EXTENSIONS.map { pathToFile.relativeByCurrent(Path.of(fileName)) }.toMutableSet()
+    else EXTENSIONS.map { pathToFile.relativeByCurrent(Path.of("$fileName.$it")) }.toMutableSet()
+
+    mayBePath.add(pathToFile.relativeByCurrent(Path.of(fileName).toAbsolutePath().normalize()))
+
+    return mayBePath.stream()
+        .filter(Files::isRegularFile)
+        .findAny()
+        .orElseGet({
+            Files.walk(Path.of(PATH_TO_DOCS_ROOT))
+                .filter(Files::isRegularFile)
+                .filter(Files::isReadable)
+                .filter(not(Files::isDirectory))
+                .filter { if (isWithExtension) it.name == fileName else it.nameWithoutExtension == fileName }
+                .findAny()
+                .orElseThrow({
+                    RuntimeException("AnyLink[$fileName] такого файла не существует!")
+                })
+        })
 }
 
 //fun LinkRef.toRelLinkContainer(): RelatedLinkContainer<LinkRef> { TODO Пока никто не поддерживает формат
@@ -95,8 +106,8 @@ fun Link.toRelLinkContainer(pathToFile: Path): RelatedLinkContainer<Link> {
             this.text.toString(),
             uri,
             false,
-            Path.of(uri.path).toAbsolutePath().normalize(),
-            null,
+            pathToFile.relativeByCurrent(Path.of(uri.path)).toAbsolutePath().normalize(),
+            emptyList(),
             this
         )
 
@@ -105,8 +116,8 @@ fun Link.toRelLinkContainer(pathToFile: Path): RelatedLinkContainer<Link> {
             this.text.toString(),
             uri,
             true,
-            Path.of(uri.path).toAbsolutePath().normalize(),
-            null,
+            pathToFile.relativeByCurrent(findPathByFileNameOrThrow(pathToFile, uri.path)).toAbsolutePath().normalize(),
+            emptyList(),
             this
         )
 
@@ -119,11 +130,12 @@ fun Link.toRelLinkContainer(pathToFile: Path): RelatedLinkContainer<Link> {
                 { matchR -> "(-|\\s|\$)(${matchR.value.substring(1)})?" })
         else uri.fragment.replace("-", "[-\\s]")
 
+
     return RelatedLinkContainer(
         this.text.toString(),
         uri,
         true,
-        pathToFile.relativeByCurrent(Path.of(uri.path)).toAbsolutePath().normalize(),
+        pathToFile.relativeByCurrent(findPathByFileNameOrThrow(pathToFile, uri.path)).toAbsolutePath().normalize(),
         listOf(Pattern.quote(fragmentPattern).toRegex(RegexOption.IGNORE_CASE)),
         this
     )
@@ -143,6 +155,9 @@ fun Path.relativeByCurrent(pathFromLink: Path): Path {
     var cutPath = this.subpath(0, this.count() - backStep).toString()
 
     cutPath = cutPath.substringBeforeLast('/', "")
+
+    if (!cutPath.startsWith("/") && !cutPath.startsWith("."))
+        cutPath = "/" + cutPath
 
     return Path.of(cutPath + "/" + linkPathStr.substringAfterLast("../"))
 

@@ -153,12 +153,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/system/Шаблон тематического узла.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Шаблон тематического узла"
+              "title": "README"
             }
           },
           {
@@ -167,12 +167,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "backlog/Backlog.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "Backlog"
             }
           },
           {
@@ -181,12 +181,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "backlog/Backlog.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "Backlog"
             }
           },
           {
@@ -456,7 +456,7 @@
             }
           }
         ],
-        "currentTab": 12
+        "currentTab": 10
       }
     ],
     "direction": "vertical"
@@ -487,7 +487,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:STRUCT/GENERATED",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -512,7 +512,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 605.5
+    "width": 323.5
   },
   "right": {
     "id": "d9e7b001fbb1242a",
@@ -610,27 +610,28 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "c76f31a7a51f3318",
+  "active": "1e9b0294385104f3",
   "lastOpenFiles": [
-    "App/flexmark-ext-tag/src/test/resources/tagAndLinks.md~",
-    "App/flexmark-ext-tag/src/test/resources/tagAndLinks.md",
-    "App/Common/build/classes/kotlin/test/META-INF/Common_test.kotlin_module",
-    "App/Common/build/classes/kotlin/test/common/CheckCommonNodesForLinksTest$checkCommonFileAndHeaderByLinkExistsTest$3$2.class",
-    "App/Common/build/classes/kotlin/test/common/CheckCommonNodesForLinksTest$checkCommonFileAndHeaderByWikiLinkExistsTest$3$2.class",
-    "App/Common/build/classes/kotlin/test/common/CheckCommonNodesForLinksTest.class",
     "App/Common/src/test/kotlin/common/CheckCommonNodesForLinksTest.kt~",
-    "App/Common/build/kotlin/compileTestKotlin/classpath-snapshot/shrunk-classpath-snapshot.bin",
-    "App/Common/build/kotlin/compileTestKotlin/local-state/build-history.bin",
-    "App/Common/build/kotlin/compileTestKotlin/cacheable/last-build.bin",
-    "App/Common/build/classes/kotlin/test/META-INF",
-    "App/Common/build/classes/kotlin/test/topic/CheckTopicTagsMandatoryTest.class",
-    "docs/system/Описание хештегов.md",
+    "App/Common/src/main/kotlin/link/LincContainerConverters.kt~",
+    "App/Common/build/test-results/test/TEST-CheckTagsMandatoryTest.xml",
+    "App/Common/build/test-results/test/TEST-estimating.CheckEstimatingTagsMandatoryTest.xml",
+    "App/Common/build/test-results/test/TEST-tag.TagExtTest.xml",
+    "App/Common/build/test-results/test/TEST-topic.CheckTopicTagsMandatoryTest.xml",
+    "App/Common/build/test-results/test/TEST-learning.CheckLearningTagsMandatoryTest.xml",
+    "App/Common/build/test-results/test/TEST-ApprovalKeyWordsUtilTest.xml",
+    "App/Common/build/test-results/test/TEST-common.CheckCommonFileCanBeParsedTest.xml",
+    "App/Common/build/test-results/test/TEST-template.MDNodeTemplateTest.xml",
+    "App/Common/build/test-results/test/TEST-system.CheckSystemTagsMandatoryTest.xml",
+    "docs/system/Шаблон тематического узла.md",
+    "backlog/Backlog.md",
     "README.md",
     "docs/topic/Spring Web on Reactive Stack.md",
     "docs/system/Шаблон оценочного узла c вопросом.md",
+    "docs/system/Описание хештегов.md",
+    "docs/generated/cmg/Матрица компетенций.md",
+    "App/flexmark-ext-tag/src/test/resources/tagAndLinks.md",
     "docs/system/Примеры ссылок.md",
-    "docs/system/Шаблон тематического узла.md",
-    "backlog/Backlog.md",
     "images/ObsidianAndLogo.png",
     "images/LogoWithoutFrame.png",
     "images/LogoWithoutBoard.png",
@@ -644,7 +645,6 @@
     "images/AreasOfInteractionCG.drawio.svg",
     "docs/system/Шаблон матрицы компетенций.md",
     "docs/topic/Build Tools.md",
-    "docs/generated/cmg/Матрица компетенций.md",
     "docs/topic/Ant.md",
     "docs/topic/Databases.md",
     "docs/topic/Grafana.md",
