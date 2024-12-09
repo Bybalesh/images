@@ -8,6 +8,7 @@ import com.vladsch.flexmark.ast.LinkRef
 import com.vladsch.flexmark.ext.wikilink.WikiLink
 import getChildrenOfType
 import link.RelatedLinkContainer
+import link.relativeByCurrent
 import link.toRelLinkContainer
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -25,8 +26,7 @@ class CheckCommonNodesForLinksTest {
         val errMsg = mutableListOf<String>()
 
         getAllMDNodes()
-            .filter{!it.name.contains("Примеры ссылок")}
-            .filter{it.name.contains("README")}//TODO убрать, когда починю баг
+            .filter { !it.name.contains("Примеры ссылок") }
             .forEach path@{ path ->
                 try {
                     ParseUtil.mdParser.parse(Files.readString(path))
@@ -105,7 +105,7 @@ class CheckCommonNodesForLinksTest {
     }
 
     @Test
-    @DisplayName("Ссылки формата [label](link) Link::class должны указывать на существующий файл и заголовок")
+    @DisplayName("Ссылки формата [label](link) Link::class должны указывать на существующий файл и/или заголовок")
     fun checkCommonFileAndHeaderByLinkExistsTest() {
         val errMsg = mutableListOf<String>()
 
@@ -120,7 +120,7 @@ class CheckCommonNodesForLinksTest {
                         .map { it.toRelLinkContainer(path) }
                         .filter(RelatedLinkContainer<Link>::isFile)
                         .forEach rlc@{ rlc ->
-                            if (!Files.exists(rlc.pathToFile)) {
+                            if (!Files.exists(path.toAbsolutePath().relativeByCurrent(rlc.pathToFile).normalize())) {
                                 errMsg.add(
                                     "В документе:[$path] на строке:[${rlc.targetLink.lineNumber}] есть ссылка на несуществующий файл:[$rlc]."
                                 )
@@ -128,7 +128,11 @@ class CheckCommonNodesForLinksTest {
                             }
                             if (rlc.mDElementRegex!!.isNotEmpty())
                                 if (
-                                    !ParseUtil.mdParser.parse(Files.readString(rlc.pathToFile))
+                                    !ParseUtil.mdParser.parse(
+                                        Files.readString(
+                                            path.toAbsolutePath().relativeByCurrent(rlc.pathToFile).normalize()
+                                        )
+                                    )
                                         .getChildrenOfType(Heading::class)
                                         .any { rlc.mDElementRegex!!.first().matches(it.text) }
                                 )
