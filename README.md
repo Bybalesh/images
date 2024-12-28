@@ -5,8 +5,9 @@ tags:
 ---
 ---
 ![logo | center | 50%](./images/logo.png)
+> Проект помогает соискателям и работодателям понять друг-друга.
 ![Граф компетенций | center | 100%](./images/GrafCompetition.gif)
-<center>  Визуализация ГК в obsidian </center>
+<p style="text-align:center;">Визуализация ГК в Obsidian </p>
 # Прогресс проекта
 #TODO графики
 # Термины и определения:
